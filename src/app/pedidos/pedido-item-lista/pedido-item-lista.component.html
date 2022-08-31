@@ -1,7 +1,7 @@
 <mat-nav-list>
   <h3 mat-subheader>Itens</h3>
 
-  <ng-container *ngFor="let item of itens">
+  <ng-container *ngFor="let item of itens; let last = last">
     <mat-list-item
       [routerLink]="[{ outlets: { detalhes: ['item', item.sequencia] } }]"
     >
@@ -10,6 +10,6 @@
       <span mat-line>{{ item.quantidade }} {{ item.um }}</span>
     </mat-list-item>
 
-    <mat-divider></mat-divider>
+    <mat-divider *ngIf="!last"></mat-divider>
   </ng-container>
 </mat-nav-list>
