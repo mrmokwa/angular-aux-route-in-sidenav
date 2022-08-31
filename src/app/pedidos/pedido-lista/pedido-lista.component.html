@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-nav-list *ngIf="pedidos$ | async as pedidos; else loading">
+    <h3 mat-subheader>Pedidos</h3>
+    <mat-list-item *ngFor="let pedido of pedidos">
+      <p mat-line>{{ pedido.divisao }} - {{ pedido.pedido }}</p>
+      <p mat-line>{{ pedido.clienteNome }}</p>
+    </mat-list-item>
+  </mat-nav-list>
+</mat-card>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

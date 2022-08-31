@@ -1,0 +1,7 @@
+<mat-list *ngIf="pedido$ | async as pedido">
+  <h3 mat-subheader>Totais do Pedido</h3>
+  <mat-list-item *ngFor="let campo of camposExibir">
+    <p mat-line>{{ pedido | pedidoDetalhe: campo.nome }}</p>
+    <p mat-line>{{ campo.label }}</p>
+  </mat-list-item>
+</mat-list>

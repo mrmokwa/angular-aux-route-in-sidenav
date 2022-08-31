@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  background-color: whitesmoke;
+  padding: 1em;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.pedidos {
+  min-width: 500px;
+}
