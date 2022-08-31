@@ -1,0 +1,15 @@
+<mat-nav-list>
+  <h3 mat-subheader>Itens</h3>
+
+  <ng-container *ngFor="let item of itens">
+    <mat-list-item
+      [routerLink]="[{ outlets: { detalhes: ['item', item.sequencia] } }]"
+    >
+      <span mat-list-avatar>{{ item.sequencia }}</span>
+      <span mat-line>{{ item.itemId }} - {{ item.descricao }}</span>
+      <span mat-line>{{ item.quantidade }} {{ item.um }}</span>
+    </mat-list-item>
+
+    <mat-divider></mat-divider>
+  </ng-container>
+</mat-nav-list>

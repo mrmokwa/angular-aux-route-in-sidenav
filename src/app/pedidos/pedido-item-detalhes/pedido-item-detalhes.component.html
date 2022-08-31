@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+  Detalhes
+
+  <span style="flex: auto"></span>
+
+  <button mat-icon-button [routerLink]="[{ outlets: { detalhes: ['item'] } }]">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container" *ngIf="item$ | async as item">
+  <h2>
+    {{ item.itemId }} <span *ngIf="item.configId">[{{ item.configId }}]</span>
+  </h2>
+
+  <p>{{ item.descricao }}</p>
+
+  <mat-divider></mat-divider>
+
+  <ng-container *ngIf="item.complemento">
+    <br />
+
+    <p>{{ item.complemento }}</p>
+
+    <mat-divider></mat-divider>
+  </ng-container>
+
+  <dl>
+    <dt>Quantidade</dt>
+    <dd>{{ item.quantidade }} {{ item.um }}</dd>
+
+    <dt>Pendente</dt>
+    <dd>{{ item.pendente }} {{ item.um }}</dd>
+
+    <dt>Unitario</dt>
+    <dd>{{ item.unitario | currency }}</dd>
+
+    <dt><b>Total</b></dt>
+    <dd>
+      <b>{{ item.total | currency }}</b>
+    </dd>
+  </dl>
+</div>

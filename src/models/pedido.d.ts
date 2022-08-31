@@ -16,4 +16,23 @@ interface PedidoDetalhado extends Pedido {
   totalIpi: number;
   totalIcmsST: number;
   totalProdutos: number;
+  itens: PedidoVendaItem[];
+}
+
+interface PedidoVendaItem {
+  sequencia: number;
+  itemId: string;
+  configId: string;
+  tabPrecoId: string;
+  referencia: string;
+  descricao: string;
+  complemento: string;
+  quantidade: number;
+  um: string;
+  pendente: number;
+  unitario: number;
+  total: number;
+  descontoCascata: string;
+  acrescimo: number;
+  situacao: 'A' | 'C' | 'P' | 'T';
 }

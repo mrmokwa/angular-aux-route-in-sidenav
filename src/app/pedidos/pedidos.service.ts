@@ -12,7 +12,7 @@ export class PedidosService {
   getAll(): Observable<Pedido[]> {
     return this.httpClient
       .get<{ data: Pedido[] }>('/api/pedidos?entradaIni=2022-07-01')
-      .pipe(map((response) => response.data));
+      .pipe(map((response) => response.data.slice(0, 5)));
   }
 
   getById(id: number): Observable<PedidoDetalhado> {

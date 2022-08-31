@@ -1,0 +1,7 @@
+<mat-card *ngIf="pedido$ | async as pedido">
+  <mat-card-header>
+    <mat-card-title>{{ pedido.divisao }}-{{ pedido.pedido }}</mat-card-title>
+    <mat-card-subtitle>Pedido de Venda</mat-card-subtitle>
+  </mat-card-header>
+  <app-pedido-item-lista [itens]="pedido.itens"></app-pedido-item-lista>
+</mat-card>
