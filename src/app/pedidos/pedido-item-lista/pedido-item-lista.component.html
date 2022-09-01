@@ -7,6 +7,10 @@
     >
       <span mat-line>{{ item.sequencia }} - {{ item | itemConfig }}</span>
       <span mat-line>{{ item.descricao }}</span>
+
+      <span [ngClass]="item.situacao | pedItemSituacaoClass">
+        {{ item.situacao | pedItemSituacao }}
+      </span>
     </mat-list-item>
 
     <mat-divider *ngIf="!last"></mat-divider>
