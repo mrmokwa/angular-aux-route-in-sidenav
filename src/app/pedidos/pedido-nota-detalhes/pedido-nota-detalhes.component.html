@@ -29,7 +29,9 @@
     <dd>{{ nota.emissao | date: "shortDate" }}</dd>
 
     <dt>Situação</dt>
-    <dd>{{ nota.situacao === "C" ? "Cancelada" : "Efetivada" }}</dd>
+    <dd [ngClass]="nota.situacao | notaFiscalSituacaoClass">
+      {{ nota.situacao | notaFiscalSituacao }}
+    </dd>
   </dl>
 
   <mat-divider></mat-divider>

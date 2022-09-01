@@ -10,10 +10,22 @@ import { PedidoItemDetalhesComponent } from './pedido-item-detalhes/pedido-item-
 import { PedidoNotaListaComponent } from './pedido-nota-lista/pedido-nota-lista.component';
 import { ItemConfigPipe } from '../pipes/item-config.pipe';
 import { PedidoNotaDetalhesComponent } from './pedido-nota-detalhes/pedido-nota-detalhes.component';
-import { PedItemSituacaoPipe } from '../pipes/ped-item-situacao.pipe';
-import { PedItemSituacaoClassPipe } from '../pipes/ped-item-situacao-class.pipe';
+import {
+  PedItemSituacaoClassPipe,
+  PedItemSituacaoPipe,
+} from '../pipes/ped-item-situacao.pipe';
+import {
+  NotaFiscalSituacaoClassPipe,
+  NotaFiscalSituacaoPipe,
+} from '../pipes/nota-fiscal-situacao.pipe';
 
-const PIPES = [ItemConfigPipe, PedItemSituacaoPipe, PedItemSituacaoClassPipe];
+const PIPES = [
+  ItemConfigPipe,
+  PedItemSituacaoPipe,
+  PedItemSituacaoClassPipe,
+  NotaFiscalSituacaoPipe,
+  NotaFiscalSituacaoClassPipe,
+];
 
 @NgModule({
   declarations: [
