@@ -5,9 +5,8 @@
     <mat-list-item
       [routerLink]="[{ outlets: { detalhes: ['item', item.sequencia] } }]"
     >
-      <span mat-list-avatar>{{ item.sequencia }}</span>
-      <span mat-line>{{ item.itemId }} - {{ item.descricao }}</span>
-      <span mat-line>{{ item.quantidade }} {{ item.um }}</span>
+      <span mat-line>{{ item.sequencia }} - {{ item | itemConfig }}</span>
+      <span mat-line>{{ item.descricao }}</span>
     </mat-list-item>
 
     <mat-divider *ngIf="!last"></mat-divider>

@@ -7,6 +7,10 @@ import { PedidoInfoComponent } from './pedido-info/pedido-info.component';
 import { SharedModule } from '../shared/shared.module';
 import { PedidoItemListaComponent } from './pedido-item-lista/pedido-item-lista.component';
 import { PedidoItemDetalhesComponent } from './pedido-item-detalhes/pedido-item-detalhes.component';
+import { PedidoNotaListaComponent } from './pedido-nota-lista/pedido-nota-lista.component';
+import { ItemConfigPipe } from '../pipes/item-config.pipe';
+
+const PIPES = [ItemConfigPipe];
 
 @NgModule({
   declarations: [
@@ -14,7 +18,8 @@ import { PedidoItemDetalhesComponent } from './pedido-item-detalhes/pedido-item-
     PedidoInfoComponent,
     PedidoItemListaComponent,
     PedidoItemDetalhesComponent,
+    PedidoNotaListaComponent,
   ],
-  imports: [CommonModule, PedidosRoutingModule, SharedModule],
+  imports: [CommonModule, PedidosRoutingModule, SharedModule, PIPES],
 })
 export class PedidosModule {}

@@ -9,9 +9,7 @@
 </mat-toolbar>
 
 <div class="container" *ngIf="item$ | async as item">
-  <h2>
-    {{ item.itemId }} <span *ngIf="item.configId">[{{ item.configId }}]</span>
-  </h2>
+  <h2>{{ item | itemConfig }}</h2>
 
   <p>{{ item.descricao }}</p>
 
