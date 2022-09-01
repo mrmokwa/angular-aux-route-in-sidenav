@@ -34,6 +34,7 @@ interface PedidoVendaItem {
   unitario: number;
   total: number;
   descontoCascata: string;
+  descontoDestacado: number;
   acrescimo: number;
   situacao: 'A' | 'C' | 'P' | 'T';
 }

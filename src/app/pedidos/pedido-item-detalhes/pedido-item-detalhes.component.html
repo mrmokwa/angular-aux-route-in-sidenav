@@ -9,7 +9,28 @@
 </mat-toolbar>
 
 <div class="container" *ngIf="item$ | async as item">
-  <h2>{{ item | itemConfig }}</h2>
+  <h2>Item</h2>
+
+  <dl>
+    <dt>Item</dt>
+    <dd>{{ item.itemId }}</dd>
+
+    <ng-container *ngIf="item.configId">
+      <dt>Configuração</dt>
+      <dd>{{ item.configId }}</dd>
+    </ng-container>
+
+    <ng-container *ngIf="item.referencia">
+      <dt>Refêrencia</dt>
+      <dd>{{ item.referencia }}</dd>
+    </ng-container>
+
+    <dt>Situação</dt>
+    <dd>{{ item.situacao }}</dd>
+  </dl>
+
+  <mat-divider></mat-divider>
+  <br />
 
   <p>{{ item.descricao }}</p>
 
@@ -29,13 +50,30 @@
 
     <dt>Pendente</dt>
     <dd>{{ item.pendente }} {{ item.um }}</dd>
+  </dl>
 
-    <dt>Unitario</dt>
+  <mat-divider></mat-divider>
+
+  <dl>
+    <dt>Valor Unitario</dt>
     <dd>{{ item.unitario | currency }}</dd>
 
-    <dt><b>Total</b></dt>
-    <dd>
-      <b>{{ item.total | currency }}</b>
-    </dd>
+    <ng-container *ngIf="item?.descontoCascata !== '0'">
+      <dt>Desconto Cascata</dt>
+      <dd>{{ item.descontoCascata }}</dd>
+    </ng-container>
+
+    <ng-container *ngIf="item.descontoDestacado">
+      <dt>Desconto Destacado</dt>
+      <dd>{{ item.descontoDestacado | currency }}</dd>
+    </ng-container>
+
+    <ng-container *ngIf="item.acrescimo">
+      <dt>Acréscimo Financeiro</dt>
+      <dd>{{ item.acrescimo | currency }}</dd>
+    </ng-container>
+
+    <dt>Total do Item</dt>
+    <dd>{{ item.total | currency }}</dd>
   </dl>
 </div>
