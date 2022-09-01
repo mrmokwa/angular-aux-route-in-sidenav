@@ -9,6 +9,7 @@ import { PedidoItemListaComponent } from './pedido-item-lista/pedido-item-lista.
 import { PedidoItemDetalhesComponent } from './pedido-item-detalhes/pedido-item-detalhes.component';
 import { PedidoNotaListaComponent } from './pedido-nota-lista/pedido-nota-lista.component';
 import { ItemConfigPipe } from '../pipes/item-config.pipe';
+import { PedidoNotaDetalhesComponent } from './pedido-nota-detalhes/pedido-nota-detalhes.component';
 
 const PIPES = [ItemConfigPipe];
 
@@ -19,6 +20,7 @@ const PIPES = [ItemConfigPipe];
     PedidoItemListaComponent,
     PedidoItemDetalhesComponent,
     PedidoNotaListaComponent,
+    PedidoNotaDetalhesComponent,
   ],
   imports: [CommonModule, PedidosRoutingModule, SharedModule, PIPES],
 })

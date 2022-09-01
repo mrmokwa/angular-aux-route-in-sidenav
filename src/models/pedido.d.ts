@@ -17,6 +17,7 @@ interface PedidoDetalhado extends Pedido {
   totalIcmsST: number;
   totalProdutos: number;
   itens: PedidoVendaItem[];
+  notas: NotaFiscal[];
 }
 
 interface PedidoVendaItem {

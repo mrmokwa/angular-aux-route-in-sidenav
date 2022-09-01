@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">
+  Detalhes
+
+  <span style="flex: auto"></span>
+
+  <button mat-icon-button [routerLink]="[{ outlets: { detalhes: ['item'] } }]">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container" *ngIf="nota$ | async as nota">
+  <h2>Nota Fiscal</h2>
+
+  <dl>
+    <dt>Divisao</dt>
+    <dd>{{ nota.divisao }}</dd>
+
+    <dt>Serie</dt>
+    <dd>{{ nota.serie }}</dd>
+
+    <dt>Documento</dt>
+    <dd>{{ nota.documento }}</dd>
+  </dl>
+
+  <mat-divider></mat-divider>
+
+  <dl>
+    <dt>Emissao</dt>
+    <dd>{{ nota.emissao | date: "shortDate" }}</dd>
+
+    <dt>Situação</dt>
+    <dd>{{ nota.situacao === "C" ? "Cancelada" : "Efetivada" }}</dd>
+  </dl>
+
+  <mat-divider></mat-divider>
+  <br />
+
+  <p>Chave NFe</p>
+  <p style="word-break: break-all">{{ nota.chave }}</p>
+
+  <mat-divider></mat-divider>
+
+  <dl>
+    <dt>Total Produtos</dt>
+    <dd>{{ nota.totalProdutos | currency }}</dd>
+
+    <dt>Total Nota</dt>
+    <dd>{{ nota.totalNota | currency }}</dd>
+  </dl>
+</div>

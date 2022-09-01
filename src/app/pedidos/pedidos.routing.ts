@@ -5,6 +5,7 @@ import { PedidoContainerComponent } from './pedido-container/pedido-container.co
 import { PedidoInfoComponent } from './pedido-info/pedido-info.component';
 import { PedidoInfoResolver } from './pedido-info/pedido-info.resolver';
 import { PedidoItemDetalhesComponent } from './pedido-item-detalhes/pedido-item-detalhes.component';
+import { PedidoNotaDetalhesComponent } from './pedido-nota-detalhes/pedido-nota-detalhes.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,11 @@ const routes: Routes = [
       {
         path: 'item/:seq',
         component: PedidoItemDetalhesComponent,
+        outlet: 'detalhes',
+      },
+      {
+        path: 'nota/:div/:ser/:nro',
+        component: PedidoNotaDetalhesComponent,
         outlet: 'detalhes',
       },
     ],

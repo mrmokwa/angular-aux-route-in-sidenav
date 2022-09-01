@@ -1,0 +1,25 @@
+<mat-nav-list>
+  <h3 mat-subheader>Notas Fiscais</h3>
+
+  <ng-container *ngFor="let nota of notas; let last = last">
+    <mat-list-item
+      [routerLink]="[
+        {
+          outlets: {
+            detalhes: ['nota', nota.divisao, nota.serie, nota.documento]
+          }
+        }
+      ]"
+    >
+      <span mat-line>
+        {{ nota.divisao }}-{{ nota.serie }}-{{ nota.documento }}
+      </span>
+
+      <span mat-line> {{ nota.chave }} </span>
+
+      <span>{{ nota.situacao === "C" ? "Cancelada" : "Efetivada" }}</span>
+    </mat-list-item>
+
+    <mat-divider *ngIf="!last"></mat-divider>
+  </ng-container>
+</mat-nav-list>

@@ -10,6 +10,9 @@ export class PedidoInfoResolver implements Resolve<PedidoDetalhado> {
   constructor(private service: PedidosService) {}
 
   resolve() {
-    return this.service.getById(525100);
+    // P - 525100
+    // C - 525089
+    // A - 525063
+    return this.service.getById(525063);
   }
 }
