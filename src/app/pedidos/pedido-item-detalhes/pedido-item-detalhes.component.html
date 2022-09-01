@@ -13,12 +13,7 @@
 
   <dl>
     <dt>Item</dt>
-    <dd>{{ item.itemId }}</dd>
-
-    <ng-container *ngIf="item.configId">
-      <dt>Configuração</dt>
-      <dd>{{ item.configId }}</dd>
-    </ng-container>
+    <dd>{{ item | itemConfig }}</dd>
 
     <ng-container *ngIf="item.referencia">
       <dt>Refêrencia</dt>
