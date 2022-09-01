@@ -1,14 +1,4 @@
-<mat-toolbar color="primary">
-  Detalhes
-
-  <span style="flex: auto"></span>
-
-  <button mat-icon-button [routerLink]="[{ outlets: { detalhes: ['item'] } }]">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-toolbar>
-
-<div class="container" *ngIf="item$ | async as item">
+<ng-container *ngIf="item$ | async as item">
   <h2>Item</h2>
 
   <dl>
@@ -73,4 +63,4 @@
     <dt>Total do Item</dt>
     <dd>{{ item.total | currency }}</dd>
   </dl>
-</div>
+</ng-container>

@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  Detalhes
+
+  <span style="flex: auto"></span>
+
+  <button mat-icon-button [routerLink]="[{ outlets: { detalhes: ['item'] } }]">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <ng-content></ng-content>
+</div>

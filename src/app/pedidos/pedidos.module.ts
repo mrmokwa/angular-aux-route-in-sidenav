@@ -18,6 +18,7 @@ import {
   NotaFiscalSituacaoClassPipe,
   NotaFiscalSituacaoPipe,
 } from '../pipes/nota-fiscal-situacao.pipe';
+import { PedidoSidenavComponent } from './pedido-sidenav/pedido-sidenav.component';
 
 const PIPES = [
   ItemConfigPipe,
@@ -35,6 +36,7 @@ const PIPES = [
     PedidoItemDetalhesComponent,
     PedidoNotaListaComponent,
     PedidoNotaDetalhesComponent,
+    PedidoSidenavComponent,
   ],
   imports: [CommonModule, PedidosRoutingModule, SharedModule, PIPES],
 })

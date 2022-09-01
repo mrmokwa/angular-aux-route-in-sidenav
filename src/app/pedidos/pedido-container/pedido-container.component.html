@@ -3,10 +3,12 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
   <mat-sidenav [opened]="opened" mode="side" position="end">
-    <router-outlet
-      name="detalhes"
-      (deactivate)="opened = false"
-      (activate)="opened = true"
-    ></router-outlet>
+    <app-pedido-sidenav>
+      <router-outlet
+        name="detalhes"
+        (deactivate)="opened = false"
+        (activate)="opened = true"
+      ></router-outlet>
+    </app-pedido-sidenav>
   </mat-sidenav>
 </mat-sidenav-container>

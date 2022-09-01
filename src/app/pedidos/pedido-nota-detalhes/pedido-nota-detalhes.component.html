@@ -1,14 +1,4 @@
-<mat-toolbar color="primary">
-  Detalhes
-
-  <span style="flex: auto"></span>
-
-  <button mat-icon-button [routerLink]="[{ outlets: { detalhes: ['item'] } }]">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-toolbar>
-
-<div class="container" *ngIf="nota$ | async as nota">
+<ng-container *ngIf="nota$ | async as nota">
   <h2>Nota Fiscal</h2>
 
   <dl>
@@ -49,4 +39,4 @@
     <dt>Total Nota</dt>
     <dd>{{ nota.totalNota | currency }}</dd>
   </dl>
-</div>
+</ng-container>
