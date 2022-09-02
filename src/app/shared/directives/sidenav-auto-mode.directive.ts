@@ -38,10 +38,7 @@ export class SidenavAutoModeDirective implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     const watchModeChanges = this.sidenavOver
-      .pipe(
-        distinctUntilChanged(),
-        tap((x) => console.log(x))
-      )
+      .pipe(distinctUntilChanged())
       .subscribe((over) => (this.sidenav.mode = over ? 'over' : 'side'));
 
     this.subscription.add(watchModeChanges);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pedido-container',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pedido-container.component.scss'],
 })
 export class PedidoContainerComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   opened = false;
 
   ngOnInit(): void {}
+
+  removeOutletRoute = () => this.router.navigate(['/pedidos']);
 }

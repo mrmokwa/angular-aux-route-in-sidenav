@@ -2,7 +2,14 @@
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
-  <mat-sidenav [opened]="opened" mode="side" position="end" appSidenavAutoMode>
+
+  <mat-sidenav
+    [opened]="opened"
+    mode="side"
+    position="end"
+    appSidenavAutoMode
+    (closedStart)="removeOutletRoute()"
+  >
     <app-pedido-sidenav>
       <router-outlet
         name="detalhes"
