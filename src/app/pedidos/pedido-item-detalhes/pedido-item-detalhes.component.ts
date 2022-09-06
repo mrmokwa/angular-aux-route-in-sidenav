@@ -11,7 +11,7 @@ import { combineLatest, map } from 'rxjs';
 export class PedidoItemDetalhesComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
-  seq$ = this.route.params.pipe(map((params) => +params['seq'] as number));
+  seq$ = this.route.params.pipe(map((params) => +params['seq']));
 
   itens$ = this.route.data.pipe(
     map((data) => data['pedido'] as PedidoDetalhado),
