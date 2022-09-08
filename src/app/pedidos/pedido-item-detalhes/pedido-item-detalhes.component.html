@@ -1,16 +1,16 @@
 <ng-container *ngIf="item$ | async as item">
-  <div class="header">
-    <h2>Item</h2>
+  <!-- <div class="header"> -->
+  <h2>Item</h2>
 
-    <span style="flex: auto"></span>
+  <!-- <span style="flex: auto"></span>
 
     <button mat-icon-button>
       <mat-icon>more_vert</mat-icon>
     </button>
-  </div>
+  </div> -->
 
   <dl>
-    <dt>Item</dt>
+    <dt>Código</dt>
     <dd>{{ item | itemConfig }}</dd>
 
     <ng-container *ngIf="item.referencia">

@@ -1,9 +1,9 @@
-<mat-sidenav-container>
-  <mat-sidenav-content>
+<mat-drawer-container>
+  <mat-drawer-content>
     <router-outlet></router-outlet>
-  </mat-sidenav-content>
+  </mat-drawer-content>
 
-  <mat-sidenav
+  <mat-drawer
     [opened]="opened"
     mode="side"
     position="end"
@@ -17,5 +17,5 @@
         (activate)="opened = true"
       ></router-outlet>
     </app-pedido-sidenav>
-  </mat-sidenav>
-</mat-sidenav-container>
+  </mat-drawer>
+</mat-drawer-container>

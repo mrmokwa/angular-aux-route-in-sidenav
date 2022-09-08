@@ -6,10 +6,10 @@ import {
   Input,
   OnDestroy,
 } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
+import { MatDrawer } from '@angular/material/sidenav';
 
 import { ReplaySubject, Subscription } from 'rxjs';
-import { tap, distinctUntilChanged, map } from 'rxjs/operators';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 
 @Directive({
   selector: '[appSidenavAutoMode]',
@@ -24,7 +24,7 @@ export class SidenavAutoModeDirective implements AfterViewInit, OnDestroy {
   sidenavOver = this.width.pipe(map((t) => t < this.minContainerSize));
   subscription = new Subscription();
 
-  constructor(private el: ElementRef, private sidenav: MatSidenav) {}
+  constructor(private el: ElementRef, private sidenav: MatDrawer) {}
 
   updateWidth() {
     const sidenav: ElementRef<HTMLElement> = this.el;
