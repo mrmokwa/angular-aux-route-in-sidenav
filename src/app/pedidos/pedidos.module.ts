@@ -6,7 +6,6 @@ import { PedidoContainerComponent } from './pedido-container/pedido-container.co
 import { PedidoInfoComponent } from './pedido-info/pedido-info.component';
 import { SharedModule } from '../shared/shared.module';
 import { PedidoItemListaComponent } from './pedido-item-lista/pedido-item-lista.component';
-import { PedidoItemDetalhesComponent } from './pedido-item-detalhes/pedido-item-detalhes.component';
 import { PedidoNotaListaComponent } from './pedido-nota-lista/pedido-nota-lista.component';
 import { ItemConfigPipe } from '../pipes/item-config.pipe';
 import { PedidoNotaDetalhesComponent } from './pedido-nota-detalhes/pedido-nota-detalhes.component';
@@ -19,8 +18,8 @@ import {
   NotaFiscalSituacaoPipe,
 } from '../pipes/nota-fiscal-situacao.pipe';
 import { PedidoDrawerComponent } from './pedido-drawer/pedido-drawer.component';
-import { PedidoItemMenuComponent } from './pedido-item-menu/pedido-item-menu.component';
-import { PedidoItemDetalhesHeaderComponent } from './pedido-item-detalhes-header/pedido-item-detalhes-header.component';
+
+import { PedidoItemDrawerModule } from './pedido-item-drawer/pedido-item-drawer.module';
 
 const PIPES = [
   ItemConfigPipe,
@@ -35,13 +34,16 @@ const PIPES = [
     PedidoContainerComponent,
     PedidoInfoComponent,
     PedidoItemListaComponent,
-    PedidoItemDetalhesComponent,
     PedidoNotaListaComponent,
     PedidoNotaDetalhesComponent,
     PedidoDrawerComponent,
-    PedidoItemMenuComponent,
-    PedidoItemDetalhesHeaderComponent,
   ],
-  imports: [CommonModule, PedidosRoutingModule, SharedModule, PIPES],
+  imports: [
+    CommonModule,
+    PedidosRoutingModule,
+    SharedModule,
+    PIPES,
+    PedidoItemDrawerModule,
+  ],
 })
 export class PedidosModule {}
