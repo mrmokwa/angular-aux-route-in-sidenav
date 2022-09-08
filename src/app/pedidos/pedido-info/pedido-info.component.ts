@@ -1,16 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs';
+import { map, Subscription } from 'rxjs';
+import { PedidosInfoService } from './pedido-info.service';
 
 @Component({
   selector: 'app-pedido-info',
   templateUrl: './pedido-info.component.html',
   styleUrls: ['./pedido-info.component.scss'],
 })
-export class PedidoInfoComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {}
+export class PedidoInfoComponent implements OnInit, OnDestroy {
+  constructor(
+    private route: ActivatedRoute,
+    private store: PedidosInfoService
+  ) {}
 
-  pedido$ = this.route.data.pipe(map((data) => data['pedido']));
+  pedido$ = this.store.pedido$;
+  subscription = new Subscription();
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const routerSubscription = this.route.data
+      .pipe(map((data) => data['pedido']))
+      .subscribe((pedido) => this.store.update(pedido));
+
+    this.subscription.add(routerSubscription);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }
