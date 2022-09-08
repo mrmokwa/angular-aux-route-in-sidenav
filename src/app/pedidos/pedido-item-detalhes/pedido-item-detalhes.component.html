@@ -1,13 +1,5 @@
 <ng-container *ngIf="item$ | async as item">
-  <!-- <div class="header"> -->
   <h2>Item</h2>
-
-  <!-- <span style="flex: auto"></span>
-
-    <button mat-icon-button>
-      <mat-icon>more_vert</mat-icon>
-    </button>
-  </div> -->
 
   <dl>
     <dt>Código</dt>
@@ -71,4 +63,11 @@
     <dt>Total do Item</dt>
     <dd>{{ item.total | currency }}</dd>
   </dl>
+
+  <br />
+
+  <span style="flex: auto"></span>
+
+  <button mat-stroked-button color="primary">Auditoria</button>
+  <button mat-stroked-button color="error">Excluir</button>
 </ng-container>
