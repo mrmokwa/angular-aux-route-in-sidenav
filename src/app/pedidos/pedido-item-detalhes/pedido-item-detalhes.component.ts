@@ -7,7 +7,6 @@ import { combineLatest, map } from 'rxjs';
   selector: 'app-pedido-item-detalhes',
   templateUrl: './pedido-item-detalhes.component.html',
   styleUrls: ['./pedido-item-detalhes.component.scss'],
-  host: { class: 'flex-container' },
 })
 export class PedidoItemDetalhesComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
