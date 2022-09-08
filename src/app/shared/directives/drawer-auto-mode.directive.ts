@@ -12,34 +12,34 @@ import { ReplaySubject, Subscription } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 
 @Directive({
-  selector: '[appSidenavAutoMode]',
+  selector: '[appDrawerAutoMode]',
 })
-export class SidenavAutoModeDirective implements AfterViewInit, OnDestroy {
+export class DrawerAutoModeDirective implements AfterViewInit, OnDestroy {
   @Input() minContainerSize = 763;
 
   @HostListener('window:resize')
   onResize = () => this.updateWidth();
 
   width = new ReplaySubject<number>(1);
-  sidenavOver = this.width.pipe(map((t) => t < this.minContainerSize));
+  drawerOver = this.width.pipe(map((t) => t < this.minContainerSize));
   subscription = new Subscription();
 
-  constructor(private el: ElementRef, private sidenav: MatDrawer) {}
+  constructor(private el: ElementRef, private drawer: MatDrawer) {}
 
   updateWidth() {
-    const sidenav: ElementRef<HTMLElement> = this.el;
-    const sidenavWidth = sidenav.nativeElement.clientWidth;
-    const containerWidth = sidenav.nativeElement.parentElement?.clientWidth;
+    const drawer: ElementRef<HTMLElement> = this.el;
+    const drawerWidth = drawer.nativeElement.clientWidth;
+    const containerWidth = drawer.nativeElement.parentElement?.clientWidth;
 
     if (containerWidth) {
-      this.width.next(containerWidth - sidenavWidth);
+      this.width.next(containerWidth - drawerWidth);
     }
   }
 
   ngAfterViewInit(): void {
-    const watchModeChanges = this.sidenavOver
+    const watchModeChanges = this.drawerOver
       .pipe(distinctUntilChanged())
-      .subscribe((over) => (this.sidenav.mode = over ? 'over' : 'side'));
+      .subscribe((over) => (this.drawer.mode = over ? 'over' : 'side'));
 
     this.subscription.add(watchModeChanges);
 

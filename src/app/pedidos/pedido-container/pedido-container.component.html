@@ -7,15 +7,15 @@
     [opened]="opened"
     mode="side"
     position="end"
-    appSidenavAutoMode
+    appDrawerAutoMode
     (closedStart)="removeOutletRoute()"
   >
-    <app-pedido-sidenav>
+    <app-pedido-drawer>
       <router-outlet
         name="detalhes"
         (deactivate)="opened = false"
         (activate)="opened = true"
       ></router-outlet>
-    </app-pedido-sidenav>
+    </app-pedido-drawer>
   </mat-drawer>
 </mat-drawer-container>

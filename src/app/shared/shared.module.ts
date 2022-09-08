@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { MaterialModule } from '../material/material.module';
-import { SidenavAutoModeDirective } from './directives/sidenav-auto-mode.directive';
+import { DrawerAutoModeDirective } from './directives/drawer-auto-mode.directive';
 
 @NgModule({
-  declarations: [SidenavAutoModeDirective],
+  declarations: [DrawerAutoModeDirective],
   imports: [MaterialModule],
-  exports: [MaterialModule, SidenavAutoModeDirective],
+  exports: [MaterialModule, DrawerAutoModeDirective],
 })
 export class SharedModule {}
