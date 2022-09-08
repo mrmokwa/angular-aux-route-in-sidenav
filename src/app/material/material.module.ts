@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
 
 const MODULES = [
   MatSidenavModule,
@@ -18,6 +19,7 @@ const MODULES = [
   MatToolbarModule,
   MatIconModule,
   MatTableModule,
+  MatMenuModule,
 ];
 
 @NgModule({

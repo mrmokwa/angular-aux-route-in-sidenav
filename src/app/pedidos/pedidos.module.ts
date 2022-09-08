@@ -19,6 +19,8 @@ import {
   NotaFiscalSituacaoPipe,
 } from '../pipes/nota-fiscal-situacao.pipe';
 import { PedidoDrawerComponent } from './pedido-drawer/pedido-drawer.component';
+import { PedidoItemMenuComponent } from './pedido-item-menu/pedido-item-menu.component';
+import { PedidoItemDetalhesHeaderComponent } from './pedido-item-detalhes-header/pedido-item-detalhes-header.component';
 
 const PIPES = [
   ItemConfigPipe,
@@ -37,6 +39,8 @@ const PIPES = [
     PedidoNotaListaComponent,
     PedidoNotaDetalhesComponent,
     PedidoDrawerComponent,
+    PedidoItemMenuComponent,
+    PedidoItemDetalhesHeaderComponent,
   ],
   imports: [CommonModule, PedidosRoutingModule, SharedModule, PIPES],
 })

@@ -1,0 +1,21 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+
+<mat-menu #menu>
+  <button mat-menu-item disabled>
+    <mat-icon>edit</mat-icon>
+    <span>Complemento</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>history</mat-icon>
+    <span>Auditoria</span>
+  </button>
+
+  <mat-divider></mat-divider>
+
+  <button mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    <span>Excluir</span>
+  </button>
+</mat-menu>
