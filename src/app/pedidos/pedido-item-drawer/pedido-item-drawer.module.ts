@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PedidoItemDetalhesHeaderComponent } from './pedido-item-detalhes-header/pedido-item-detalhes-header.component';
+import { PedidoItemDetalhesHeaderComponent } from './pedido-item-header/pedido-item-header.component';
 import { PedidoItemDetalhesComponent } from './pedido-item-detalhes/pedido-item-detalhes.component';
 import { PedidoItemMenuComponent } from './pedido-item-menu/pedido-item-menu.component';
 
