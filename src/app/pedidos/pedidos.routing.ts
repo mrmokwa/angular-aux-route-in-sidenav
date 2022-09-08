@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PedidoContainerComponent } from './pedido-container/pedido-container.component';
 import { PedidoInfoComponent } from './pedido-info/pedido-info.component';
 import { PedidoInfoResolver } from './pedido-info/pedido-info.resolver';
-import { PedidoItemDetalhesComponent } from './pedido-item-drawer/pedido-item-detalhes/pedido-item-detalhes.component';
+import { PedidoItemDrawerModule } from './pedido-item-drawer/pedido-item-drawer.module';
 import { PedidoNotaDetalhesComponent } from './pedido-nota-detalhes/pedido-nota-detalhes.component';
 
 const routes: Routes = [
@@ -19,7 +19,7 @@ const routes: Routes = [
       },
       {
         path: 'item/:seq',
-        component: PedidoItemDetalhesComponent,
+        loadChildren: () => PedidoItemDrawerModule,
         outlet: 'detalhes',
       },
       {
