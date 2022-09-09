@@ -1,8 +1,12 @@
-<p>Confirma a exclusão do item do pedido?</p>
+<h2>Exclusão de Item do Pedido</h2>
 
 <ng-container *ngIf="item$ | async as item">
   <app-pedido-item-info-id [item]="item"></app-pedido-item-info-id>
 </ng-container>
+
+<br />
+
+<p>Confirma a exclusão do item do pedido?</p>
 
 <div style="flex: auto"></div>
 
