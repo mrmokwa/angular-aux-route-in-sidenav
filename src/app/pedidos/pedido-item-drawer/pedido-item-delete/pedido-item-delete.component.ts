@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { combineLatest, delay, filter, first, map } from 'rxjs';
 import { PedidosInfoService } from '../../pedido-info/pedido-info.service';
 import { PedidoItemDrawerService } from '../pedido-item-drawer.service';
@@ -17,7 +18,7 @@ export class PedidoItemDeleteComponent implements OnInit {
     private pidService: PedidoItemDrawerService,
     private handler: PedidoItemHandlerService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private snackbar: MatSnackBar
   ) {}
 
   ngOnInit(): void {}
@@ -40,6 +41,7 @@ export class PedidoItemDeleteComponent implements OnInit {
         this.store.update(pedido);
         this.pidService.setStore(null);
         this.pidService.setLoading(false);
+        this.snackbar.open('Item excluído com sucesso');
         this.router.navigate(['/pedidos', { outlets: { detalhes: null } }]);
       });
   }
