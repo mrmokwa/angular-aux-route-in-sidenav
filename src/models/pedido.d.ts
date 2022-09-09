@@ -29,6 +29,7 @@ interface PedidoVendaItem {
   descricao: string;
   complemento: string;
   quantidade: number;
+  qtdLiquida: number;
   um: string;
   pendente: number;
   unitario: number;
