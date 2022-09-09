@@ -1,24 +1,17 @@
 <mat-nav-list>
   <h3 mat-subheader>Notas Fiscais</h3>
 
-  <ng-container *ngFor="let nota of notas; let last = last">
+  <ng-container *ngFor="let n of notas; let last = last">
     <mat-list-item
       [routerLink]="[
-        {
-          outlets: {
-            detalhes: ['nota', nota.divisao, nota.serie, nota.documento]
-          }
-        }
+        { outlets: { detalhes: ['nota', n.divisao, n.serie, n.documento] } }
       ]"
     >
-      <span mat-line>
-        {{ nota.divisao }}-{{ nota.serie }}-{{ nota.documento }}
-      </span>
+      <span mat-line> {{ n.documento }} </span>
+      <span mat-line> {{ n.chave }} </span>
 
-      <span mat-line> {{ nota.chave }} </span>
-
-      <span [ngClass]="nota.situacao | notaFiscalSituacaoClass">
-        {{ nota.situacao | notaFiscalSituacao }}
+      <span [ngClass]="n.situacao | notaFiscalSituacaoClass">
+        {{ n.situacao | notaFiscalSituacao }}
       </span>
     </mat-list-item>
 
