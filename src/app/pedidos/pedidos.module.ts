@@ -19,7 +19,7 @@ import {
 } from '../pipes/nota-fiscal-situacao.pipe';
 import { PedidoDrawerComponent } from './pedido-drawer/pedido-drawer.component';
 
-import { PedidoItemDrawerModule } from './pedido-item-drawer/pedido-item-drawer.module';
+import { PedidoItemDrawerModule } from './modules/pedido-item-drawer/pedido-item-drawer.module';
 
 const PIPES = [
   ItemConfigPipe,
