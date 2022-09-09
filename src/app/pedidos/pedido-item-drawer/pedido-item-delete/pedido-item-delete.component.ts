@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { combineLatest, delay, filter, map } from 'rxjs';
+import { combineLatest, delay, filter, first, map } from 'rxjs';
 import { PedidosInfoService } from '../../pedido-info/pedido-info.service';
 import { PedidoItemDrawerService } from '../pedido-item-drawer.service';
 import { PedidoItemHandlerService } from '../pedido-item-handler/pedido-item-handler.service';
@@ -27,19 +27,20 @@ export class PedidoItemDeleteComponent implements OnInit {
   excluir() {
     this.pidService.setLoading(true);
 
-    combineLatest([this.handler.pedido$, this.handler.seq$])
+    combineLatest([this.store.pedido$, this.handler.seq$])
       .pipe(
+        first(),
         delay(1000),
-        map(([pedido, seq]) => {
-          const itens = pedido.itens.filter((x) => x.sequencia !== seq);
-          return { ...pedido, itens };
-        })
+        map(([pedido, seq]) => ({
+          ...pedido,
+          itens: pedido.itens.filter((x) => x.sequencia !== seq),
+        }))
       )
       .subscribe((pedido) => {
-        this.router.navigate(['/pedidos'], { relativeTo: this.activatedRoute });
         this.store.update(pedido);
         this.pidService.setStore(null);
         this.pidService.setLoading(false);
+        this.router.navigate(['/pedidos', { outlets: { detalhes: null } }]);
       });
   }
 }
