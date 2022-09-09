@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { combineLatest, delay, filter, first, map } from 'rxjs';
-import { PedidosInfoService } from 'src/app/pedidos/pedido-info/pedido-info.service';
+import { PedidosInfoService } from 'src/app/pedidos/pages/pedido-info/pedido-info.service';
 import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
 import { PedidoItemHandlerService } from '../pedido-item-handler/pedido-item-handler.service';
 
