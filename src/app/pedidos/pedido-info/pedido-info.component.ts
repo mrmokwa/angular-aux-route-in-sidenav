@@ -7,6 +7,7 @@ import { PedidosInfoService } from './pedido-info.service';
   selector: 'app-pedido-info',
   templateUrl: './pedido-info.component.html',
   styleUrls: ['./pedido-info.component.scss'],
+  providers: [PedidosInfoService],
 })
 export class PedidoInfoComponent implements OnInit, OnDestroy {
   constructor(

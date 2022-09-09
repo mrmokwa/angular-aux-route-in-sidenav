@@ -13,6 +13,8 @@ import {
   PedItemSituacaoPipe,
 } from 'src/app/pipes/ped-item-situacao.pipe';
 import { ItemConfigPipe } from 'src/app/pipes/item-config.pipe';
+import { PedidoItemDeleteComponent } from './pedido-item-delete/pedido-item-delete.component';
+import { PedidoItemHandlerComponent } from './pedido-item-handler/pedido-item-handler.component';
 
 const PIPES = [PedItemSituacaoClassPipe, PedItemSituacaoPipe, ItemConfigPipe];
 
@@ -23,7 +25,7 @@ const COMPONENTS = [
 ];
 
 @NgModule({
-  declarations: [COMPONENTS],
+  declarations: [COMPONENTS, PedidoItemDeleteComponent, PedidoItemHandlerComponent],
   imports: [CommonModule, PedidoItemDrawerRoutingModule, SharedModule, PIPES],
 })
 export class PedidoItemDrawerModule {}

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { map, Observable } from 'rxjs';
+import { EMPTY, map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,5 +17,9 @@ export class PedidosService {
 
   getById(id: number): Observable<PedidoDetalhado> {
     return this.httpClient.get<PedidoDetalhado>(`/api/pedidos/${id}`);
+  }
+
+  deleteItem(id: number, seq: number): Observable<void> {
+    return EMPTY;
   }
 }

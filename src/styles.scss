@@ -46,3 +46,10 @@ dd {
 .mat-toolbar {
   flex-shrink: 0;
 }
+
+ng-component,
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
