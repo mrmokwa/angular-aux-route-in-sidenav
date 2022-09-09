@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PedidoItemDeleteComponent } from './pedido-item-delete/pedido-item-delete.component';
+import { PedidoItemDeleteComponent } from './pages/pedido-item-delete/pedido-item-delete.component';
 
-import { PedidoItemDetalhesComponent } from './pedido-item-detalhes/pedido-item-detalhes.component';
-import { PedidoItemHandlerComponent } from './pedido-item-handler/pedido-item-handler.component';
+import { PedidoItemDetalhesComponent } from './pages/pedido-item-detalhes/pedido-item-detalhes.component';
+import { PedidoItemHandlerComponent } from './pages/pedido-item-handler/pedido-item-handler.component';
 
 const routes: Routes = [
   {

@@ -1,11 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PedidoItemDetalhesHeaderComponent } from './pedido-item-header/pedido-item-header.component';
-import { PedidoItemDetalhesComponent } from './pedido-item-detalhes/pedido-item-detalhes.component';
-import { PedidoItemMenuComponent } from './pedido-item-menu/pedido-item-menu.component';
-
-import { PedidoItemDrawerRoutingModule } from './pedido-item-drawer.routing';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import {
@@ -13,21 +8,22 @@ import {
   PedItemSituacaoPipe,
 } from 'src/app/pipes/ped-item-situacao.pipe';
 import { ItemConfigPipe } from 'src/app/pipes/item-config.pipe';
-import { PedidoItemDeleteComponent } from './pedido-item-delete/pedido-item-delete.component';
-import { PedidoItemHandlerComponent } from './pedido-item-handler/pedido-item-handler.component';
-import { PedidoItemInfoIdComponent } from './pedido-item-info-id/pedido-item-info-id.component';
+
+import { PedidoItemDetalhesHeaderComponent } from './components/pedido-item-header/pedido-item-header.component';
+import { PedidoItemDetalhesComponent } from './pages/pedido-item-detalhes/pedido-item-detalhes.component';
+import { PedidoItemMenuComponent } from './components/pedido-item-menu/pedido-item-menu.component';
+import { PedidoItemDeleteComponent } from './pages/pedido-item-delete/pedido-item-delete.component';
+import { PedidoItemHandlerComponent } from './pages/pedido-item-handler/pedido-item-handler.component';
+import { PedidoItemInfoIdComponent } from './components/pedido-item-info-id/pedido-item-info-id.component';
+import { PedidoItemDrawerRoutingModule } from './pedido-item-drawer.routing';
 
 const PIPES = [PedItemSituacaoClassPipe, PedItemSituacaoPipe, ItemConfigPipe];
 
-const COMPONENTS = [
-  PedidoItemDetalhesComponent,
-  PedidoItemDetalhesHeaderComponent,
-  PedidoItemMenuComponent,
-];
-
 @NgModule({
   declarations: [
-    COMPONENTS,
+    PedidoItemDetalhesComponent,
+    PedidoItemDetalhesHeaderComponent,
+    PedidoItemMenuComponent,
     PedidoItemDeleteComponent,
     PedidoItemHandlerComponent,
     PedidoItemInfoIdComponent,

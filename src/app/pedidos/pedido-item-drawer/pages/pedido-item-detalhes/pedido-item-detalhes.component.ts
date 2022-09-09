@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { PedidoItemDrawerService } from '../pedido-item-drawer.service';
+import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
 
 @Component({
   selector: 'app-pedido-item-detalhes',
