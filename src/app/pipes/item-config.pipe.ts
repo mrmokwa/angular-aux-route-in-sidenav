@@ -7,6 +7,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ItemConfigPipe implements PipeTransform {
   transform(obj: { itemId: string; configId: string }): string {
     const { itemId, configId } = obj;
-    return itemId + (configId ? `[${configId}]` : '');
+    return itemId + (configId ? ` [${configId}]` : '');
   }
 }

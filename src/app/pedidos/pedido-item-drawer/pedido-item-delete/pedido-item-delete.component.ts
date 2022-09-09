@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { delay, of } from 'rxjs';
-import { PedidosService } from '../../pedidos.service';
+import { combineLatest, delay, filter, map } from 'rxjs';
+import { PedidosInfoService } from '../../pedido-info/pedido-info.service';
 import { PedidoItemDrawerService } from '../pedido-item-drawer.service';
+import { PedidoItemHandlerService } from '../pedido-item-handler/pedido-item-handler.service';
 
 @Component({
   selector: 'app-pedido-item-delete',
@@ -12,24 +13,33 @@ import { PedidoItemDrawerService } from '../pedido-item-drawer.service';
 })
 export class PedidoItemDeleteComponent implements OnInit {
   constructor(
-    private pedidoService: PedidosService,
+    private store: PedidosInfoService,
     private pidService: PedidoItemDrawerService,
+    private handler: PedidoItemHandlerService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {}
 
+  item$ = this.pidService.item$.pipe(filter(Boolean));
+
   excluir() {
     this.pidService.setLoading(true);
 
-    of('teste')
-      .pipe(delay(1000))
-      .subscribe(() => {
-        this.router.navigate(['..'], { relativeTo: this.activatedRoute });
+    combineLatest([this.handler.pedido$, this.handler.seq$])
+      .pipe(
+        delay(1000),
+        map(([pedido, seq]) => {
+          const itens = pedido.itens.filter((x) => x.sequencia !== seq);
+          return { ...pedido, itens };
+        })
+      )
+      .subscribe((pedido) => {
+        this.router.navigate(['/pedidos'], { relativeTo: this.activatedRoute });
+        this.store.update(pedido);
+        this.pidService.setStore(null);
         this.pidService.setLoading(false);
       });
-
-    //this.pedidoService.deleteItem(1, 1).subscribe();
   }
 }

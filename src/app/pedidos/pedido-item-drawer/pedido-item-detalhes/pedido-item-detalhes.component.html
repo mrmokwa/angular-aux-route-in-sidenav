@@ -1,20 +1,7 @@
 <ng-container *ngIf="item$ | async as item">
   <app-pedido-item-header></app-pedido-item-header>
 
-  <dl>
-    <dt>Código</dt>
-    <dd>{{ item | itemConfig }}</dd>
-
-    <ng-container *ngIf="item.referencia">
-      <dt>Refêrencia</dt>
-      <dd>{{ item.referencia }}</dd>
-    </ng-container>
-
-    <dt>Situação</dt>
-    <dd [ngClass]="item.situacao | pedItemSituacaoClass">
-      {{ item.situacao | pedItemSituacao }}
-    </dd>
-  </dl>
+  <app-pedido-item-info-id [item]="item"></app-pedido-item-info-id>
 
   <mat-divider></mat-divider>
   <br />

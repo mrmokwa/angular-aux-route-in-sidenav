@@ -4,7 +4,7 @@ import { BehaviorSubject, ReplaySubject } from 'rxjs';
 
 @Injectable()
 export class PedidoItemDrawerService {
-  private itemSource = new ReplaySubject<PedidoVendaItem>(1);
+  private itemSource = new ReplaySubject<PedidoVendaItem | null>(1);
   item$ = this.itemSource.asObservable();
 
   private loadingSource = new BehaviorSubject<boolean>(false);
@@ -12,7 +12,7 @@ export class PedidoItemDrawerService {
 
   constructor() {}
 
-  setStore(data: PedidoVendaItem) {
+  setStore(data: PedidoVendaItem | null) {
     this.itemSource.next(data);
   }
 
