@@ -5,7 +5,7 @@ import { PedidoContainerComponent } from './pages/pedido-container/pedido-contai
 import { PedidoItemDrawerModule } from './modules/pedido-item-drawer/pedido-item-drawer.module';
 import { PedidoInfoComponent } from './pages/pedido-info/pedido-info.component';
 import { PedidoInfoResolver } from './pages/pedido-info/pedido-info.resolver';
-import { PedidoNotaDetalhesComponent } from './pages/pedido-nota-detalhes/pedido-nota-detalhes.component';
+import { PedidoNotaDetalhesComponent } from './modules/pedido-nota-drawer/pedido-nota-detalhes/pedido-nota-detalhes.component';
 
 const routes: Routes = [
   {

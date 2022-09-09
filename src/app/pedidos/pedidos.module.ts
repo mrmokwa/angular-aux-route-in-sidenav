@@ -6,36 +6,24 @@ import { PedidoContainerComponent } from './pages/pedido-container/pedido-contai
 import { PedidoInfoComponent } from './pages/pedido-info/pedido-info.component';
 import { SharedModule } from '../shared/shared.module';
 import { PedidoItemListaComponent } from './components/pedido-item-lista/pedido-item-lista.component';
-import { PedidoNotaListaComponent } from './components/pedido-nota-lista/pedido-nota-lista.component';
 import { ItemConfigPipe } from '../pipes/item-config.pipe';
-import { PedidoNotaDetalhesComponent } from './pages/pedido-nota-detalhes/pedido-nota-detalhes.component';
 import {
   PedItemSituacaoClassPipe,
   PedItemSituacaoPipe,
 } from '../pipes/ped-item-situacao.pipe';
-import {
-  NotaFiscalSituacaoClassPipe,
-  NotaFiscalSituacaoPipe,
-} from '../pipes/nota-fiscal-situacao.pipe';
+
 import { PedidoDrawerComponent } from './components/pedido-drawer/pedido-drawer.component';
 
 import { PedidoItemDrawerModule } from './modules/pedido-item-drawer/pedido-item-drawer.module';
+import { PedidoNotaDrawerModule } from './modules/pedido-nota-drawer/pedido-nota-drawer.module';
 
-const PIPES = [
-  ItemConfigPipe,
-  PedItemSituacaoPipe,
-  PedItemSituacaoClassPipe,
-  NotaFiscalSituacaoPipe,
-  NotaFiscalSituacaoClassPipe,
-];
+const PIPES = [ItemConfigPipe, PedItemSituacaoPipe, PedItemSituacaoClassPipe];
 
 @NgModule({
   declarations: [
     PedidoContainerComponent,
     PedidoInfoComponent,
     PedidoItemListaComponent,
-    PedidoNotaListaComponent,
-    PedidoNotaDetalhesComponent,
     PedidoDrawerComponent,
   ],
   imports: [
@@ -44,6 +32,7 @@ const PIPES = [
     SharedModule,
     PIPES,
     PedidoItemDrawerModule,
+    PedidoNotaDrawerModule,
   ],
 })
 export class PedidosModule {}
