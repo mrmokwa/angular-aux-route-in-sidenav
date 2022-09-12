@@ -17,10 +17,7 @@ export class DrawerAutoModeDirective implements AfterViewInit, OnDestroy {
   @Input() minContainerSize = 1024;
 
   @HostListener('window:resize')
-  onResize = () => {
-    console.log(window.innerWidth);
-    this.width$.next(window.innerWidth);
-  };
+  onResize = () => this.width$.next(window.innerWidth);
 
   subscription = new Subscription();
 
