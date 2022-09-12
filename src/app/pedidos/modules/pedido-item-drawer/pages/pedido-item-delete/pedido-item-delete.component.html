@@ -6,7 +6,9 @@
 
 <br />
 
-<p>Confirma a remoção do item do pedido?</p>
+<span>Confirma a remoção do item do pedido?</span>
+
+<app-error-message *ngIf="erro" [message]="erro"></app-error-message>
 
 <div style="flex: auto"></div>
 

@@ -1,3 +1,7 @@
+.header {
+  display: flex;
+}
+
 .action-buttons {
   display: flex;
   justify-content: flex-end;
@@ -8,6 +12,5 @@
 
   .mat-button {
     margin-right: 8px;
-    width: 110px;
   }
 }

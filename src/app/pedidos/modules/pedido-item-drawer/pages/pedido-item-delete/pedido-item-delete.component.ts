@@ -1,7 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { combineLatest, delay, filter, first, map } from 'rxjs';
+import { combineLatest, delay, finalize, first, map, Observable } from 'rxjs';
 import { PedidosInfoService } from 'src/app/pedidos/pages/pedido-info/pedido-info.service';
 import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
 import { PedidoItemHandlerService } from '../pedido-item-handler/pedido-item-handler.service';
@@ -24,25 +25,34 @@ export class PedidoItemDeleteComponent implements OnInit {
   ngOnInit(): void {}
 
   item$ = this.pidService.item$;
+  erro = '';
 
   excluir() {
     this.pidService.setLoading(true);
 
-    this.pedidoFake.subscribe((pedido) => {
-      this.store.update(pedido);
-      this.pidService.setStore(null);
-      this.pidService.setLoading(false);
-      this.snackbar.open('Item removido com sucesso');
-      this.router.navigate(['/pedidos']);
-    });
+    this.retornoPedidoMock()
+      .pipe(
+        first(),
+        finalize(() => this.pidService.setLoading(false))
+      )
+      .subscribe({
+        next: (pedido) => {
+          this.store.update(pedido);
+          this.pidService.setStore(null);
+          this.snackbar.open('Item removido com sucesso');
+          this.router.navigate(['/pedidos']);
+        },
+        error: (resp: HttpErrorResponse) => (this.erro = resp.error),
+      });
   }
 
-  pedidoFake = combineLatest([this.store.pedido$, this.handler.seq$]).pipe(
-    first(),
-    delay(1000),
-    map(([pedido, seq]) => ({
-      ...pedido,
-      itens: pedido.itens.filter((x) => x.sequencia !== seq),
-    }))
-  );
+  retornoPedidoMock(): Observable<PedidoDetalhado> {
+    return combineLatest([this.store.pedido$, this.handler.seq$]).pipe(
+      delay(1000),
+      map(([pedido, seq]) => ({
+        ...pedido,
+        itens: pedido.itens.filter((x) => x.sequencia !== seq),
+      }))
+    );
+  }
 }

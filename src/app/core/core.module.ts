@@ -9,6 +9,10 @@ import {
   MatSnackBarConfig,
   MAT_SNACK_BAR_DEFAULT_OPTIONS,
 } from '@angular/material/snack-bar';
+import {
+  MatFormFieldDefaultOptions,
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+} from '@angular/material/form-field';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -23,10 +27,17 @@ export const LOCALE_SETTIGNS = [
   },
 ];
 
-export const SNACKBAR_SETTINGS = [
+export const MAT_SNACKBAR_CUSTOM_SETTINGS = [
   {
     provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
     useValue: { duration: 3000 } as MatSnackBarConfig,
+  },
+];
+
+export const MAT_FORM_FIELD_CUSTOM_SETTIGNS = [
+  {
+    provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+    useValue: { appearance: 'fill' } as MatFormFieldDefaultOptions,
   },
 ];
 
@@ -38,7 +49,8 @@ export const SNACKBAR_SETTINGS = [
     AUTH_TOKEN_INTERCEPTOR,
     API_SERVICE_INTERCEPTOR,
     LOCALE_SETTIGNS,
-    SNACKBAR_SETTINGS,
+    MAT_SNACKBAR_CUSTOM_SETTINGS,
+    MAT_FORM_FIELD_CUSTOM_SETTIGNS,
   ],
 })
 export class CoreModule {}

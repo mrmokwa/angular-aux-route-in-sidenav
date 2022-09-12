@@ -1,11 +1,22 @@
 <ng-container *ngIf="item$ | async as item">
   <h2>Editar Item #{{ item.sequencia }}</h2>
   <app-pedido-item-info-id [item]="item"></app-pedido-item-info-id>
+
+  <br />
+
+  <form class="flex-container" [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Complemento</mat-label>
+      <textarea matInput formControlName="complemento"></textarea>
+    </mat-form-field>
+
+    <div style="flex: auto"></div>
+
+    <div class="action-buttons">
+      <button type="button" mat-button routerLink="..">Cancelar</button>
+      <button type="submit" mat-flat-button color="primary" (click)="salvar()">
+        Salvar
+      </button>
+    </div>
+  </form>
 </ng-container>
-
-<div style="flex: auto"></div>
-
-<div class="action-buttons">
-  <button mat-button routerLink="..">Cancelar</button>
-  <button mat-flat-button color="primary" (click)="salvar()">Salvar</button>
-</div>
