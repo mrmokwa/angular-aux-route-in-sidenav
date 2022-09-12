@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
   selector: 'app-pedido-container',
   templateUrl: './pedido-container.component.html',
   styleUrls: ['./pedido-container.component.scss'],
+  host: { class: 'flex-container' },
 })
 export class PedidoContainerComponent implements OnInit {
   constructor(private router: Router) {}
