@@ -41,7 +41,7 @@ export class PedidoItemDeleteComponent implements OnInit {
         this.store.update(pedido);
         this.pidService.setStore(null);
         this.pidService.setLoading(false);
-        this.snackbar.open('Item excluído com sucesso');
+        this.snackbar.open('Item removido com sucesso');
         this.router.navigate(['/pedidos', { outlets: { detalhes: null } }]);
       });
   }
