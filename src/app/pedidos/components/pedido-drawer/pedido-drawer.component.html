@@ -3,7 +3,11 @@
 
   <span style="flex: auto"></span>
 
-  <button mat-icon-button [routerLink]="[{ outlets: { detalhes: [null] } }]">
+  <button
+    mat-icon-button
+    [routerLink]="[{ outlets: { detalhes: [null] } }]"
+    tabindex="-1"
+  >
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
