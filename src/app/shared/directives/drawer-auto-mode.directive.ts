@@ -1,7 +1,6 @@
 import {
   AfterViewInit,
   Directive,
-  ElementRef,
   HostListener,
   Input,
   OnDestroy,
@@ -15,35 +14,27 @@ import { distinctUntilChanged, map } from 'rxjs/operators';
   selector: '[appDrawerAutoMode]',
 })
 export class DrawerAutoModeDirective implements AfterViewInit, OnDestroy {
-  @Input() minContainerSize = 763;
+  @Input() minContainerSize = 1024;
 
   @HostListener('window:resize')
-  onResize = () => this.updateWidth();
+  onResize = () => this.width$.next(window.innerWidth);
 
-  width = new ReplaySubject<number>(1);
-  drawerOver = this.width.pipe(map((t) => t < this.minContainerSize));
   subscription = new Subscription();
 
-  constructor(private el: ElementRef, private drawer: MatDrawer) {}
+  width$ = new ReplaySubject<number>(1);
 
-  updateWidth() {
-    const drawer: ElementRef<HTMLElement> = this.el;
-    const drawerWidth = drawer.nativeElement.clientWidth;
-    const containerWidth = drawer.nativeElement.parentElement?.clientWidth;
+  drawerOver$ = this.width$.pipe(map((w) => w < this.minContainerSize));
 
-    if (containerWidth) {
-      this.width.next(containerWidth - drawerWidth);
-    }
+  constructor(private drawer: MatDrawer) {
+    setTimeout(() => this.width$.next(window.innerHeight));
   }
 
   ngAfterViewInit(): void {
-    const watchModeChanges = this.drawerOver
+    const watchModeChanges = this.drawerOver$
       .pipe(distinctUntilChanged())
       .subscribe((over) => (this.drawer.mode = over ? 'over' : 'side'));
 
     this.subscription.add(watchModeChanges);
-
-    setTimeout(() => this.updateWidth());
   }
 
   ngOnDestroy(): void {
