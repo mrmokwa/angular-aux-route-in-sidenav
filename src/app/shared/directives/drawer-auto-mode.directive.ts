@@ -17,7 +17,10 @@ export class DrawerAutoModeDirective implements AfterViewInit, OnDestroy {
   @Input() minContainerSize = 1024;
 
   @HostListener('window:resize')
-  onResize = () => this.width$.next(window.innerWidth);
+  onResize = () => {
+    console.log(window.innerWidth);
+    this.width$.next(window.innerWidth);
+  };
 
   subscription = new Subscription();
 
@@ -26,7 +29,7 @@ export class DrawerAutoModeDirective implements AfterViewInit, OnDestroy {
   drawerOver$ = this.width$.pipe(map((w) => w < this.minContainerSize));
 
   constructor(private drawer: MatDrawer) {
-    setTimeout(() => this.width$.next(window.innerHeight));
+    setTimeout(() => this.width$.next(window.innerWidth));
   }
 
   ngAfterViewInit(): void {
