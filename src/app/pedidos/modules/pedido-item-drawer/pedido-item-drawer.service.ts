@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, filter, ReplaySubject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class PedidoItemDrawerService {
   private itemSource = new ReplaySubject<PedidoVendaItem | null>(1);
   item$ = this.itemSource.asObservable().pipe(filter(Boolean));

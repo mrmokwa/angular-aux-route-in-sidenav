@@ -7,7 +7,6 @@ import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
   selector: 'app-pedido-item-handler',
   templateUrl: './pedido-item-handler.component.html',
   styleUrls: ['./pedido-item-handler.component.scss'],
-  providers: [PedidoItemDrawerService],
   host: { class: 'flex-container' },
 })
 export class PedidoItemHandlerComponent implements OnInit, OnDestroy {
@@ -27,6 +26,7 @@ export class PedidoItemHandlerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.store.setStore(null);
     this.subscription.unsubscribe();
   }
 
