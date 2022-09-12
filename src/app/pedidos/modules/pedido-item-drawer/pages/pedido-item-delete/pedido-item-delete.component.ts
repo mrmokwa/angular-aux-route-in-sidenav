@@ -23,26 +23,26 @@ export class PedidoItemDeleteComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  item$ = this.pidService.item$.pipe(filter(Boolean));
+  item$ = this.pidService.item$;
 
   excluir() {
     this.pidService.setLoading(true);
 
-    combineLatest([this.store.pedido$, this.handler.seq$])
-      .pipe(
-        first(),
-        delay(1000),
-        map(([pedido, seq]) => ({
-          ...pedido,
-          itens: pedido.itens.filter((x) => x.sequencia !== seq),
-        }))
-      )
-      .subscribe((pedido) => {
-        this.store.update(pedido);
-        this.pidService.setStore(null);
-        this.pidService.setLoading(false);
-        this.snackbar.open('Item removido com sucesso');
-        this.router.navigate(['/pedidos', { outlets: { detalhes: null } }]);
-      });
+    this.pedidoFake.subscribe((pedido) => {
+      this.store.update(pedido);
+      this.pidService.setStore(null);
+      this.pidService.setLoading(false);
+      this.snackbar.open('Item removido com sucesso');
+      this.router.navigate(['/pedidos']);
+    });
   }
+
+  pedidoFake = combineLatest([this.store.pedido$, this.handler.seq$]).pipe(
+    first(),
+    delay(1000),
+    map(([pedido, seq]) => ({
+      ...pedido,
+      itens: pedido.itens.filter((x) => x.sequencia !== seq),
+    }))
+  );
 }

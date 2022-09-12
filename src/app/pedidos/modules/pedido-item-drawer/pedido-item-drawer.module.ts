@@ -16,6 +16,7 @@ import { PedidoItemDeleteComponent } from './pages/pedido-item-delete/pedido-ite
 import { PedidoItemHandlerComponent } from './pages/pedido-item-handler/pedido-item-handler.component';
 import { PedidoItemInfoIdComponent } from './components/pedido-item-info-id/pedido-item-info-id.component';
 import { PedidoItemDrawerRoutingModule } from './pedido-item-drawer.routing';
+import { PedidoItemEditarComponent } from './pages/pedido-item-editar/pedido-item-editar.component';
 
 const PIPES = [PedItemSituacaoClassPipe, PedItemSituacaoPipe, ItemConfigPipe];
 
@@ -27,6 +28,7 @@ const PIPES = [PedItemSituacaoClassPipe, PedItemSituacaoPipe, ItemConfigPipe];
     PedidoItemDeleteComponent,
     PedidoItemHandlerComponent,
     PedidoItemInfoIdComponent,
+    PedidoItemEditarComponent,
   ],
   imports: [CommonModule, PedidoItemDrawerRoutingModule, SharedModule, PIPES],
 })

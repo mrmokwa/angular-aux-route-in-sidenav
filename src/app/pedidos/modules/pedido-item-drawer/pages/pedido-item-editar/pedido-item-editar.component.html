@@ -1,16 +1,11 @@
-<h2>Exclusão de Item do Pedido</h2>
-
 <ng-container *ngIf="item$ | async as item">
+  <h2>Editar Item #{{ item.sequencia }}</h2>
   <app-pedido-item-info-id [item]="item"></app-pedido-item-info-id>
 </ng-container>
-
-<br />
-
-<p>Confirma a remoção do item do pedido?</p>
 
 <div style="flex: auto"></div>
 
 <div class="action-buttons">
   <button mat-button routerLink="..">Cancelar</button>
-  <button mat-flat-button color="warn" (click)="excluir()">Remover</button>
+  <button mat-flat-button color="primary" (click)="salvar()">Salvar</button>
 </div>
