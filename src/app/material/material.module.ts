@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 const MODULES = [
   MatSidenavModule,
@@ -26,6 +27,7 @@ const MODULES = [
   MatSnackBarModule,
   MatInputModule,
   MatTooltipModule,
+  MatButtonToggleModule,
 ];
 
 @NgModule({

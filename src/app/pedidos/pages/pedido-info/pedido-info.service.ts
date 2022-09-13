@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { ReplaySubject, Subscription, switchMap } from 'rxjs';
 import { PedidoItemDrawerService } from '../../modules/pedido-item-drawer/pedido-item-drawer.service';
-import { PedidoInfoResolver } from './pedido-info.resolver';
+import { PedidosService } from '../../pedidos.service';
 
 @Injectable({ providedIn: 'root' })
 export class PedidosInfoService implements OnDestroy {
@@ -13,14 +13,17 @@ export class PedidosInfoService implements OnDestroy {
 
   constructor(
     private itemStore: PedidoItemDrawerService,
-    private resolver: PedidoInfoResolver
+    private service: PedidosService
   ) {
     this.initialize();
   }
 
   private initialize() {
     const subs = this.itemStore.reloadPedido$
-      .pipe(switchMap(() => this.resolver.resolve()))
+      .pipe(
+        switchMap(() => this.pedido$),
+        switchMap((pedido) => this.service.getById(pedido.id))
+      )
       .subscribe((pedido) => this.setPedido(pedido));
 
     this.subscription.add(subs);

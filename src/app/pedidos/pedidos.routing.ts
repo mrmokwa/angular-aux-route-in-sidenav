@@ -9,7 +9,7 @@ import { PedidoNotaDetalhesComponent } from './modules/pedido-nota-drawer/pedido
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: PedidoContainerComponent,
     resolve: { pedido: PedidoInfoResolver },
     children: [
@@ -28,6 +28,10 @@ const routes: Routes = [
         outlet: 'detalhes',
       },
     ],
+  },
+  {
+    path: '**',
+    redirectTo: '525100',
   },
 ];
 
