@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { ReplaySubject, Subscription, switchMap } from 'rxjs';
+import { ReplaySubject, Subscription, switchMap, take } from 'rxjs';
 import { PedidoItemDrawerService } from '../../modules/pedido-item-drawer/pedido-item-drawer.service';
 import { PedidosService } from '../../pedidos.service';
 
@@ -20,8 +20,9 @@ export class PedidosInfoService implements OnDestroy {
 
   private initialize() {
     const subs = this.itemStore.reloadPedido$
+
       .pipe(
-        switchMap(() => this.pedido$),
+        switchMap(() => this.pedido$.pipe(take(1))),
         switchMap((pedido) => this.service.getById(pedido.id))
       )
       .subscribe((pedido) => this.setPedido(pedido));
