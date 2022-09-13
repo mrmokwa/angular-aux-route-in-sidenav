@@ -1,4 +1,4 @@
-<mat-nav-list>
+<mat-nav-list *ngIf="notas?.length">
   <h3 mat-subheader>Notas Fiscais</h3>
 
   <ng-container *ngFor="let n of notas; let last = last">
