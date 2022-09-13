@@ -3,9 +3,27 @@
 
   <span style="flex: auto"></span>
 
-  <a mat-button routerLink="/pedidos/525100"> Pendente </a>
-  <a mat-button routerLink="/pedidos/525063"> Atendido </a>
-  <a mat-button routerLink="/pedidos/525089"> Cancelado </a>
+  <button
+    mat-button
+    routerLink="/pedidos/525100"
+    routerLinkActive="mat-accent "
+  >
+    Pendente
+  </button>
+  <button
+    mat-button
+    routerLink="/pedidos/525063"
+    routerLinkActive="mat-accent "
+  >
+    Atendido
+  </button>
+  <button
+    mat-button
+    routerLink="/pedidos/525089"
+    routerLinkActive="mat-accent "
+  >
+    Cancelado
+  </button>
 </mat-toolbar>
 
 <mat-drawer-container class="flex-container">
