@@ -20,7 +20,7 @@ export class PedidoInfoComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const routerSubscription = this.route.data
       .pipe(map((data) => data['pedido'] as PedidoDetalhado))
-      .subscribe((pedido) => this.store.update(pedido));
+      .subscribe((pedido) => this.store.setPedido(pedido));
 
     this.subscription.add(routerSubscription);
   }

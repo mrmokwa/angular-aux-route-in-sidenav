@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { delay, of, take } from 'rxjs';
+import { delay, filter, finalize, of, take } from 'rxjs';
 import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
 import { PedidoItemEditarService } from './pedido-item-editar.service';
 
@@ -24,16 +24,21 @@ export class PedidoItemEditarComponent implements OnInit {
   form = this.pedItemEditarService.getEditItemForm();
 
   ngOnInit(): void {
-    this.item$.pipe(take(1)).subscribe((item) => this.form.patchValue(item));
+    this.item$
+      .pipe(take(1), filter(Boolean))
+      .subscribe((item) => this.form.patchValue(item));
   }
 
   salvar() {
     this.itemStore.setLoading(true);
 
-    of(null)
-      .pipe(delay(1000))
+    of(true)
+      .pipe(
+        delay(1000),
+        finalize(() => this.itemStore.setLoading(false))
+      )
       .subscribe(() => {
-        this.itemStore.setLoading(false);
+        this.itemStore.setReloadPedido(true);
         this.snackbar.open('Item alterado com sucesso');
         this.router.navigate(['..'], { relativeTo: this.activatedRoute });
       });
