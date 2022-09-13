@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { delay, finalize, first, of } from 'rxjs';
 import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
 
@@ -15,7 +15,8 @@ export class PedidoItemDeleteComponent {
   constructor(
     private pidService: PedidoItemDrawerService,
     private router: Router,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   item$ = this.pidService.item$;
@@ -23,6 +24,8 @@ export class PedidoItemDeleteComponent {
 
   excluir() {
     this.pidService.setLoading(true);
+
+    const id = +this.activatedRoute.snapshot.params['id'];
 
     of(true)
       .pipe(
@@ -32,9 +35,9 @@ export class PedidoItemDeleteComponent {
       )
       .subscribe({
         next: () => {
+          this.router.navigate(['/pedidos', id, { outlets: { detalhes: [] } }]);
           this.pidService.setReloadPedido(true);
           this.snackbar.open('Item removido com sucesso');
-          this.router.navigate(['/pedidos']);
         },
         error: (resp: HttpErrorResponse) => (this.erro = resp.error),
       });
