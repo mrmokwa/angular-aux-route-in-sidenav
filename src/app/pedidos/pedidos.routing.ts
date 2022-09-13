@@ -18,7 +18,7 @@ const routes: Routes = [
         component: PedidoInfoComponent,
       },
       {
-        path: 'item/:seq',
+        path: 'item',
         loadChildren: () => PedidoItemDrawerModule,
         outlet: 'detalhes',
       },

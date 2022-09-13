@@ -17,6 +17,7 @@ import {
   PedItemSituacaoClassPipe,
   PedItemSituacaoPipe,
 } from 'src/app/pipes/ped-item-situacao.pipe';
+import { PedidoItemNovoComponent } from './pages/pedido-item-novo/pedido-item-novo.component';
 
 const PIPES = [PedItemSituacaoClassPipe, PedItemSituacaoPipe, ItemConfigPipe];
 
@@ -29,6 +30,7 @@ const PIPES = [PedItemSituacaoClassPipe, PedItemSituacaoPipe, ItemConfigPipe];
     PedidoItemHandlerComponent,
     PedidoItemInfoIdComponent,
     PedidoItemEditarComponent,
+    PedidoItemNovoComponent,
   ],
   imports: [
     CommonModule,

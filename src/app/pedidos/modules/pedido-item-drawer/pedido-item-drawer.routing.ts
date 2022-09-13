@@ -5,10 +5,15 @@ import { PedidoItemDeleteComponent } from './pages/pedido-item-delete/pedido-ite
 import { PedidoItemDetalhesComponent } from './pages/pedido-item-detalhes/pedido-item-detalhes.component';
 import { PedidoItemEditarComponent } from './pages/pedido-item-editar/pedido-item-editar.component';
 import { PedidoItemHandlerComponent } from './pages/pedido-item-handler/pedido-item-handler.component';
+import { PedidoItemNovoComponent } from './pages/pedido-item-novo/pedido-item-novo.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'novo',
+    component: PedidoItemNovoComponent,
+  },
+  {
+    path: ':seq',
     component: PedidoItemHandlerComponent,
     children: [
       {
@@ -24,10 +29,6 @@ const routes: Routes = [
         component: PedidoItemDeleteComponent,
       },
     ],
-  },
-  {
-    path: '**',
-    redirectTo: '',
   },
 ];
 

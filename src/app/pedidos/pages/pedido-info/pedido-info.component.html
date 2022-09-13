@@ -3,6 +3,19 @@
     <mat-card-title>{{ pedido.divisao }}-{{ pedido.pedido }}</mat-card-title>
     <mat-card-subtitle>Pedido de Venda</mat-card-subtitle>
   </mat-card-header>
-  <app-pedido-item-lista [itens]="pedido.itens"></app-pedido-item-lista>
-  <app-pedido-nota-lista [notas]="pedido.notas"></app-pedido-nota-lista>
+
+  <mat-card-content>
+    <app-pedido-item-lista [itens]="pedido.itens"></app-pedido-item-lista>
+    <app-pedido-nota-lista [notas]="pedido.notas"></app-pedido-nota-lista>
+  </mat-card-content>
+
+  <mat-card-actions *ngIf="pedido.estado === 'A'">
+    <button
+      mat-button
+      color="primary"
+      [routerLink]="[{ outlets: { detalhes: ['item', 'novo'] } }]"
+    >
+      Adicionar Item
+    </button>
+  </mat-card-actions>
 </mat-card>
