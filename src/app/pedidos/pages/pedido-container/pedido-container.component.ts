@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pedido-container',
@@ -8,10 +8,12 @@ import { Router } from '@angular/router';
   host: { class: 'flex-container' },
 })
 export class PedidoContainerComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   opened = false;
 
   removeOutletRoute = () =>
-    this.router.navigate([{ outlets: { detalhes: [] } }]);
+    this.router.navigate([{ outlets: { detalhes: [] } }], {
+      relativeTo: this.activatedRoute,
+    });
 }
