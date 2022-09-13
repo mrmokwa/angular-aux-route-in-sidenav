@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, Subscription, tap } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 import { PedidosInfoService } from './pedido-info.service';
 
 @Component({
@@ -19,10 +19,7 @@ export class PedidoInfoComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const routerSubscription = this.route.data
-      .pipe(
-        map((data) => data['pedido'] as PedidoDetalhado),
-        tap((x) => console.log(x.pedido))
-      )
+      .pipe(map((data) => data['pedido'] as PedidoDetalhado))
       .subscribe((pedido) => this.store.setPedido(pedido));
 
     this.subscription.add(routerSubscription);
