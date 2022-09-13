@@ -35,11 +35,11 @@ export class PedidoItemHandlerComponent implements OnInit, OnDestroy {
 
     const itensPedido$ = this.route.data.pipe(
       map((data) => data['pedido'] as PedidoDetalhado),
-      map((pedido) => pedido.itens)
+      map((pedido) => pedido?.itens)
     );
 
     return combineLatest([seq$, itensPedido$]).pipe(
-      map(([seq, itens]) => itens.find((x) => x.sequencia === seq)),
+      map(([seq, itens]) => itens?.find((x) => x.sequencia === seq)),
       filter(Boolean)
     );
   }

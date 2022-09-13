@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-pedido-drawer',
@@ -6,8 +6,4 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pedido-drawer.component.scss'],
   host: { class: 'flex-container' },
 })
-export class PedidoDrawerComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export class PedidoDrawerComponent {}

@@ -7,12 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./pedido-container.component.scss'],
   host: { class: 'flex-container' },
 })
-export class PedidoContainerComponent implements OnInit {
+export class PedidoContainerComponent {
   constructor(private router: Router) {}
 
   opened = false;
 
-  ngOnInit(): void {}
-
-  removeOutletRoute = () => this.router.navigate(['/pedidos']);
+  removeOutletRoute = () =>
+    this.router.navigate([{ outlets: { detalhes: [] } }]);
 }

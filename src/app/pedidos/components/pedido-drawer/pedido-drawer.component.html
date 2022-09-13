@@ -1,11 +1,11 @@
 <mat-toolbar>
-  Detalhes
+  <h2>Detalhes</h2>
 
   <span style="flex: auto"></span>
 
   <button
+    [routerLink]="[{ outlets: { detalhes: [] } }]"
     mat-icon-button
-    [routerLink]="[{ outlets: { detalhes: [null] } }]"
     tabindex="-1"
   >
     <mat-icon>close</mat-icon>

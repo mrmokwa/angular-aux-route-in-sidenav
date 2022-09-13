@@ -31,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '525100',
+    redirectTo: '525063',
   },
 ];
 

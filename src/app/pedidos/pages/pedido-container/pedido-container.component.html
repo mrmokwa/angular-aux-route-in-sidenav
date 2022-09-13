@@ -1,10 +1,12 @@
-<mat-toolbar color="primary">Pedido de Venda</mat-toolbar>
+<mat-toolbar color="primary">
+  <h1>Pedido de Venda</h1>
 
-<mat-button-toggle-group>
-  <mat-button-toggle routerLink="/pedidos/525100">Pendente</mat-button-toggle>
-  <mat-button-toggle routerLink="/pedidos/525063">Atendido</mat-button-toggle>
-  <mat-button-toggle routerLink="/pedidos/525089">Cancelado</mat-button-toggle>
-</mat-button-toggle-group>
+  <span style="flex: auto"></span>
+
+  <a mat-button routerLink="/pedidos/525100"> Pendente </a>
+  <a mat-button routerLink="/pedidos/525063"> Atendido </a>
+  <a mat-button routerLink="/pedidos/525089"> Cancelado </a>
+</mat-toolbar>
 
 <mat-drawer-container class="flex-container">
   <mat-drawer-content>
