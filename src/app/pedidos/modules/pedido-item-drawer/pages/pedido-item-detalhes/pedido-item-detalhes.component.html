@@ -1,5 +1,9 @@
 <ng-container *ngIf="item$ | async as item">
-  <app-pedido-item-header [item]="item"></app-pedido-item-header>
+  <app-pedido-item-header
+    *ngIf="pedido$ | async as pedido"
+    [item]="item"
+    [pedido]="pedido"
+  ></app-pedido-item-header>
 
   <app-pedido-item-info-id [item]="item"></app-pedido-item-info-id>
 

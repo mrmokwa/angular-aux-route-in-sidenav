@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-pedido-item-menu',
   templateUrl: './pedido-item-menu.component.html',
   styleUrls: ['./pedido-item-menu.component.scss'],
 })
-export class PedidoItemMenuComponent {}
+export class PedidoItemMenuComponent {
+  @Input() pedido!: PedidoDetalhado;
+}

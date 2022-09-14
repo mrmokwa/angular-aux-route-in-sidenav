@@ -3,17 +3,17 @@
 </button>
 
 <mat-menu #menu>
-  <button mat-menu-item disabled>
+  <button mat-menu-item>
     <mat-icon>history</mat-icon>
     <span>Auditoria</span>
   </button>
 
-  <button mat-menu-item routerLink="edit">
+  <button mat-menu-item routerLink="edit" [disabled]="pedido.estado !== 'A'">
     <mat-icon>edit</mat-icon>
     <span>Editar</span>
   </button>
 
-  <button mat-menu-item routerLink="delete">
+  <button mat-menu-item routerLink="delete" [disabled]="pedido.estado !== 'A'">
     <mat-icon>delete</mat-icon>
     <span>Remover</span>
   </button>
