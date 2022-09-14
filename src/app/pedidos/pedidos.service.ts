@@ -22,4 +22,11 @@ export class PedidosService {
   deleteItem(id: number, seq: number): Observable<void> {
     return EMPTY;
   }
+
+  complemento(id: number, seq: number, complemento: string) {
+    return this.httpClient.put<void>(
+      `/api/pedidos/${id}/itens/${seq}/complemento`,
+      { complemento }
+    );
+  }
 }

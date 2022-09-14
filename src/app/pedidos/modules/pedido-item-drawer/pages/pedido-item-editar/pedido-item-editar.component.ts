@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { delay, filter, finalize, of, take } from 'rxjs';
+import { filter, finalize, take } from 'rxjs';
+import { PedidosService } from 'src/app/pedidos/pedidos.service';
 import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
 import { PedidoItemEditarService } from './pedido-item-editar.service';
 
@@ -17,11 +18,13 @@ export class PedidoItemEditarComponent implements OnInit {
     private snackbar: MatSnackBar,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private pedItemEditarService: PedidoItemEditarService
+    private pedItemEditarService: PedidoItemEditarService,
+    private service: PedidosService
   ) {}
 
   item$ = this.itemStore.item$;
   form = this.pedItemEditarService.getEditItemForm();
+  id = +this.activatedRoute.snapshot.params['id'];
 
   ngOnInit(): void {
     this.item$
@@ -29,14 +32,13 @@ export class PedidoItemEditarComponent implements OnInit {
       .subscribe((item) => this.form.patchValue(item));
   }
 
-  salvar() {
+  salvar(seq: number) {
+    const complemento = this.form.get('complemento')?.getRawValue();
     this.itemStore.setLoading(true);
 
-    of(true)
-      .pipe(
-        delay(1000),
-        finalize(() => this.itemStore.setLoading(false))
-      )
+    this.service
+      .complemento(this.id, seq, complemento)
+      .pipe(finalize(() => this.itemStore.setLoading(false)))
       .subscribe(() => {
         this.itemStore.setReloadPedido(true);
         this.snackbar.open('Item alterado com sucesso');

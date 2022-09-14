@@ -14,7 +14,12 @@
 
     <div class="action-buttons">
       <button type="button" mat-button routerLink="..">Cancelar</button>
-      <button type="submit" mat-flat-button color="primary" (click)="salvar()">
+      <button
+        type="submit"
+        mat-flat-button
+        color="primary"
+        (click)="salvar(item.sequencia)"
+      >
         Salvar
       </button>
     </div>
