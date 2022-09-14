@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, filter, map, Subscription } from 'rxjs';
+import { PedidosInfoService } from 'src/app/pedidos/pages/pedido-info/pedido-info.service';
 import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class PedidoItemHandlerComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: PedidoItemDrawerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private pedido: PedidosInfoService
   ) {}
 
   ngOnInit(): void {
@@ -33,8 +35,7 @@ export class PedidoItemHandlerComponent implements OnInit, OnDestroy {
   getItemDaRota() {
     const seq$ = this.route.params.pipe(map((params) => +params['seq']));
 
-    const itensPedido$ = this.route.data.pipe(
-      map((data) => data['pedido'] as PedidoDetalhado),
+    const itensPedido$ = this.pedido.pedido$.pipe(
       map((pedido) => pedido?.itens)
     );
 
