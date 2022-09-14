@@ -4,6 +4,11 @@
 
   <br />
 
+  <ng-container *ngIf="erro">
+    <app-error-message [message]="erro"></app-error-message>
+    <br />
+  </ng-container>
+
   <form class="flex-container" [formGroup]="form">
     <mat-form-field>
       <mat-label>Complemento</mat-label>

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,6 +26,7 @@ export class PedidoItemEditarComponent implements OnInit {
   item$ = this.itemStore.item$;
   form = this.pedItemEditarService.getEditItemForm();
   id = +this.activatedRoute.snapshot.params['id'];
+  erro = '';
 
   ngOnInit(): void {
     this.item$
@@ -35,14 +37,18 @@ export class PedidoItemEditarComponent implements OnInit {
   salvar(seq: number) {
     const complemento = this.form.get('complemento')?.getRawValue();
     this.itemStore.setLoading(true);
+    this.erro = '';
 
     this.service
       .complemento(this.id, seq, complemento)
       .pipe(finalize(() => this.itemStore.setLoading(false)))
-      .subscribe(() => {
-        this.itemStore.setReloadPedido(true);
-        this.snackbar.open('Item alterado com sucesso');
-        this.router.navigate(['..'], { relativeTo: this.activatedRoute });
+      .subscribe({
+        next: () => {
+          this.itemStore.setReloadPedido(true);
+          this.snackbar.open('Item alterado com sucesso');
+          this.router.navigate(['..'], { relativeTo: this.activatedRoute });
+        },
+        error: (e: HttpErrorResponse) => (this.erro = e.error),
       });
   }
 }
