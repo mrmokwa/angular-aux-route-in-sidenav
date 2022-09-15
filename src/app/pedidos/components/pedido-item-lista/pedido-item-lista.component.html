@@ -1,17 +1,14 @@
 <mat-nav-list *ngIf="itens?.length">
   <h3 mat-subheader>Itens</h3>
 
-  <ng-container *ngFor="let item of itens; let last = last">
-    <mat-list-item
-      [routerLink]="[{ outlets: { detalhes: ['item', item.sequencia] } }]"
-    >
-      <span mat-line>{{ item.sequencia }} - {{ item | itemConfig }}</span>
-      <span mat-line>{{ item.descricao }}</span>
-      <span [ngClass]="item.situacao | pedItemSituacaoClass">
-        {{ item.situacao | pedItemSituacao }}
-      </span>
-    </mat-list-item>
-
-    <mat-divider *ngIf="!last"></mat-divider>
-  </ng-container>
+  <mat-list-item
+    *ngFor="let item of itens"
+    [routerLink]="[{ outlets: { detalhes: ['item', item.sequencia] } }]"
+  >
+    <span mat-line>{{ item.sequencia }} - {{ item | itemConfig }}</span>
+    <span mat-line>{{ item.descricao }}</span>
+    <span [ngClass]="item.situacao | pedItemSituacaoClass">
+      {{ item.situacao | pedItemSituacao }}
+    </span>
+  </mat-list-item>
 </mat-nav-list>
