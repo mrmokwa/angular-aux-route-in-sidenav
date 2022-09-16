@@ -14,7 +14,6 @@ export class NotaFiscalSituacaoPipe implements PipeTransform {
 
 @Pipe({
   name: 'notaFiscalSituacaoClass',
-
   standalone: true,
 })
 export class NotaFiscalSituacaoClassPipe implements PipeTransform {
