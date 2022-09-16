@@ -14,6 +14,7 @@ export class NotaFiscalSituacaoPipe implements PipeTransform {
 
 @Pipe({
   name: 'notaFiscalSituacaoClass',
+
   standalone: true,
 })
 export class NotaFiscalSituacaoClassPipe implements PipeTransform {
@@ -21,3 +22,8 @@ export class NotaFiscalSituacaoClassPipe implements PipeTransform {
     return value === 'C' ? 'erro' : 'sucesso';
   }
 }
+
+export const NotaFiscalSituacaoPipes = [
+  NotaFiscalSituacaoPipe,
+  NotaFiscalSituacaoClassPipe,
+];

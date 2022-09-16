@@ -39,3 +39,8 @@ export class PedItemSituacaoClassPipe implements PipeTransform {
     }
   }
 }
+
+export const PedItemSituacaoPipes = [
+  PedItemSituacaoPipe,
+  PedItemSituacaoClassPipe,
+];
