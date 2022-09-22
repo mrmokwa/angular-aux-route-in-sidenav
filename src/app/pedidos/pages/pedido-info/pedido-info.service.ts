@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { ReplaySubject, Subscription, switchMap, take } from 'rxjs';
 import { indicate } from 'src/app/core/rxjs/indicate';
 import { GlobalLoaderService } from 'src/app/core/services/global-loader.service';
-import { PedidoItemDrawerService } from '../../modules/pedido-item-drawer/pedido-item-drawer.service';
+import { PedidoItemService } from '../../modules/pedido-item/pedido-item.service';
 import { PedidosService } from '../../pedidos.service';
 
 @Injectable({ providedIn: 'root' })
@@ -14,7 +14,7 @@ export class PedidosInfoService implements OnDestroy {
   subscription = new Subscription();
 
   constructor(
-    private itemStore: PedidoItemDrawerService,
+    private itemStore: PedidoItemService,
     private service: PedidosService,
     private loadingService: GlobalLoaderService
   ) {
