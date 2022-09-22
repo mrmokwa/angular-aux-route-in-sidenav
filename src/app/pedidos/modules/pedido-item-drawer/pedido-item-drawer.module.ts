@@ -9,7 +9,7 @@ import { PedidoItemDetalhesHeaderComponent } from './components/pedido-item-head
 import { PedidoItemDetalhesComponent } from './pages/pedido-item-detalhes/pedido-item-detalhes.component';
 import { PedidoItemMenuComponent } from './components/pedido-item-menu/pedido-item-menu.component';
 import { PedidoItemDeleteComponent } from './pages/pedido-item-delete/pedido-item-delete.component';
-import { PedidoItemHandlerComponent } from './pages/pedido-item-handler/pedido-item-handler.component';
+import { PedidoItemLoadingStateComponent } from './pages/pedido-item-loading-state/pedido-item-loading-state.component';
 import { PedidoItemInfoIdComponent } from './components/pedido-item-info-id/pedido-item-info-id.component';
 import { PedidoItemDrawerRoutingModule } from './pedido-item-drawer.routing';
 import { PedidoItemEditarComponent } from './pages/pedido-item-editar/pedido-item-editar.component';
@@ -22,7 +22,7 @@ import { PedidoItemSequenciaComponent } from './pages/pedido-item-sequencia/pedi
     PedidoItemDetalhesHeaderComponent,
     PedidoItemMenuComponent,
     PedidoItemDeleteComponent,
-    PedidoItemHandlerComponent,
+    PedidoItemLoadingStateComponent,
     PedidoItemInfoIdComponent,
     PedidoItemEditarComponent,
     PedidoItemNovoComponent,

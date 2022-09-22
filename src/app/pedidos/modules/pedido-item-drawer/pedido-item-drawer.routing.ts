@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { PedidoItemDeleteComponent } from './pages/pedido-item-delete/pedido-item-delete.component';
 import { PedidoItemDetalhesComponent } from './pages/pedido-item-detalhes/pedido-item-detalhes.component';
 import { PedidoItemEditarComponent } from './pages/pedido-item-editar/pedido-item-editar.component';
-import { PedidoItemHandlerComponent } from './pages/pedido-item-handler/pedido-item-handler.component';
+import { PedidoItemLoadingStateComponent } from './pages/pedido-item-loading-state/pedido-item-loading-state.component';
 import { PedidoItemNovoComponent } from './pages/pedido-item-novo/pedido-item-novo.component';
 import { PedidoItemSequenciaComponent } from './pages/pedido-item-sequencia/pedido-item-sequencia.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: PedidoItemHandlerComponent,
+    component: PedidoItemLoadingStateComponent,
     children: [
       {
         path: 'novo',
