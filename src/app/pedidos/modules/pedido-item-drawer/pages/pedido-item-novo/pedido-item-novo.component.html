@@ -1,1 +1,32 @@
-<p>pedido-item-novo works!</p>
+<h2>Adicionar Item</h2>
+
+<app-error-message *ngIf="error" [message]="error"></app-error-message>
+
+<form [formGroup]="form" class="flex-container" (ngSubmit)="submit()">
+  <mat-form-field>
+    <mat-label>Item</mat-label>
+    <input matInput formControlName="itemId" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Unitário</mat-label>
+    <input matInput formControlName="unitario" name="unitario" type="number" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Quantidade</mat-label>
+    <input matInput formControlName="quantidade" name="qtd" type="number" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Complemento</mat-label>
+    <textarea matInput formControlName="complemento"></textarea>
+  </mat-form-field>
+
+  <span style="flex: auto"></span>
+
+  <div class="button-wrapper">
+    <button mat-button type="button">Cancelar</button>
+    <button mat-flat-button type="submit" color="primary">Salvar</button>
+  </div>
+</form>

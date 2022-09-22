@@ -14,6 +14,7 @@ import { PedidoItemInfoIdComponent } from './components/pedido-item-info-id/pedi
 import { PedidoItemDrawerRoutingModule } from './pedido-item-drawer.routing';
 import { PedidoItemEditarComponent } from './pages/pedido-item-editar/pedido-item-editar.component';
 import { PedidoItemNovoComponent } from './pages/pedido-item-novo/pedido-item-novo.component';
+import { PedidoItemSequenciaComponent } from './pages/pedido-item-sequencia/pedido-item-sequencia.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { PedidoItemNovoComponent } from './pages/pedido-item-novo/pedido-item-no
     PedidoItemInfoIdComponent,
     PedidoItemEditarComponent,
     PedidoItemNovoComponent,
+    PedidoItemSequenciaComponent,
   ],
   imports: [
     CommonModule,

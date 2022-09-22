@@ -1,0 +1,13 @@
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mat-flat-button {
+  width: 130px;
+  margin-left: 16px;
+}
+
+app-error-message {
+  margin-bottom: 16px;
+}
