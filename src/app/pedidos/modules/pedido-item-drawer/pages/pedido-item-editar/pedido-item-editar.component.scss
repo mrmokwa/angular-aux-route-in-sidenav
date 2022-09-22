@@ -9,7 +9,11 @@
 
 .mat-flat-button {
   width: 130px;
-  margin-left: 16px;
+}
+
+.mat-button {
+  margin-right: 16px;
+  width: 110px;
 }
 
 app-error-message {
