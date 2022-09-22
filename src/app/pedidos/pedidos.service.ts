@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { EMPTY, map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +19,7 @@ export class PedidosService {
   }
 
   deleteItem(id: number, seq: number): Observable<void> {
-    return EMPTY;
+    return this.httpClient.delete<void>(`/api/pedidos/${id}/itens/${seq}`);
   }
 
   complemento(id: number, seq: number, complemento: string) {
