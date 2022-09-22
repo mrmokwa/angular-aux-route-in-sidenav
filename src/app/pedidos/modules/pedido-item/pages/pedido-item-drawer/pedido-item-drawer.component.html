@@ -1,9 +1,12 @@
-<ng-container *ngIf="{ l: loading$ | async } as vm">
-  <div *ngIf="vm.l" class="flex-container center">
+<ng-container *ngIf="{ loading: loading$ | async } as vm">
+  <div *ngIf="vm.loading" class="flex-container center-itens">
     <mat-spinner></mat-spinner>
   </div>
 
-  <div class="flex-container" [ngStyle]="{ display: vm.l ? 'none' : 'unset' }">
+  <div
+    class="flex-container"
+    [ngStyle]="{ display: vm.loading ? 'none' : 'unset' }"
+  >
     <router-outlet></router-outlet>
   </div>
 </ng-container>
