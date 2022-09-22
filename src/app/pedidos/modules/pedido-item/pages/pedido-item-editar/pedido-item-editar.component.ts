@@ -1,11 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, finalize, take } from 'rxjs';
 import { PedidosService } from 'src/app/pedidos/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
-import { PedidoItemEditarService } from './pedido-item-editar.service';
 
 @Component({
   selector: 'app-pedido-item-editar',
@@ -19,12 +19,12 @@ export class PedidoItemEditarComponent implements OnInit {
     private snackbar: MatSnackBar,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private pedItemEditarService: PedidoItemEditarService,
     private service: PedidosService
   ) {}
 
+  fb = new FormBuilder().nonNullable;
   item$ = this.itemStore.item$;
-  form = this.pedItemEditarService.getEditItemForm();
+  form = this.fb.group({ complemento: '' });
   id = +this.activatedRoute.snapshot.params['id'];
   erro = '';
 

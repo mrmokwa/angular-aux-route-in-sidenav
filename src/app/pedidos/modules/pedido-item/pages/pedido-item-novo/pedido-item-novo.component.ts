@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { provideProtractorTestingSupport } from '@angular/platform-browser';
+import { FormBuilder } from '@angular/forms';
 import { delay, finalize, of } from 'rxjs';
 import { PedidosService } from 'src/app/pedidos/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
-import { PedidoItemNovoService } from './pedido-item-novo.service';
 
 @Component({
   selector: 'app-pedido-item-novo',
@@ -13,12 +12,17 @@ import { PedidoItemNovoService } from './pedido-item-novo.service';
 })
 export class PedidoItemNovoComponent {
   constructor(
-    private formService: PedidoItemNovoService,
     private apiService: PedidosService,
     private drawer: PedidoItemService
   ) {}
 
-  form = this.formService.createAddForm();
+  fb = new FormBuilder().nonNullable;
+  form = this.fb.group({
+    itemId: this.fb.control(''),
+    quantidade: this.fb.control(0),
+    unitario: this.fb.control(0),
+    complemento: this.fb.control(''),
+  });
   error = '';
 
   submit() {
