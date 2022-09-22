@@ -2,7 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { delay, finalize, first, of } from 'rxjs';
+import { finalize } from 'rxjs';
+import { PedidosService } from 'src/app/pedidos/pedidos.service';
 import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class PedidoItemDeleteComponent {
     private pidService: PedidoItemDrawerService,
     private router: Router,
     private snackbar: MatSnackBar,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private service: PedidosService
   ) {}
 
   item$ = this.pidService.item$;
@@ -25,14 +27,13 @@ export class PedidoItemDeleteComponent {
   excluir() {
     this.pidService.setLoading(true);
 
-    const id = +this.activatedRoute.snapshot.params['id'];
+    const { params } = this.activatedRoute.snapshot;
+    const id = +params['id'];
+    const seq = +params['seq'];
 
-    of(true)
-      .pipe(
-        first(),
-        delay(1000),
-        finalize(() => this.pidService.setLoading(false))
-      )
+    this.service
+      .deleteItem(id, seq)
+      .pipe(finalize(() => this.pidService.setLoading(false)))
       .subscribe({
         next: () => {
           this.router.navigate(['/pedidos', id, { outlets: { detalhes: [] } }]);

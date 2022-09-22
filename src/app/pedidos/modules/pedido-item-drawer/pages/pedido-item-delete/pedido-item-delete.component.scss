@@ -1,13 +1,18 @@
 .action-buttons {
   display: flex;
   justify-content: flex-end;
+}
 
-  .mat-flat-button {
-    width: 130px;
-  }
+.mat-flat-button {
+  width: 130px;
+}
 
-  .mat-button {
-    margin-right: 8px;
-    width: 110px;
-  }
+.mat-button {
+  margin-right: 16px;
+  width: 110px;
+}
+
+.fill-space {
+  flex: auto;
+  margin: 16px 0;
 }
