@@ -9,7 +9,7 @@ import { PedidoInfoComponent } from './pages/pedido-info/pedido-info.component';
 import { PedidoItemListaComponent } from './components/pedido-item-lista/pedido-item-lista.component';
 import { ItemConfigPipe } from '../pipes/item-config.pipe';
 import { PedidoDrawerComponent } from './components/pedido-drawer/pedido-drawer.component';
-import { PedidoItemDrawerModule } from './modules/pedido-item-drawer/pedido-item-drawer.module';
+import { PedidoItemModule } from './modules/pedido-item/pedido-item.module';
 import { PedidoNotaDrawerModule } from './modules/pedido-nota-drawer/pedido-nota-drawer.module';
 import { PedidoToolbarComponent } from './components/pedido-toolbar/pedido-toolbar.component';
 
@@ -27,7 +27,7 @@ import { PedidoToolbarComponent } from './components/pedido-toolbar/pedido-toolb
     SharedModule,
     ItemConfigPipe,
     PedItemSituacaoPipes,
-    PedidoItemDrawerModule,
+    PedidoItemModule,
     PedidoNotaDrawerModule,
   ],
 })

@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { PedidoItemService } from '../../pedido-item.service';
 
 @Component({
-  selector: 'app-pedido-item-loading-state',
-  templateUrl: './pedido-item-loading-state.component.html',
-  styleUrls: ['./pedido-item-loading-state.component.scss'],
+  selector: 'app-pedido-item-drawer',
+  templateUrl: './pedido-item-drawer.component.html',
+  styleUrls: ['./pedido-item-drawer.component.scss'],
   host: { class: 'flex-container' },
 })
-export class PedidoItemLoadingStateComponent {
+export class PedidoItemDrawerComponent {
   loading$ = this.store.loading$;
 
   constructor(private store: PedidoItemService) {}
