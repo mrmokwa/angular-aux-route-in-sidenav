@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PedidoItemDeleteComponent } from './pages/pedido-item-delete/pedido-item-delete.component';
+import { PedidoItemExcluirComponent } from './pages/pedido-item-excluir/pedido-item-excluir.component';
 import { PedidoItemDetalhesComponent } from './pages/pedido-item-detalhes/pedido-item-detalhes.component';
 import { PedidoItemEditarComponent } from './pages/pedido-item-editar/pedido-item-editar.component';
 import { PedidoItemDrawerComponent } from './pages/pedido-item-drawer/pedido-item-drawer.component';
@@ -30,7 +30,7 @@ const routes: Routes = [
           },
           {
             path: 'delete',
-            component: PedidoItemDeleteComponent,
+            component: PedidoItemExcluirComponent,
           },
         ],
       },

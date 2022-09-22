@@ -7,12 +7,12 @@ import { PedidosService } from 'src/app/pedidos/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
 
 @Component({
-  selector: 'app-pedido-item-delete',
-  templateUrl: './pedido-item-delete.component.html',
-  styleUrls: ['./pedido-item-delete.component.scss'],
+  selector: 'app-pedido-item-excluir',
+  templateUrl: './pedido-item-excluir.component.html',
+  styleUrls: ['./pedido-item-excluir.component.scss'],
   host: { class: 'flex-container' },
 })
-export class PedidoItemDeleteComponent {
+export class PedidoItemExcluirComponent {
   constructor(
     private pidService: PedidoItemService,
     private router: Router,
