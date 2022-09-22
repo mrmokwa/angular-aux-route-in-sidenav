@@ -1,6 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { delay, finalize, of } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
+import { finalize } from 'rxjs';
 import { PedidosService } from 'src/app/pedidos/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
 
@@ -13,9 +16,13 @@ import { PedidoItemService } from '../../pedido-item.service';
 export class PedidoItemAdicionarComponent {
   constructor(
     private apiService: PedidosService,
-    private drawer: PedidoItemService
+    private store: PedidoItemService,
+    private route: ActivatedRoute,
+    private snackbar: MatSnackBar,
+    private router: Router
   ) {}
 
+  error = '';
   fb = new FormBuilder().nonNullable;
   form = this.fb.group({
     itemId: this.fb.control(''),
@@ -23,20 +30,23 @@ export class PedidoItemAdicionarComponent {
     unitario: this.fb.control(0),
     complemento: this.fb.control(''),
   });
-  error = '';
 
   submit() {
-    this.error = '';
-    this.drawer.setLoading(true);
+    const id = +this.route.snapshot.params['id'];
 
-    of(true)
-      .pipe(
-        delay(2000),
-        finalize(() => this.drawer.setLoading(false))
-      )
-      .subscribe(() => {
-        console.log('next');
+    this.error = '';
+    this.store.setLoading(true);
+
+    this.apiService
+      .adicionarItem(id, this.form.getRawValue())
+      .pipe(finalize(() => this.store.setLoading(false)))
+      .subscribe({
+        next: ({ sequencia }) => {
+          this.store.setReloadPedido(true);
+          this.snackbar.open('Item adicionado com sucesso');
+          this.router.navigate(['..', sequencia], { relativeTo: this.route });
+        },
+        error: (e: HttpErrorResponse) => (this.error = e.error),
       });
-    // this.apiService.complemento();
   }
 }

@@ -22,6 +22,13 @@ export class PedidosService {
     return this.httpClient.delete<void>(`/api/pedidos/${id}/itens/${seq}`);
   }
 
+  adicionarItem(id: number, item: Partial<PedidoVendaItem>) {
+    return this.httpClient.post<PedidoVendaItem>(
+      `/api/pedidos/${id}/itens`,
+      item
+    );
+  }
+
   complemento(id: number, seq: number, complemento: string) {
     return this.httpClient.put<void>(
       `/api/pedidos/${id}/itens/${seq}/complemento`,
