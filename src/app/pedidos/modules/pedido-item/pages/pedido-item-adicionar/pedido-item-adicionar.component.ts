@@ -5,12 +5,12 @@ import { PedidosService } from 'src/app/pedidos/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
 
 @Component({
-  selector: 'app-pedido-item-novo',
-  templateUrl: './pedido-item-novo.component.html',
-  styleUrls: ['./pedido-item-novo.component.scss'],
+  selector: 'app-pedido-item-adicionar',
+  templateUrl: './pedido-item-adicionar.component.html',
+  styleUrls: ['./pedido-item-adicionar.component.scss'],
   host: { class: 'flex-container' },
 })
-export class PedidoItemNovoComponent {
+export class PedidoItemAdicionarComponent {
   constructor(
     private apiService: PedidosService,
     private drawer: PedidoItemService

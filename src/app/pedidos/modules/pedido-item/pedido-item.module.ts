@@ -13,7 +13,7 @@ import { PedidoItemDrawerComponent } from './pages/pedido-item-drawer/pedido-ite
 import { PedidoItemInfoIdComponent } from './components/pedido-item-info-id/pedido-item-info-id.component';
 import { PedidoItemRoutingModule } from './pedido-item.routing';
 import { PedidoItemEditarComponent } from './pages/pedido-item-editar/pedido-item-editar.component';
-import { PedidoItemNovoComponent } from './pages/pedido-item-novo/pedido-item-novo.component';
+import { PedidoItemAdicionarComponent } from './pages/pedido-item-adicionar/pedido-item-adicionar.component';
 import { PedidoItemStoreComponent } from './pages/pedido-item-store/pedido-item-store.component';
 
 @NgModule({
@@ -25,7 +25,7 @@ import { PedidoItemStoreComponent } from './pages/pedido-item-store/pedido-item-
     PedidoItemDrawerComponent,
     PedidoItemInfoIdComponent,
     PedidoItemEditarComponent,
-    PedidoItemNovoComponent,
+    PedidoItemAdicionarComponent,
     PedidoItemStoreComponent,
   ],
   imports: [

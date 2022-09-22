@@ -4,7 +4,7 @@ import { PedidoItemDeleteComponent } from './pages/pedido-item-delete/pedido-ite
 import { PedidoItemDetalhesComponent } from './pages/pedido-item-detalhes/pedido-item-detalhes.component';
 import { PedidoItemEditarComponent } from './pages/pedido-item-editar/pedido-item-editar.component';
 import { PedidoItemDrawerComponent } from './pages/pedido-item-drawer/pedido-item-drawer.component';
-import { PedidoItemNovoComponent } from './pages/pedido-item-novo/pedido-item-novo.component';
+import { PedidoItemAdicionarComponent } from './pages/pedido-item-adicionar/pedido-item-adicionar.component';
 import { PedidoItemStoreComponent } from './pages/pedido-item-store/pedido-item-store.component';
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
     children: [
       {
         path: 'novo',
-        component: PedidoItemNovoComponent,
+        component: PedidoItemAdicionarComponent,
       },
       {
         path: ':seq',
