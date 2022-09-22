@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
 import { delay, finalize, of } from 'rxjs';
 import { PedidosService } from 'src/app/pedidos/pedidos.service';
-import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
+import { PedidoItemService } from '../../pedido-item.service';
 import { PedidoItemNovoService } from './pedido-item-novo.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class PedidoItemNovoComponent {
   constructor(
     private formService: PedidoItemNovoService,
     private apiService: PedidosService,
-    private drawer: PedidoItemDrawerService
+    private drawer: PedidoItemService
   ) {}
 
   form = this.formService.createAddForm();

@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, finalize, take } from 'rxjs';
 import { PedidosService } from 'src/app/pedidos/pedidos.service';
-import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
+import { PedidoItemService } from '../../pedido-item.service';
 import { PedidoItemEditarService } from './pedido-item-editar.service';
 
 @Component({
@@ -15,7 +15,7 @@ import { PedidoItemEditarService } from './pedido-item-editar.service';
 })
 export class PedidoItemEditarComponent implements OnInit {
   constructor(
-    private itemStore: PedidoItemDrawerService,
+    private itemStore: PedidoItemService,
     private snackbar: MatSnackBar,
     private router: Router,
     private activatedRoute: ActivatedRoute,

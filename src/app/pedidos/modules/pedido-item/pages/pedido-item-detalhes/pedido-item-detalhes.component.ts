@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PedidosInfoService } from 'src/app/pedidos/pages/pedido-info/pedido-info.service';
 
-import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
+import { PedidoItemService } from '../../pedido-item.service';
 
 @Component({
   selector: 'app-pedido-item-detalhes',
@@ -10,7 +10,7 @@ import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
 })
 export class PedidoItemDetalhesComponent {
   constructor(
-    private pidService: PedidoItemDrawerService,
+    private pidService: PedidoItemService,
     private store: PedidosInfoService
   ) {}
 

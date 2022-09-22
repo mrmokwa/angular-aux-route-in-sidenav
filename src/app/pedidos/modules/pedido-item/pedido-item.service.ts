@@ -5,7 +5,7 @@ import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class PedidoItemDrawerService {
+export class PedidoItemService {
   constructor() {}
 
   private itemSource = new ReplaySubject<PedidoVendaItem | null>(1);

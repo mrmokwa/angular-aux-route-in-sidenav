@@ -11,7 +11,7 @@ import { PedidoItemMenuComponent } from './components/pedido-item-menu/pedido-it
 import { PedidoItemDeleteComponent } from './pages/pedido-item-delete/pedido-item-delete.component';
 import { PedidoItemLoadingStateComponent } from './pages/pedido-item-loading-state/pedido-item-loading-state.component';
 import { PedidoItemInfoIdComponent } from './components/pedido-item-info-id/pedido-item-info-id.component';
-import { PedidoItemDrawerRoutingModule } from './pedido-item-drawer.routing';
+import { PedidoItemRoutingModule } from './pedido-item.routing';
 import { PedidoItemEditarComponent } from './pages/pedido-item-editar/pedido-item-editar.component';
 import { PedidoItemNovoComponent } from './pages/pedido-item-novo/pedido-item-novo.component';
 import { PedidoItemSequenciaComponent } from './pages/pedido-item-sequencia/pedido-item-sequencia.component';
@@ -30,11 +30,11 @@ import { PedidoItemSequenciaComponent } from './pages/pedido-item-sequencia/pedi
   ],
   imports: [
     CommonModule,
-    PedidoItemDrawerRoutingModule,
+    PedidoItemRoutingModule,
     SharedModule,
     ReactiveFormsModule,
     PedItemSituacaoPipes,
     ItemConfigPipe,
   ],
 })
-export class PedidoItemDrawerModule {}
+export class PedidoItemModule {}

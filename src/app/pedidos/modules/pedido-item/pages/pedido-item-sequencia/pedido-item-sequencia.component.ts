@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, map, combineLatest, filter } from 'rxjs';
 import { PedidosInfoService } from 'src/app/pedidos/pages/pedido-info/pedido-info.service';
-import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
+import { PedidoItemService } from '../../pedido-item.service';
 
 @Component({
   selector: 'app-pedido-item-sequencia',
@@ -14,7 +14,7 @@ export class PedidoItemSequenciaComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
 
   constructor(
-    private store: PedidoItemDrawerService,
+    private store: PedidoItemService,
     private route: ActivatedRoute,
     private pedido: PedidosInfoService
   ) {}

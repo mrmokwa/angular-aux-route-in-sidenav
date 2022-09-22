@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
+import { PedidoItemService } from '../../pedido-item.service';
 
 @Component({
   selector: 'app-pedido-item-loading-state',
@@ -10,5 +10,5 @@ import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
 export class PedidoItemLoadingStateComponent {
   loading$ = this.store.loading$;
 
-  constructor(private store: PedidoItemDrawerService) {}
+  constructor(private store: PedidoItemService) {}
 }

@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { PedidosService } from 'src/app/pedidos/pedidos.service';
-import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
+import { PedidoItemService } from '../../pedido-item.service';
 
 @Component({
   selector: 'app-pedido-item-delete',
@@ -14,7 +14,7 @@ import { PedidoItemDrawerService } from '../../pedido-item-drawer.service';
 })
 export class PedidoItemDeleteComponent {
   constructor(
-    private pidService: PedidoItemDrawerService,
+    private pidService: PedidoItemService,
     private router: Router,
     private snackbar: MatSnackBar,
     private activatedRoute: ActivatedRoute,
