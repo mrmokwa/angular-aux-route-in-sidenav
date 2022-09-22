@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { PedidoContainerComponent } from './pages/pedido-container/pedido-container.component';
-import { PedidoItemDrawerModule } from './modules/pedido-item-drawer/pedido-item-drawer.module';
+import { PedidoItemModule } from './modules/pedido-item/pedido-item.module';
 import { PedidoInfoComponent } from './pages/pedido-info/pedido-info.component';
 import { PedidoInfoResolver } from './pages/pedido-info/pedido-info.resolver';
 import { PedidoNotaDetalhesComponent } from './modules/pedido-nota-drawer/pedido-nota-detalhes/pedido-nota-detalhes.component';
@@ -19,7 +18,7 @@ const routes: Routes = [
       },
       {
         path: 'item',
-        loadChildren: () => PedidoItemDrawerModule,
+        loadChildren: () => PedidoItemModule,
         outlet: 'detalhes',
       },
       {

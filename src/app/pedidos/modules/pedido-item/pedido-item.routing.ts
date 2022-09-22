@@ -5,7 +5,7 @@ import { PedidoItemDetalhesComponent } from './pages/pedido-item-detalhes/pedido
 import { PedidoItemEditarComponent } from './pages/pedido-item-editar/pedido-item-editar.component';
 import { PedidoItemLoadingStateComponent } from './pages/pedido-item-loading-state/pedido-item-loading-state.component';
 import { PedidoItemNovoComponent } from './pages/pedido-item-novo/pedido-item-novo.component';
-import { PedidoItemSequenciaComponent } from './pages/pedido-item-sequencia/pedido-item-sequencia.component';
+import { PedidoItemStoreComponent } from './pages/pedido-item-store/pedido-item-store.component';
 
 const routes: Routes = [
   {
@@ -18,7 +18,7 @@ const routes: Routes = [
       },
       {
         path: ':seq',
-        component: PedidoItemSequenciaComponent,
+        component: PedidoItemStoreComponent,
         children: [
           {
             path: '',

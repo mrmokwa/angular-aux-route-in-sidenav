@@ -5,12 +5,12 @@ import { PedidosInfoService } from 'src/app/pedidos/pages/pedido-info/pedido-inf
 import { PedidoItemService } from '../../pedido-item.service';
 
 @Component({
-  selector: 'app-pedido-item-sequencia',
-  templateUrl: './pedido-item-sequencia.component.html',
-  styleUrls: ['./pedido-item-sequencia.component.scss'],
+  selector: 'app-pedido-item-store',
+  templateUrl: './pedido-item-store.component.html',
+  styleUrls: ['./pedido-item-store.component.scss'],
   host: { class: 'flex-container' },
 })
-export class PedidoItemSequenciaComponent implements OnInit, OnDestroy {
+export class PedidoItemStoreComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
 
   constructor(
