@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { PedidosInfoService } from 'src/app/pedidos/pages/pedido-info/pedido-info.service';
-
+import { PedidoStoreService } from 'src/app/pedidos/pages/pedido-store/pedido-store.service';
 import { PedidoItemService } from '../../pedido-item.service';
 
 @Component({
@@ -10,11 +9,10 @@ import { PedidoItemService } from '../../pedido-item.service';
 })
 export class PedidoItemDetalhesComponent {
   constructor(
-    private pidService: PedidoItemService,
-    private store: PedidosInfoService
+    private itemStore: PedidoItemService,
+    private pedidoStore: PedidoStoreService
   ) {}
 
-  pedido$ = this.store.pedido$;
-
-  item$ = this.pidService.item$;
+  pedido$ = this.pedidoStore.pedido$;
+  item$ = this.itemStore.item$;
 }

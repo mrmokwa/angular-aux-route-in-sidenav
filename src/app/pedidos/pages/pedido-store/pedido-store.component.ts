@@ -1,17 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Subscription } from 'rxjs';
-import { PedidosInfoService } from './pedido-info.service';
+import { PedidoStoreService } from './pedido-store.service';
 
 @Component({
-  selector: 'app-pedido-info',
-  templateUrl: './pedido-info.component.html',
-  styleUrls: ['./pedido-info.component.scss'],
+  selector: 'app-pedido-store',
+  templateUrl: './pedido-store.component.html',
+  styleUrls: ['./pedido-store.component.scss'],
 })
-export class PedidoInfoComponent implements OnInit, OnDestroy {
+export class PedidoStoreComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
-    private store: PedidosInfoService
+    private store: PedidoStoreService
   ) {}
 
   pedido$ = this.store.pedido$;

@@ -14,33 +14,34 @@ import { PedidoItemService } from '../../pedido-item.service';
 })
 export class PedidoItemExcluirComponent {
   constructor(
-    private pidService: PedidoItemService,
+    private itemStore: PedidoItemService,
     private router: Router,
     private snackbar: MatSnackBar,
     private activatedRoute: ActivatedRoute,
-    private service: PedidosService
+    private apiService: PedidosService
   ) {}
 
-  item$ = this.pidService.item$;
+  item$ = this.itemStore.item$;
   erro = '';
 
   excluir() {
-    this.pidService.setLoading(true);
+    this.itemStore.setLoading(true);
 
-    const { params } = this.activatedRoute.snapshot;
-    const id = +params['id'];
-    const seq = +params['seq'];
+    const id = +this.activatedRoute.snapshot.params['id'];
+    const seq = +this.activatedRoute.snapshot.params['seq'];
 
-    this.service
+    this.apiService
       .deleteItem(id, seq)
-      .pipe(finalize(() => this.pidService.setLoading(false)))
+      .pipe(finalize(() => this.itemStore.setLoading(false)))
       .subscribe({
-        next: () => {
-          this.router.navigate(['/pedidos', id, { outlets: { detalhes: [] } }]);
-          this.pidService.setReloadPedido(true);
-          this.snackbar.open('Item removido com sucesso');
-        },
+        next: () => this.onDeleteSuccess(id),
         error: (resp: HttpErrorResponse) => (this.erro = resp.error),
       });
+  }
+
+  onDeleteSuccess(pedidoId: number) {
+    this.router.navigate(['/pedidos', pedidoId, { outlets: { detalhes: [] } }]);
+    this.itemStore.setReloadPedido(true);
+    this.snackbar.open('Item removido com sucesso');
   }
 }

@@ -5,7 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PedItemSituacaoPipes } from '../pipes/ped-item-situacao.pipe';
 import { PedidosRoutingModule } from './pedidos.routing';
 import { PedidoContainerComponent } from './pages/pedido-container/pedido-container.component';
-import { PedidoInfoComponent } from './pages/pedido-info/pedido-info.component';
+import { PedidoStoreComponent } from './pages/pedido-store/pedido-store.component';
 import { PedidoItemListaComponent } from './components/pedido-item-lista/pedido-item-lista.component';
 import { ItemConfigPipe } from '../pipes/item-config.pipe';
 import { PedidoDrawerComponent } from './components/pedido-drawer/pedido-drawer.component';
@@ -16,7 +16,7 @@ import { PedidoToolbarComponent } from './components/pedido-toolbar/pedido-toolb
 @NgModule({
   declarations: [
     PedidoContainerComponent,
-    PedidoInfoComponent,
+    PedidoStoreComponent,
     PedidoItemListaComponent,
     PedidoDrawerComponent,
     PedidoToolbarComponent,

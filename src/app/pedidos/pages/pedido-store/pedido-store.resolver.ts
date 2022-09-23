@@ -7,17 +7,15 @@ import { PedidosService } from '../../pedidos.service';
 @Injectable({
   providedIn: 'root',
 })
-export class PedidoInfoResolver implements Resolve<PedidoDetalhado> {
+export class PedidoStoreResolver implements Resolve<PedidoDetalhado> {
   constructor(
-    private service: PedidosService,
+    private apiService: PedidosService,
     private loadingService: GlobalLoaderService
   ) {}
 
-  loading$ = this.loadingService.loading$;
-
   resolve(route: ActivatedRouteSnapshot) {
-    return this.service
+    return this.apiService
       .getById(+route.params['id'])
-      .pipe(indicate(this.loading$));
+      .pipe(indicate(this.loadingService.loading$));
   }
 }

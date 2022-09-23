@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, map, combineLatest, filter } from 'rxjs';
-import { PedidosInfoService } from 'src/app/pedidos/pages/pedido-info/pedido-info.service';
+import { PedidoStoreService } from 'src/app/pedidos/pages/pedido-store/pedido-store.service';
 import { PedidoItemService } from '../../pedido-item.service';
 
 @Component({
@@ -14,27 +14,27 @@ export class PedidoItemStoreComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
 
   constructor(
-    private store: PedidoItemService,
     private route: ActivatedRoute,
-    private pedido: PedidosInfoService
+    private itemStore: PedidoItemService,
+    private pedidoStore: PedidoStoreService
   ) {}
 
   ngOnInit(): void {
     const subs = this.getItemDaRota().subscribe((data) =>
-      this.store.setStore(data)
+      this.itemStore.setStore(data)
     );
     this.subscription.add(subs);
   }
 
   ngOnDestroy() {
-    this.store.setStore(null);
+    this.itemStore.setStore(null);
     this.subscription.unsubscribe();
   }
 
   getItemDaRota() {
     const seq$ = this.route.params.pipe(map((params) => +params['seq']));
 
-    const itensPedido$ = this.pedido.pedido$.pipe(
+    const itensPedido$ = this.pedidoStore.pedido$.pipe(
       map((pedido) => pedido?.itens)
     );
 

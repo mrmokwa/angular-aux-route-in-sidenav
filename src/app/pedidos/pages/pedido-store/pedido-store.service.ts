@@ -6,16 +6,16 @@ import { PedidoItemService } from '../../modules/pedido-item/pedido-item.service
 import { PedidosService } from '../../pedidos.service';
 
 @Injectable({ providedIn: 'root' })
-export class PedidosInfoService implements OnDestroy {
+export class PedidoStoreService implements OnDestroy {
   private pedidoSource = new ReplaySubject<PedidoDetalhado>(1);
-  pedido$ = this.pedidoSource.asObservable();
+  readonly pedido$ = this.pedidoSource.asObservable();
   setPedido = (data: PedidoDetalhado) => this.pedidoSource.next(data);
 
   subscription = new Subscription();
 
   constructor(
     private itemStore: PedidoItemService,
-    private service: PedidosService,
+    private apiService: PedidosService,
     private loadingService: GlobalLoaderService
   ) {
     this.initialize();
@@ -33,7 +33,7 @@ export class PedidosInfoService implements OnDestroy {
   }
 
   private reloadPedido(id: number) {
-    return this.service
+    return this.apiService
       .getById(id)
       .pipe(indicate(this.loadingService.loading$));
   }
