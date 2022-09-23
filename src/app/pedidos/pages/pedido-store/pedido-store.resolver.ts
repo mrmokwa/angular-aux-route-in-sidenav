@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
-import { indicate } from 'src/app/core/rxjs/indicate';
+import { finalize } from 'rxjs';
 import { GlobalLoaderService } from 'src/app/core/services/global-loader.service';
 import { PedidosService } from '../../pedidos.service';
 
@@ -14,8 +14,10 @@ export class PedidoStoreResolver implements Resolve<PedidoDetalhado> {
   ) {}
 
   resolve(route: ActivatedRouteSnapshot) {
+    this.loadingService.setState(true);
+
     return this.apiService
       .getById(+route.params['id'])
-      .pipe(indicate(this.loadingService.loading$));
+      .pipe(finalize(() => this.loadingService.setState(false)));
   }
 }
