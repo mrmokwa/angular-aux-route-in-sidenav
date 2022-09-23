@@ -12,6 +12,8 @@ import { PedidoDrawerComponent } from './components/pedido-drawer/pedido-drawer.
 import { PedidoItemModule } from './modules/pedido-item/pedido-item.module';
 import { PedidoNotaDrawerModule } from './modules/pedido-nota-drawer/pedido-nota-drawer.module';
 import { PedidoToolbarComponent } from './components/pedido-toolbar/pedido-toolbar.component';
+import { PedidoNotaListaComponent } from './components/pedido-nota-lista/pedido-nota-lista.component';
+import { NotaFiscalSituacaoPipes } from '../pipes/nota-fiscal-situacao.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { PedidoToolbarComponent } from './components/pedido-toolbar/pedido-toolb
     PedidoItemListaComponent,
     PedidoDrawerComponent,
     PedidoToolbarComponent,
+    PedidoNotaListaComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +30,7 @@ import { PedidoToolbarComponent } from './components/pedido-toolbar/pedido-toolb
     SharedModule,
     ItemConfigPipe,
     PedItemSituacaoPipes,
+    NotaFiscalSituacaoPipes,
     PedidoItemModule,
     PedidoNotaDrawerModule,
   ],
