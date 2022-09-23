@@ -1,6 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { ReplaySubject, Subscription, switchMap, take } from 'rxjs';
-import { indicate } from 'src/app/core/rxjs/indicate';
+import { finalize, ReplaySubject, Subscription, switchMap, take } from 'rxjs';
 import { GlobalLoaderService } from 'src/app/core/services/global-loader.service';
 import { PedidoItemService } from '../../modules/pedido-item/pedido-item.service';
 import { PedidosService } from '../../pedidos.service';
@@ -33,9 +32,11 @@ export class PedidoStoreService implements OnDestroy {
   }
 
   private reloadPedido(id: number) {
+    this.loadingService.setState(true);
+
     return this.apiService
       .getById(id)
-      .pipe(indicate(this.loadingService.loading$));
+      .pipe(finalize(() => this.loadingService.setState(false)));
   }
 
   ngOnDestroy() {
