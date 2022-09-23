@@ -15,6 +15,7 @@ import { PedidoItemRoutingModule } from './pedido-item.routing';
 import { PedidoItemEditarComponent } from './pages/pedido-item-editar/pedido-item-editar.component';
 import { PedidoItemAdicionarComponent } from './pages/pedido-item-adicionar/pedido-item-adicionar.component';
 import { PedidoItemStoreComponent } from './pages/pedido-item-store/pedido-item-store.component';
+import { ItemPipe } from 'src/app/pipes/item.pipe';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PedidoItemStoreComponent } from './pages/pedido-item-store/pedido-item-
     ReactiveFormsModule,
     PedItemSituacaoPipes,
     ItemConfigPipe,
+    ItemPipe,
   ],
 })
 export class PedidoItemModule {}
