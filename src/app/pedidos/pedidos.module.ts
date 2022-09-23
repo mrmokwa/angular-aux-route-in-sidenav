@@ -10,7 +10,7 @@ import { PedidoItemListaComponent } from './components/pedido-item-lista/pedido-
 import { ItemConfigPipe } from '../pipes/item-config.pipe';
 import { PedidoDrawerComponent } from './components/pedido-drawer/pedido-drawer.component';
 import { PedidoItemModule } from './modules/pedido-item/pedido-item.module';
-import { PedidoNotaDrawerModule } from './modules/pedido-nota-drawer/pedido-nota-drawer.module';
+import { PedidoNotaModule } from './modules/pedido-nota/pedido-nota.module';
 import { PedidoToolbarComponent } from './components/pedido-toolbar/pedido-toolbar.component';
 import { PedidoNotaListaComponent } from './components/pedido-nota-lista/pedido-nota-lista.component';
 import { NotaFiscalSituacaoPipes } from '../pipes/nota-fiscal-situacao.pipe';
@@ -32,7 +32,7 @@ import { NotaFiscalSituacaoPipes } from '../pipes/nota-fiscal-situacao.pipe';
     PedItemSituacaoPipes,
     NotaFiscalSituacaoPipes,
     PedidoItemModule,
-    PedidoNotaDrawerModule,
+    PedidoNotaModule,
   ],
 })
 export class PedidosModule {}

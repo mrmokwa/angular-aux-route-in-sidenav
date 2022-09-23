@@ -4,7 +4,7 @@ import { PedidoContainerComponent } from './pages/pedido-container/pedido-contai
 import { PedidoItemModule } from './modules/pedido-item/pedido-item.module';
 import { PedidoStoreComponent } from './pages/pedido-store/pedido-store.component';
 import { PedidoStoreResolver } from './pages/pedido-store/pedido-store.resolver';
-import { PedidoNotaDetalhesComponent } from './modules/pedido-nota-drawer/pedido-nota-detalhes/pedido-nota-detalhes.component';
+import { PedidoNotaModule } from './modules/pedido-nota/pedido-nota.module';
 
 const routes: Routes = [
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
       },
       {
         path: 'nota/:div/:ser/:nro',
-        component: PedidoNotaDetalhesComponent,
+        loadChildren: () => PedidoNotaModule,
         outlet: 'detalhes',
       },
     ],
