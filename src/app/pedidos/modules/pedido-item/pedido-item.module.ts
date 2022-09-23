@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from 'src/app/shared/shared.module';
-import { PedItemSituacaoPipes } from 'src/app/pipes/ped-item-situacao.pipe';
+import { PedItemSituacaoPipes } from 'src/app/pipes/pedido-item.pipe';
 import { PedidoItemDetalhesHeaderComponent } from './components/pedido-item-header/pedido-item-header.component';
 import { PedidoItemDetalhesComponent } from './pages/pedido-item-detalhes/pedido-item-detalhes.component';
 import { PedidoItemMenuComponent } from './components/pedido-item-menu/pedido-item-menu.component';
