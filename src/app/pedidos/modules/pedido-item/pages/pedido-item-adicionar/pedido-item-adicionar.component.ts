@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
@@ -24,8 +24,9 @@ export class PedidoItemAdicionarComponent {
 
   error = '';
   fb = new FormBuilder().nonNullable;
+  itemId = new FormControl('', { nonNullable: true });
   form = this.fb.group({
-    itemId: this.fb.control(''),
+    itemId: this.itemId,
     quantidade: this.fb.control(0),
     unitario: this.fb.control(0),
     complemento: this.fb.control(''),

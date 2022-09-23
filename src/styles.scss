@@ -53,3 +53,11 @@ ng-component,
   flex-direction: column;
   height: 100%;
 }
+
+.mat-form-field {
+  margin-bottom: 8px;
+}
+
+input[type="number"] {
+  text-align: right;
+}

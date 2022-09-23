@@ -1,0 +1,7 @@
+<mat-form-field>
+  <mat-label>Item</mat-label>
+  <input matInput [formControl]="control" />
+  <mat-hint>
+    {{ control.value | item$: "descricao" | async }}
+  </mat-hint>
+</mat-form-field>

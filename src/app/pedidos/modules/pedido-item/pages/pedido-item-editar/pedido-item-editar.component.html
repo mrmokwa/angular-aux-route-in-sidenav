@@ -1,13 +1,9 @@
 <ng-container *ngIf="item$ | async as item">
   <h2>Editar Item #{{ item.sequencia }}</h2>
+
   <app-pedido-item-info-id [item]="item"></app-pedido-item-info-id>
 
-  <br />
-
-  <ng-container *ngIf="erro">
-    <app-error-message [message]="erro"></app-error-message>
-    <br />
-  </ng-container>
+  <app-error-message *ngIf="erro" [message]="erro"></app-error-message>
 
   <form class="flex-container" [formGroup]="form">
     <mat-form-field>

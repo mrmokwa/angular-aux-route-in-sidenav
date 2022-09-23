@@ -3,13 +3,9 @@
 <app-error-message *ngIf="error" [message]="error"></app-error-message>
 
 <form [formGroup]="form" class="flex-container" (ngSubmit)="submit()">
-  <mat-form-field>
-    <mat-label>Item</mat-label>
-    <input matInput formControlName="itemId" />
-    <mat-hint>
-      {{ form.get("itemId")?.value | item$: "descricao" | async }}
-    </mat-hint>
-  </mat-form-field>
+  <app-pedido-item-form-control
+    [control]="itemId"
+  ></app-pedido-item-form-control>
 
   <mat-form-field>
     <mat-label>Unitário</mat-label>
