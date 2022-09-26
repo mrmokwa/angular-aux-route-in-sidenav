@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
+import { NotificationService } from 'src/app/core/services/notification.service';
 import { PedidosService } from 'src/app/pedidos/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
 
@@ -18,7 +18,7 @@ export class PedidoItemAdicionarComponent {
     private apiService: PedidosService,
     private store: PedidoItemService,
     private route: ActivatedRoute,
-    private snackbar: MatSnackBar,
+    private notification: NotificationService,
     private router: Router
   ) {}
 
@@ -35,7 +35,6 @@ export class PedidoItemAdicionarComponent {
   submit() {
     const id = +this.route.snapshot.params['id'];
 
-    this.error = '';
     this.store.setLoading(true);
 
     this.apiService
@@ -44,10 +43,10 @@ export class PedidoItemAdicionarComponent {
       .subscribe({
         next: ({ sequencia }) => {
           this.store.setReloadPedido(true);
-          this.snackbar.open('Item adicionado com sucesso');
+          this.notification.success('Item adicionado com sucesso');
           this.router.navigate(['..', sequencia], { relativeTo: this.route });
         },
-        error: (e: HttpErrorResponse) => (this.error = e.error),
+        error: (e: HttpErrorResponse) => this.notification.error(e.error),
       });
   }
 }

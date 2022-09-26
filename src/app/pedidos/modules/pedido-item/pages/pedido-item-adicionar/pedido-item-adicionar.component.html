@@ -1,7 +1,5 @@
 <h2>Adicionar Item</h2>
 
-<app-error-message *ngIf="error" [message]="error"></app-error-message>
-
 <form [formGroup]="form" class="flex-container" (ngSubmit)="submit()">
   <app-pedido-item-form-control
     [control]="itemId"

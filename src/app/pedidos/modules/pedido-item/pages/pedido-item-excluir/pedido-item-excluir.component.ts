@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
+import { NotificationService } from 'src/app/core/services/notification.service';
 import { PedidosService } from 'src/app/pedidos/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
 
@@ -16,7 +16,7 @@ export class PedidoItemExcluirComponent {
   constructor(
     private itemStore: PedidoItemService,
     private router: Router,
-    private snackbar: MatSnackBar,
+    private notification: NotificationService,
     private activatedRoute: ActivatedRoute,
     private apiService: PedidosService
   ) {}
@@ -35,13 +35,13 @@ export class PedidoItemExcluirComponent {
       .pipe(finalize(() => this.itemStore.setLoading(false)))
       .subscribe({
         next: () => this.onDeleteSuccess(id),
-        error: (resp: HttpErrorResponse) => (this.erro = resp.error),
+        error: (resp: HttpErrorResponse) => this.notification.error(resp.error),
       });
   }
 
   onDeleteSuccess(pedidoId: number) {
     this.router.navigate(['/pedidos', pedidoId, { outlets: { detalhes: [] } }]);
     this.itemStore.setReloadPedido(true);
-    this.snackbar.open('Item removido com sucesso');
+    this.notification.success('Item removido com sucesso');
   }
 }

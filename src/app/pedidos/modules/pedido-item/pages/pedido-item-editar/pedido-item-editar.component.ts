@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, finalize, take } from 'rxjs';
+import { NotificationService } from 'src/app/core/services/notification.service';
 import { PedidosService } from 'src/app/pedidos/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
 
@@ -16,7 +16,7 @@ import { PedidoItemService } from '../../pedido-item.service';
 export class PedidoItemEditarComponent implements OnInit {
   constructor(
     private itemStore: PedidoItemService,
-    private snackbar: MatSnackBar,
+    private notification: NotificationService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private service: PedidosService
@@ -26,7 +26,6 @@ export class PedidoItemEditarComponent implements OnInit {
   item$ = this.itemStore.item$;
   form = this.fb.group({ complemento: '' });
   id = +this.activatedRoute.snapshot.params['id'];
-  erro = '';
 
   ngOnInit(): void {
     this.item$
@@ -37,7 +36,6 @@ export class PedidoItemEditarComponent implements OnInit {
   salvar(seq: number) {
     const complemento = this.form.get('complemento')?.getRawValue();
     this.itemStore.setLoading(true);
-    this.erro = '';
 
     this.service
       .complemento(this.id, seq, complemento)
@@ -45,10 +43,10 @@ export class PedidoItemEditarComponent implements OnInit {
       .subscribe({
         next: () => {
           this.itemStore.setReloadPedido(true);
-          this.snackbar.open('Item alterado com sucesso');
+          this.notification.success('Item alterado com sucesso');
           this.router.navigate(['..'], { relativeTo: this.activatedRoute });
         },
-        error: (e: HttpErrorResponse) => (this.erro = e.error),
+        error: (e: HttpErrorResponse) => this.notification.error(e.error),
       });
   }
 }

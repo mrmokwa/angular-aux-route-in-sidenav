@@ -7,6 +7,7 @@ import { API_SERVICE_INTERCEPTOR } from './interceptors/api-service-interceptor'
 import localePt from '@angular/common/locales/pt';
 import {
   MatSnackBarConfig,
+  MatSnackBarModule,
   MAT_SNACK_BAR_DEFAULT_OPTIONS,
 } from '@angular/material/snack-bar';
 import {
@@ -30,7 +31,7 @@ export const LOCALE_SETTIGNS = [
 export const MAT_SNACKBAR_CUSTOM_SETTINGS = [
   {
     provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
-    useValue: { duration: 3000 } as MatSnackBarConfig,
+    useValue: { duration: 4000 } as MatSnackBarConfig,
   },
 ];
 
@@ -43,7 +44,7 @@ export const MAT_FORM_FIELD_CUSTOM_SETTIGNS = [
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, MatSnackBarModule],
   exports: [HttpClientModule],
   providers: [
     AUTH_TOKEN_INTERCEPTOR,
