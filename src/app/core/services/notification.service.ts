@@ -16,25 +16,26 @@ export class NotificationService {
   }
 
   info(message: string): void {
-    this.snackBar.open(message, 'Dispensar', {
+    this.snackBar.open(message, undefined, {
       panelClass: 'info-notification',
     });
   }
 
   warn(message: string): void {
-    this.snackBar.open(message, 'Dispensar', {
+    this.snackBar.open(message, undefined, {
       panelClass: 'warning-notification',
     });
   }
 
   success(message: string): void {
-    this.snackBar.open(message, 'Dispensar', {
+    this.snackBar.open(message, undefined, {
       panelClass: 'success-notification',
     });
   }
 
   error(message: string): void {
     this.snackBar.open(message, 'Dispensar', {
+      duration: 0,
       panelClass: 'error-notification',
     });
   }
