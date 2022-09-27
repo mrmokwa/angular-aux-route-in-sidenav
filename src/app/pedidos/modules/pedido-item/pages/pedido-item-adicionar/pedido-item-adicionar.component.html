@@ -2,22 +2,53 @@
 
 <form [formGroup]="form" class="flex-container" (ngSubmit)="submit()">
   <app-pedido-item-form-control
-    [control]="itemId"
+    [control]="form.get('itemId') | formControl"
   ></app-pedido-item-form-control>
 
   <mat-form-field>
     <mat-label>Unitário</mat-label>
     <input matInput formControlName="unitario" name="unitario" type="number" />
+    <mat-error *ngIf="form.get('unitario')?.hasError('required')">
+      Obrigatório
+    </mat-error>
+
+    <mat-error *ngIf="form.get('unitario')?.hasError('min')">
+      Valor inválido
+    </mat-error>
+
+    <mat-error *ngIf="form.get('unitario')?.hasError('server')">
+      {{ form.get("unitario")?.getError("server") }}
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Quantidade</mat-label>
-    <input matInput formControlName="quantidade" name="qtd" type="number" />
+    <input
+      matInput
+      formControlName="quantidade"
+      name="quantidade"
+      type="number"
+    />
+
+    <mat-error *ngIf="form.get('quantidade')?.hasError('required')">
+      Obrigatório
+    </mat-error>
+
+    <mat-error *ngIf="form.get('quantidade')?.hasError('min')">
+      Valor inválido
+    </mat-error>
+
+    <mat-error *ngIf="form.get('quantidade')?.hasError('server')">
+      {{ form.get("quantidade")?.getError("server") }}
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Complemento</mat-label>
     <textarea matInput formControlName="complemento"></textarea>
+    <mat-error *ngIf="form.get('complemento')?.hasError('server')">
+      {{ form.get("complemento")?.getError("server") }}
+    </mat-error>
   </mat-form-field>
 
   <span style="flex: auto"></span>

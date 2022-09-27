@@ -1,7 +1,14 @@
 <mat-form-field>
   <mat-label>Item</mat-label>
   <input matInput [formControl]="control" />
+
   <mat-hint>
     {{ control.value | item$: "descricao" | async }}
   </mat-hint>
+
+  <mat-error *ngIf="control.hasError('required')"> Obrigatório </mat-error>
+
+  <mat-error *ngIf="control.hasError('server')">
+    {{ control.getError("server") }}
+  </mat-error>
 </mat-form-field>

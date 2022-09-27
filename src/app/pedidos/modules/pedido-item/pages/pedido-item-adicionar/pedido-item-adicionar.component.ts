@@ -1,8 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
+import { applyServerErrors } from 'src/app/core/rxjs/applyServerErrors';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { PedidosService } from 'src/app/pedidos/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
@@ -19,34 +20,51 @@ export class PedidoItemAdicionarComponent {
     private store: PedidoItemService,
     private route: ActivatedRoute,
     private notification: NotificationService,
-    private router: Router
+    private router: Router,
+    private fb: NonNullableFormBuilder
   ) {}
 
-  error = '';
-  fb = new FormBuilder().nonNullable;
-  itemId = new FormControl('', { nonNullable: true });
   form = this.fb.group({
-    itemId: this.itemId,
-    quantidade: this.fb.control(0),
-    unitario: this.fb.control(0),
+    itemId: this.fb.control('', [Validators.required]),
+    quantidade: this.fb.control(0, [
+      Validators.required,
+      Validators.min(Number.MIN_VALUE),
+    ]),
+    unitario: this.fb.control(0, [
+      Validators.required,
+      Validators.min(Number.MIN_VALUE),
+    ]),
     complemento: this.fb.control(''),
   });
 
+  get id() {
+    return +this.route.snapshot.params['id'];
+  }
+
   submit() {
-    const id = +this.route.snapshot.params['id'];
+    this.notification.dismiss();
+
+    if (this.form.invalid) {
+      return;
+    }
 
     this.store.setLoading(true);
 
     this.apiService
-      .adicionarItem(id, this.form.getRawValue())
-      .pipe(finalize(() => this.store.setLoading(false)))
+      .adicionarItem(this.id, this.form.getRawValue())
+      .pipe(
+        applyServerErrors(this.form),
+        finalize(() => this.store.setLoading(false))
+      )
       .subscribe({
-        next: ({ sequencia }) => {
-          this.store.setReloadPedido(true);
-          this.notification.success('Item adicionado com sucesso');
-          this.router.navigate(['..', sequencia], { relativeTo: this.route });
-        },
+        next: (item) => this.onSuccess(item),
         error: (e: HttpErrorResponse) => this.notification.error(e.error),
       });
+  }
+
+  private onSuccess({ sequencia }: PedidoVendaItem) {
+    this.store.setReloadPedido(true);
+    this.notification.success('Item adicionado com sucesso');
+    this.router.navigate(['..', sequencia], { relativeTo: this.route });
   }
 }
