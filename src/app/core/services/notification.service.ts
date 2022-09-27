@@ -7,13 +7,13 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 export class NotificationService {
   constructor(private readonly snackBar: MatSnackBar) {}
 
-  open(
+  open = (
     message: string,
     action?: string | undefined,
     config?: MatSnackBarConfig<any> | undefined
-  ) {
-    return this.snackBar.open(message, action, config);
-  }
+  ) => this.snackBar.open(message, action, config);
+
+  dismiss = () => this.snackBar.dismiss();
 
   info(message: string): void {
     this.snackBar.open(message, undefined, {
