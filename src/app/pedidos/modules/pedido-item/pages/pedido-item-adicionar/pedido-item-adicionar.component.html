@@ -1,6 +1,6 @@
 <h2>Adicionar Item</h2>
 
-<form [formGroup]="form" class="flex-container" (ngSubmit)="submit(form.value)">
+<form [formGroup]="form" class="flex-container" (ngSubmit)="submit()">
   <app-pedido-item-form-control
     [control]="form.get('itemId') | formControl"
   ></app-pedido-item-form-control>

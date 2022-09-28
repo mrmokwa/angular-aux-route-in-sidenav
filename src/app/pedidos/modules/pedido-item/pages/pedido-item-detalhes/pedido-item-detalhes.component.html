@@ -39,7 +39,9 @@
     <dt>Valor Unitario</dt>
     <dd>{{ item.unitario | currency }}</dd>
 
-    <ng-container *ngIf="item?.descontoCascata !== '0'">
+    <ng-container
+      *ngIf="item.descontoCascata !== '0' && item.descontoCascata !== ''"
+    >
       <dt>Desconto Cascata</dt>
       <dd>{{ item.descontoCascata }}%</dd>
     </ng-container>

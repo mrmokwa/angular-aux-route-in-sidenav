@@ -22,7 +22,6 @@ export class PedidoItemExcluirComponent {
   ) {}
 
   item$ = this.itemStore.item$;
-  erro = '';
 
   excluir() {
     this.itemStore.setLoading(true);
@@ -39,7 +38,7 @@ export class PedidoItemExcluirComponent {
       });
   }
 
-  onDeleteSuccess(pedidoId: number) {
+  private onDeleteSuccess(pedidoId: number) {
     this.router.navigate(['/pedidos', pedidoId, { outlets: { detalhes: [] } }]);
     this.itemStore.setReloadPedido(true);
     this.notification.success('Item removido com sucesso');

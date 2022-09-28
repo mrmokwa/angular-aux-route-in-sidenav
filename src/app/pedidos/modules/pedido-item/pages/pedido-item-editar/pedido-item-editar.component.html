@@ -3,24 +3,21 @@
 
   <app-pedido-item-info-id [item]="item"></app-pedido-item-info-id>
 
-  <form class="flex-container" [formGroup]="form">
+  <form class="flex-container" [formGroup]="form" (ngSubmit)="submit()">
     <mat-form-field>
       <mat-label>Complemento</mat-label>
       <textarea matInput formControlName="complemento"></textarea>
+
+      <mat-error *ngIf="form.get('complemento')?.hasError('server')">
+        {{ form.get("complemento")?.getError("server") }}
+      </mat-error>
     </mat-form-field>
 
     <div style="flex: auto"></div>
 
     <div class="action-buttons">
       <button type="button" mat-button routerLink="..">Cancelar</button>
-      <button
-        type="submit"
-        mat-flat-button
-        color="primary"
-        (click)="salvar(item.sequencia)"
-      >
-        Salvar
-      </button>
+      <button type="submit" mat-flat-button color="primary">Salvar</button>
     </div>
   </form>
 </ng-container>
