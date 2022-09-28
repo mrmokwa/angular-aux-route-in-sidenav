@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { finalize } from 'rxjs';
+import { finalize, map, switchMap, tap } from 'rxjs';
 import { applyServerErrors } from 'src/app/core/rxjs/applyServerErrors';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { PedidosService } from 'src/app/pedidos/pedidos.service';
@@ -37,22 +37,14 @@ export class PedidoItemAdicionarComponent {
     complemento: this.fb.control(''),
   });
 
-  get id() {
-    return +this.route.snapshot.params['id'];
-  }
+  submit(value: Partial<PedidoVendaItem>) {
+    if (this.form.invalid) return;
 
-  submit() {
-    this.notification.dismiss();
-
-    if (this.form.invalid) {
-      return;
-    }
-
-    this.store.setLoading(true);
-
-    this.apiService
-      .adicionarItem(this.id, this.form.getRawValue())
+    this.route.params
       .pipe(
+        tap(() => this.store.setLoading(true)),
+        map((params) => +params['id']),
+        switchMap((id) => this.apiService.adicionarItem(id, value)),
         applyServerErrors(this.form),
         finalize(() => this.store.setLoading(false))
       )
