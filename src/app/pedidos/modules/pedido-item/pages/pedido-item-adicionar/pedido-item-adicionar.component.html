@@ -61,7 +61,13 @@
   <span style="flex: auto"></span>
 
   <div class="button-wrapper">
-    <button mat-button type="button">Cancelar</button>
+    <button
+      mat-button
+      type="button"
+      [routerLink]="['/pedidos', id$ | async, { outlets: { detalhes: null } }]"
+    >
+      Cancelar
+    </button>
     <button mat-flat-button type="submit" color="primary">Salvar</button>
   </div>
 </form>
