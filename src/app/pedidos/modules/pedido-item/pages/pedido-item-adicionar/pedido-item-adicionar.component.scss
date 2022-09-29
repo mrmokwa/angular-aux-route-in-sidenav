@@ -21,3 +21,16 @@
 #unitario {
   max-width: calc(50% - 0.5em);
 }
+
+dl {
+  margin-top: 0;
+}
+
+#pedido-info {
+  &::before {
+    content: " (";
+  }
+  &::after {
+    content: ")";
+  }
+}

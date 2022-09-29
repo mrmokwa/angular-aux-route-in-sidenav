@@ -1,5 +1,21 @@
 <h2>Adicionar Item</h2>
 
+<dl *ngIf="pedido$ | async as pedido">
+  <dt>Pedido</dt>
+  <dd>
+    <span>{{ pedido.pedido }}</span>
+
+    <span id="pedido-info">
+      <span [ngClass]="pedido.situacao | pedItemSituacaoClass">
+        {{ pedido.situacao | pedItemSituacao }}
+      </span>
+    </span>
+  </dd>
+
+  <dt>Entrada</dt>
+  <dd>{{ pedido.entrada | date: "longDate" }}</dd>
+</dl>
+
 <form [formGroup]="form" class="flex-container" (ngSubmit)="submit()">
   <app-pedido-item-form-control
     [control]="form.get('itemId') | formControl"
