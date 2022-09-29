@@ -1,4 +1,9 @@
 .mat-drawer-content {
+  display: flex;
+}
+
+.container {
+  flex: auto;
   padding: 32px;
   overflow: auto;
 }

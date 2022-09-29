@@ -1,8 +1,12 @@
-<app-pedido-toolbar></app-pedido-toolbar>
+<mat-toolbar color="primary">Sistemas de Informação</mat-toolbar>
 
 <mat-drawer-container class="flex-container">
-  <mat-drawer-content>
-    <router-outlet></router-outlet>
+  <mat-drawer-content class="flex-container">
+    <app-pedido-toolbar></app-pedido-toolbar>
+
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
   </mat-drawer-content>
 
   <mat-drawer
