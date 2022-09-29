@@ -1,0 +1,10 @@
+<app-main-toolbar></app-main-toolbar>
+
+<mat-sidenav-container class="flex-container">
+  <mat-sidenav [opened]="'true'" [mode]="'side'">
+    <app-main-sidenav></app-main-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
