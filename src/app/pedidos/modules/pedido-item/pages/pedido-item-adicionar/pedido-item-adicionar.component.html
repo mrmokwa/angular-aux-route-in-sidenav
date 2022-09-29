@@ -16,6 +16,9 @@
   <dd>{{ pedido.entrada | date: "longDate" }}</dd>
 </dl>
 
+<mat-divider></mat-divider>
+<br />
+
 <form [formGroup]="form" class="flex-container" (ngSubmit)="submit()">
   <app-pedido-item-form-control
     [control]="form.get('itemId') | formControl"
