@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { finalize, map } from 'rxjs';
 import { applyServerErrors } from 'src/app/core/rxjs/applyServerErrors';
 import { NotificationService } from 'src/app/core/services/notification.service';
+import { PedidoStoreService } from 'src/app/pedidos/pages/pedido-store/pedido-store.service';
 import { PedidosService } from 'src/app/pedidos/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
 
@@ -31,6 +32,7 @@ export class PedidoItemAdicionarComponent {
   constructor(
     private apiService: PedidosService,
     private store: PedidoItemService,
+    private pedido: PedidoStoreService,
     private route: ActivatedRoute,
     private notification: NotificationService,
     private router: Router,
@@ -67,4 +69,6 @@ export class PedidoItemAdicionarComponent {
   }
 
   id$ = this.route.params.pipe(map((params) => +params['id']));
+
+  pedido$ = this.pedido.pedido$;
 }
