@@ -8,17 +8,20 @@ $notification-theme: (
   error: mat.get-color-from-palette(mat.$red-palette, 400),
 );
 
-$light-theme: mat.define-light-theme(
+$primary: mat.define-palette(mat.$indigo-palette);
+$accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$theme: mat.define-light-theme(
   (
     color: (
-      primary: mat.define-palette(mat.$indigo-palette),
-      accent: mat.define-palette(mat.$pink-palette, A200, A100, A400),
-      warn: mat.define-palette(mat.$red-palette),
+      primary: $primary,
+      accent: $accent,
     ),
+    typography: mat.define-typography-config(),
   )
 );
 
 @mixin theme() {
-  @include mat.all-component-themes($light-theme);
+  @include mat.all-component-themes($theme);
   @include cst.notification-theme($notification-theme);
 }
