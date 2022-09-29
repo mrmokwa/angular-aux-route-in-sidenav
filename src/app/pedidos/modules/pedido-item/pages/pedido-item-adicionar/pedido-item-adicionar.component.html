@@ -5,43 +5,50 @@
     [control]="form.get('itemId') | formControl"
   ></app-pedido-item-form-control>
 
-  <mat-form-field>
-    <mat-label>Unitário</mat-label>
-    <input matInput formControlName="unitario" name="unitario" type="number" />
-    <mat-error *ngIf="form.get('unitario')?.hasError('required')">
-      Obrigatório
-    </mat-error>
+  <div class="linha">
+    <mat-form-field id="unitario">
+      <mat-label>Unitário</mat-label>
+      <input
+        matInput
+        formControlName="unitario"
+        name="unitario"
+        type="number"
+      />
+      <mat-error *ngIf="form.get('unitario')?.hasError('required')">
+        Obrigatório
+      </mat-error>
 
-    <mat-error *ngIf="form.get('unitario')?.hasError('min')">
-      Valor inválido
-    </mat-error>
+      <mat-error *ngIf="form.get('unitario')?.hasError('min')">
+        Valor inválido
+      </mat-error>
 
-    <mat-error *ngIf="form.get('unitario')?.hasError('server')">
-      {{ form.get("unitario")?.getError("server") }}
-    </mat-error>
-  </mat-form-field>
+      <mat-error *ngIf="form.get('unitario')?.hasError('server')">
+        {{ form.get("unitario")?.getError("server") }}
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Quantidade</mat-label>
-    <input
-      matInput
-      formControlName="quantidade"
-      name="quantidade"
-      type="number"
-    />
+    <mat-form-field id="quantidade">
+      <mat-label>Quantidade</mat-label>
+      <input
+        matInput
+        formControlName="quantidade"
+        name="quantidade"
+        type="number"
+      />
 
-    <mat-error *ngIf="form.get('quantidade')?.hasError('required')">
-      Obrigatório
-    </mat-error>
+      <mat-error *ngIf="form.get('quantidade')?.hasError('required')">
+        Obrigatório
+      </mat-error>
 
-    <mat-error *ngIf="form.get('quantidade')?.hasError('min')">
-      Valor inválido
-    </mat-error>
+      <mat-error *ngIf="form.get('quantidade')?.hasError('min')">
+        Valor inválido
+      </mat-error>
 
-    <mat-error *ngIf="form.get('quantidade')?.hasError('server')">
-      {{ form.get("quantidade")?.getError("server") }}
-    </mat-error>
-  </mat-form-field>
+      <mat-error *ngIf="form.get('quantidade')?.hasError('server')">
+        {{ form.get("quantidade")?.getError("server") }}
+      </mat-error>
+    </mat-form-field>
+  </div>
 
   <mat-form-field>
     <mat-label>Complemento</mat-label>

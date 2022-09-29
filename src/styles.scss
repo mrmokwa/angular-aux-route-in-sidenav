@@ -74,9 +74,21 @@ ng-component,
 }
 
 .mat-form-field {
-  margin-bottom: 8px;
+  margin-bottom: 9px;
 }
 
 input[type="number"] {
   text-align: right;
+}
+
+.mat-form-field-subscript-wrapper {
+  font-size: 88%;
+  padding: 0 0.75em !important;
+}
+
+.mat-hint,
+.mat-error {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

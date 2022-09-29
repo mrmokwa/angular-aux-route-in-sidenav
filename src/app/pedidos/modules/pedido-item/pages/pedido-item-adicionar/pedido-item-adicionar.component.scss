@@ -11,3 +11,13 @@
   margin-right: 16px;
   width: 110px;
 }
+
+.linha {
+  display: flex;
+  column-gap: 1em;
+}
+
+#quantidade,
+#unitario {
+  max-width: calc(50% - 0.5em);
+}
