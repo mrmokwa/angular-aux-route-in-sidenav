@@ -1,12 +1,5 @@
 @use "@angular/material" as mat;
-@use "./custom/notification-theme.scss" as cst;
-
-$notification-theme: (
-  info: mat.get-color-from-palette(mat.$blue-palette, 400),
-  success: mat.get-color-from-palette(mat.$green-palette, 400),
-  warning: mat.get-color-from-palette(mat.$orange-palette, 400),
-  error: mat.get-color-from-palette(mat.$red-palette, 400),
-);
+@use "custom/all-theming" as cst;
 
 $primary: mat.define-palette(mat.$indigo-palette);
 $accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
@@ -23,5 +16,5 @@ $theme: mat.define-light-theme(
 
 @mixin theme() {
   @include mat.all-component-themes($theme);
-  @include cst.notification-theme($notification-theme);
+  @include cst.all-component-themes($theme);
 }

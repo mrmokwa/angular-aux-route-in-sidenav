@@ -1,0 +1,7 @@
+@use "./list-theme.scss" as list;
+@use "./notification-theme.scss" as notif;
+
+@mixin all-component-themes($theme) {
+  @include list.theme($theme);
+  @include notif.theme();
+}

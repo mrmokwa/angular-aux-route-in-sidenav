@@ -1,8 +1,18 @@
-@mixin notification-theme($notifications-theme) {
-  $success-color: map-get($notifications-theme, success);
-  $warning-color: map-get($notifications-theme, warning);
-  $info-color: map-get($notifications-theme, info);
-  $error-color: map-get($notifications-theme, error);
+@use "sass:map";
+@use "@angular/material" as mat;
+
+$notification-theme: (
+  info: mat.get-color-from-palette(mat.$blue-palette, 400),
+  success: mat.get-color-from-palette(mat.$green-palette, 400),
+  warning: mat.get-color-from-palette(mat.$orange-palette, 400),
+  error: mat.get-color-from-palette(mat.$red-palette, 400),
+);
+
+@mixin theme() {
+  $success-color: map.get($notification-theme, success);
+  $warning-color: map.get($notification-theme, warning);
+  $info-color: map.get($notification-theme, info);
+  $error-color: map.get($notification-theme, error);
 
   .success-notification,
   .info-notification,
