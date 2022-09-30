@@ -13,11 +13,7 @@
   .mat-nav-list {
     .selected {
       color: $primary;
-      background-color: lighten($color: $primary, $amount: 50%);
-
-      .mat-line {
-        font-weight: 500 !important;
-      }
+      background-color: lighten($color: $primary, $amount: 47%);
     }
   }
 }
