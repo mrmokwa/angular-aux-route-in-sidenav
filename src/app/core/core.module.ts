@@ -14,6 +14,10 @@ import {
   MatFormFieldDefaultOptions,
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
 } from '@angular/material/form-field';
+import {
+  MatProgressSpinnerDefaultOptions,
+  MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS,
+} from '@angular/material/progress-spinner';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -45,6 +49,13 @@ export const MAT_FORM_FIELD_CUSTOM_SETTIGNS = [
   },
 ];
 
+export const MAT_SPINNER_CUSTOM_SETTINGS = [
+  {
+    provide: MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS,
+    useValue: { diameter: 84 } as MatProgressSpinnerDefaultOptions,
+  },
+];
+
 @NgModule({
   declarations: [],
   imports: [CommonModule, HttpClientModule, MatSnackBarModule],
@@ -55,6 +66,7 @@ export const MAT_FORM_FIELD_CUSTOM_SETTIGNS = [
     LOCALE_SETTIGNS,
     MAT_SNACKBAR_CUSTOM_SETTINGS,
     MAT_FORM_FIELD_CUSTOM_SETTIGNS,
+    MAT_SPINNER_CUSTOM_SETTINGS,
   ],
 })
 export class CoreModule {}
