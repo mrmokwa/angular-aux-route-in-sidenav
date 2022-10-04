@@ -59,6 +59,7 @@ export class PedidoItemEditarComponent implements OnInit {
   }
 
   private onSuccess() {
+    this.itemStore.setStore(null);
     this.itemStore.setReloadPedido(true);
     this.notification.success('Item alterado com sucesso');
     this.router.navigate(['..'], { relativeTo: this.activatedRoute });
