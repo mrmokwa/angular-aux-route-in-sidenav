@@ -9,6 +9,7 @@ import { PedidoItemService } from '../../pedido-item.service';
 })
 export class PedidoItemDrawerComponent {
   loading$ = this.store.loading$;
+  message$ = this.store.message$;
 
   constructor(private store: PedidoItemService) {}
 }

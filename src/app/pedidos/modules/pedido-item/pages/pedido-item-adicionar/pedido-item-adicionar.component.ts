@@ -44,7 +44,7 @@ export class PedidoItemAdicionarComponent {
       return;
     }
 
-    this.store.setLoading(true);
+    this.store.setLoading(true, 'Incluindo novo item');
 
     this.apiService
       .adicionarItem(this.id, this.form.value)

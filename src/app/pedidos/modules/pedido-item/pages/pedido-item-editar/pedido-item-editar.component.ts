@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { Subscription, filter, finalize } from 'rxjs';
+import { filter, finalize } from 'rxjs';
 import { applyServerErrors } from 'src/app/core/rxjs/applyServerErrors';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { PedidosService } from 'src/app/pedidos/pedidos.service';
@@ -40,11 +40,11 @@ export class PedidoItemEditarComponent implements OnInit {
       return;
     }
 
-    this.itemStore.setLoading(true);
-
     const pedidoId = +this.activatedRoute.snapshot.params['id'];
     const itemSeq = +this.activatedRoute.snapshot.params['seq'];
     const complemento = this.form.get('complemento')!.value;
+
+    this.itemStore.setLoading(true, 'Salvando');
 
     this.service
       .complemento(pedidoId, itemSeq, complemento)

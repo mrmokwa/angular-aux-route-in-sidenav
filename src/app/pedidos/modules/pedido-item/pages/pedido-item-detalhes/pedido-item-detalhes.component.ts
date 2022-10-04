@@ -22,7 +22,7 @@ export class PedidoItemDetalhesComponent implements OnInit {
     setTimeout(() =>
       this.item$
         .pipe(untilDestroyed(this))
-        .subscribe((item) => this.itemStore.setLoading(!item))
+        .subscribe((item) => this.itemStore.setLoading(!item, 'Carregando'))
     );
   }
 }

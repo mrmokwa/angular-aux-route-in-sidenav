@@ -1,6 +1,12 @@
-<ng-container *ngIf="{ loading: loading$ | async } as vm">
+<ng-container
+  *ngIf="{ loading: loading$ | async, message: message$ | async } as vm"
+>
   <div *ngIf="vm.loading" class="flex-container center-itens">
     <mat-spinner></mat-spinner>
+
+    <h3 *ngIf="vm.message" class="message">
+      {{ vm.message }}
+    </h3>
   </div>
 
   <div
