@@ -24,7 +24,7 @@ export class PedidoItemExcluirComponent {
   item$ = this.itemStore.item$;
 
   excluir() {
-    this.itemStore.setLoading(true, 'Excluindo item');
+    this.itemStore.setLoading(true, 'Removendo item');
 
     const id = +this.activatedRoute.snapshot.params['id'];
     const seq = +this.activatedRoute.snapshot.params['seq'];
