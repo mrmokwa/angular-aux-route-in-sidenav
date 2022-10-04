@@ -44,7 +44,7 @@ export class PedidoItemEditarComponent implements OnInit {
     const itemSeq = +this.activatedRoute.snapshot.params['seq'];
     const complemento = this.form.get('complemento')!.value;
 
-    this.itemStore.setLoading(true, 'Salvando');
+    this.itemStore.setLoading(true, 'Atualizando item');
 
     this.service
       .complemento(pedidoId, itemSeq, complemento)
