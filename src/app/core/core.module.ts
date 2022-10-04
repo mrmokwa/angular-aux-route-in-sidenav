@@ -31,7 +31,10 @@ export const LOCALE_SETTIGNS = [
 export const MAT_SNACKBAR_CUSTOM_SETTINGS = [
   {
     provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
-    useValue: { duration: 5000 } as MatSnackBarConfig,
+    useValue: {
+      duration: 5000,
+      horizontalPosition: 'start',
+    } as MatSnackBarConfig,
   },
 ];
 
