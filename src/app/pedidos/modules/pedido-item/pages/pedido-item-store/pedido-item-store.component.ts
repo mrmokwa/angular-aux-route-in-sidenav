@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription, map, combineLatest, filter } from 'rxjs';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { map, combineLatest, filter } from 'rxjs';
 import { PedidoStoreService } from 'src/app/pedidos/pages/pedido-store/pedido-store.service';
 import { PedidoItemService } from '../../pedido-item.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-pedido-item-store',
   templateUrl: './pedido-item-store.component.html',
@@ -11,8 +13,6 @@ import { PedidoItemService } from '../../pedido-item.service';
   host: { class: 'flex-container' },
 })
 export class PedidoItemStoreComponent implements OnInit, OnDestroy {
-  subscription = new Subscription();
-
   constructor(
     private route: ActivatedRoute,
     private itemStore: PedidoItemService,
@@ -20,15 +20,13 @@ export class PedidoItemStoreComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    const subs = this.getItemDaRota().subscribe((data) =>
-      this.itemStore.setStore(data)
-    );
-    this.subscription.add(subs);
+    this.getItemDaRota()
+      .pipe(untilDestroyed(this))
+      .subscribe((data) => this.itemStore.setStore(data));
   }
 
   ngOnDestroy() {
     this.itemStore.setStore(null);
-    this.subscription.unsubscribe();
   }
 
   getItemDaRota() {

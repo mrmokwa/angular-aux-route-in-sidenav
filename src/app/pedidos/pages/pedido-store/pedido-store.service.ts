@@ -1,45 +1,34 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { finalize, ReplaySubject, Subscription, switchMap, take } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { finalize, ReplaySubject, switchMap, take, tap } from 'rxjs';
 import { GlobalLoaderService } from 'src/app/core/services/global-loader.service';
 import { PedidoItemService } from '../../modules/pedido-item/pedido-item.service';
 import { PedidosService } from '../../pedidos.service';
 
+@UntilDestroy()
 @Injectable({ providedIn: 'root' })
-export class PedidoStoreService implements OnDestroy {
+export class PedidoStoreService {
   private pedidoSource = new ReplaySubject<PedidoDetalhado>(1);
   readonly pedido$ = this.pedidoSource.asObservable();
   setPedido = (data: PedidoDetalhado) => this.pedidoSource.next(data);
 
-  subscription = new Subscription();
+  private reload$ = this.itemStore.reloadPedido$.pipe(
+    switchMap(() => this.pedido$.pipe(take(1))),
+    tap(() => this.loadingService.setState(true)),
+    switchMap((pedido) =>
+      this.apiService
+        .getById(pedido.id)
+        .pipe(finalize(() => this.loadingService.setState(false)))
+    )
+  );
 
   constructor(
     private itemStore: PedidoItemService,
     private apiService: PedidosService,
     private loadingService: GlobalLoaderService
   ) {
-    this.initialize();
-  }
-
-  private initialize() {
-    const reload$ = this.itemStore.reloadPedido$.pipe(
-      switchMap(() => this.pedido$.pipe(take(1))),
-      switchMap((pedido) => this.reloadPedido(pedido.id))
-    );
-
-    this.subscription.add(
-      reload$.subscribe((pedido) => this.setPedido(pedido))
-    );
-  }
-
-  private reloadPedido(id: number) {
-    this.loadingService.setState(true);
-
-    return this.apiService
-      .getById(id)
-      .pipe(finalize(() => this.loadingService.setState(false)));
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.reload$
+      .pipe(untilDestroyed(this))
+      .subscribe((pedido) => this.setPedido(pedido));
   }
 }

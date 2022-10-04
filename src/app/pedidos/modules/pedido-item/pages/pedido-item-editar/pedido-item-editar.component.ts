@@ -1,20 +1,22 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Subscription, filter, finalize } from 'rxjs';
 import { applyServerErrors } from 'src/app/core/rxjs/applyServerErrors';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { PedidosService } from 'src/app/pedidos/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-pedido-item-editar',
   templateUrl: './pedido-item-editar.component.html',
   styleUrls: ['./pedido-item-editar.component.scss'],
   host: { class: 'flex-container' },
 })
-export class PedidoItemEditarComponent implements OnInit, OnDestroy {
+export class PedidoItemEditarComponent implements OnInit {
   constructor(
     private itemStore: PedidoItemService,
     private notification: NotificationService,
@@ -26,15 +28,11 @@ export class PedidoItemEditarComponent implements OnInit, OnDestroy {
 
   item$ = this.itemStore.item$.pipe(filter(Boolean));
   form = this.fb.group({ complemento: '' });
-  subscriptions = new Subscription();
 
   ngOnInit(): void {
-    const subs = this.item$.subscribe((item) => this.form.patchValue(item));
-    this.subscriptions.add(subs);
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+    this.item$
+      .pipe(untilDestroyed(this))
+      .subscribe((item) => this.form.patchValue(item));
   }
 
   submit() {
