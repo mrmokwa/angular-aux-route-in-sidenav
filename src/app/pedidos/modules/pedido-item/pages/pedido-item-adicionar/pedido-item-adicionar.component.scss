@@ -18,8 +18,9 @@
 }
 
 #quantidade,
-#unitario {
-  max-width: calc(50% - 0.5em);
+#unitario,
+#configId {
+  width: calc(50% - 0.5em);
 }
 
 dl {

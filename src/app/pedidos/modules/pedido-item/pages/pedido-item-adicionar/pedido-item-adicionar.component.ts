@@ -18,6 +18,7 @@ import { PedidoItemService } from '../../pedido-item.service';
 export class PedidoItemAdicionarComponent {
   form = this.fb.group({
     itemId: this.fb.control('', [Validators.required]),
+    configId: this.fb.control(''),
     quantidade: this.fb.control(0, [
       Validators.required,
       Validators.min(Number.MIN_VALUE),
@@ -47,7 +48,7 @@ export class PedidoItemAdicionarComponent {
     this.store.setLoading(true, 'Incluindo novo item');
 
     this.apiService
-      .adicionarItem(this.id, this.form.value)
+      .adicionarItem(this.id, this.form.getRawValue())
       .pipe(
         applyServerErrors(this.form),
         finalize(() => this.store.setLoading(false))

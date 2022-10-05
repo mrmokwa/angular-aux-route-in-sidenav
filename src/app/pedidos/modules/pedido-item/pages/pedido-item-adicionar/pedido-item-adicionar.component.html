@@ -24,6 +24,11 @@
     [control]="form.get('itemId') | formControl"
   ></app-pedido-item-form-control>
 
+  <app-item-config-form-control
+    id="configId"
+    [formControl]="form.get('configId') | formControl"
+  ></app-item-config-form-control>
+
   <div class="linha">
     <mat-form-field id="unitario">
       <mat-label>Unitário</mat-label>
