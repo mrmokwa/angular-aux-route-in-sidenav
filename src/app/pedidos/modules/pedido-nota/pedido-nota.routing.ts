@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PedidoNotaDetalhesComponent } from './pedido-nota-detalhes/pedido-nota-detalhes.component';
+import { PedidoNotaDetalhesComponent } from './components/pedido-nota-detalhes/pedido-nota-detalhes.component';
 
 const routes: Routes = [
   {

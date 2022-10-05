@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { BehaviorSubject, debounceTime, map, switchMap } from 'rxjs';
-import { ItemService } from '../item/item.service';
+import { ItemService } from './item.service';
 
 @Pipe({
   name: 'item$',
