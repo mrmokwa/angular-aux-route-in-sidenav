@@ -1,5 +1,5 @@
 interface Configuracao {
-  itemId: string;
+  configId: string;
   mascara: string;
   campos: ConfigCampos;
   questionario: ConfigQuest[];

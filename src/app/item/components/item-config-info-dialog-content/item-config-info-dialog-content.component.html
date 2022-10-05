@@ -1,0 +1,17 @@
+<dl>
+  <ng-container *ngFor="let c of config.campos | keyvalue">
+    <dt mat-line>{{ c.key | titlecase }}</dt>
+    <dd mat-line>{{ c.value }}</dd>
+  </ng-container>
+</dl>
+
+<mat-divider></mat-divider>
+
+<dl>
+  <ng-container *ngFor="let q of config.questionario">
+    <ng-container *ngIf="q.resposta">
+      <dt>{{ q.pergunta.descricao | titlecase }}</dt>
+      <dd>{{ q.resposta }}</dd>
+    </ng-container>
+  </ng-container>
+</dl>

@@ -3,9 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ItemConfigFormControlComponent } from './components/item-config-form-control/item-config-form-control.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ItemConfigInfoDialogComponent } from './components/item-config-info-dialog/item-config-info-dialog.component';
+import { ItemConfigInfoDialogContentComponent } from './components/item-config-info-dialog-content/item-config-info-dialog-content.component';
 
 @NgModule({
-  declarations: [ItemConfigFormControlComponent],
+  declarations: [
+    ItemConfigFormControlComponent,
+    ItemConfigInfoDialogComponent,
+    ItemConfigInfoDialogContentComponent,
+  ],
   exports: [ItemConfigFormControlComponent],
   imports: [CommonModule, SharedModule, ReactiveFormsModule],
 })

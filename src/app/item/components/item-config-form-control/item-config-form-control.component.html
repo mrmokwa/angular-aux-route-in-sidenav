@@ -2,11 +2,31 @@
   <mat-label>Configuração</mat-label>
   <input matInput name="configId" [formControl]="configControl" />
 
-  <button mat-icon-button matSuffix (click)="viewInfo()">
+  <mat-error *ngIf="configControl.hasError('required')">
+    Obrigatório
+  </mat-error>
+
+  <mat-error *ngIf="configControl.hasError('server')">
+    {{ configControl.getError("server") }}
+  </mat-error>
+
+  <button
+    mat-icon-button
+    matSuffix
+    type="button"
+    [disabled]="!configControl.value || configControl.disabled"
+    (click)="viewInfo()"
+  >
     <mat-icon>info_outline</mat-icon>
   </button>
 
-  <button mat-icon-button matSuffix (click)="viewInfo()">
+  <button
+    mat-icon-button
+    matSuffix
+    type="button"
+    [disabled]="configControl.disabled"
+    (click)="viewInfo()"
+  >
     <mat-icon>search</mat-icon>
   </button>
 </mat-form-field>
