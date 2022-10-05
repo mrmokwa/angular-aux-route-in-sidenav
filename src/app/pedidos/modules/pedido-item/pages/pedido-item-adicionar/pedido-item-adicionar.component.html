@@ -25,8 +25,8 @@
   ></app-pedido-item-form-control>
 
   <app-item-config-form-control
-    id="configId"
-    [formControl]="form.get('configId') | formControl"
+    [configControl]="form.get('configId') | formControl"
+    [itemControl]="form.get('itemId') | formControl"
   ></app-item-config-form-control>
 
   <div class="linha">

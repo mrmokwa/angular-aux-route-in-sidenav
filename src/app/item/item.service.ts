@@ -10,4 +10,16 @@ export class ItemService {
   get(codigo: string) {
     return this.httpClient.get<Item>(`/api/itens/${codigo}`);
   }
+
+  getAllConfigs(itemId: string) {
+    return this.httpClient.get<ApiResponse<Configuracao>>(
+      `/api/itens/${itemId}/config`
+    );
+  }
+
+  getConfig(itemId: string, configId: number) {
+    return this.httpClient.get<Configuracao>(
+      `/api/itens/${itemId}/config/${configId}`
+    );
+  }
 }
