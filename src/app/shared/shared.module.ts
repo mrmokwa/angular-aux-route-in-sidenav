@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '../lib/material/material.module';
 import { DrawerAutoModeDirective } from './directives/drawer-auto-mode.directive';
 import { FormControlPipe } from './pipes/form-control.pipe';
 import { DismissNotifOnSubmitDirective } from './directives/dismiss-notif-on-submit.directive';
