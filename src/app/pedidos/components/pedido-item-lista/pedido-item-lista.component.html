@@ -5,7 +5,7 @@
     *ngFor="let item of itens"
     [routerLink]="[{ outlets: { detalhes: ['item', item.sequencia] } }]"
   >
-    <span mat-line>{{ item.sequencia }} - {{ item | itemConfig }}</span>
+    <span mat-line>{{ item.sequencia }} - {{ item | itemConfigId }}</span>
     <span mat-line>{{ item.descricao }}</span>
     <span [ngClass]="item.situacao | pedItemSituacaoClass">
       {{ item.situacao | pedItemSituacao }}

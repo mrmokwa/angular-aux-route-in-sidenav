@@ -3,21 +3,10 @@ import { BehaviorSubject, debounceTime, switchMap, of, map } from 'rxjs';
 import { ItemService } from '../item.service';
 
 @Pipe({
+  name: 'itemConfig$',
   standalone: true,
-  name: 'itemConfig',
 })
 export class ItemConfigPipe implements PipeTransform {
-  transform(obj: { itemId: string; configId: string }): string {
-    const { itemId, configId } = obj;
-    return itemId + (configId ? ` [${configId}]` : '');
-  }
-}
-
-@Pipe({
-  standalone: true,
-  name: 'itemConfig$',
-})
-export class ItemConfigObsPipe implements PipeTransform {
   private changesSource = new BehaviorSubject<[string, number | undefined]>([
     '',
     undefined,
