@@ -11,9 +11,9 @@ export class ItemService {
     return this.httpClient.get<Item>(`/api/itens/${codigo}`);
   }
 
-  getAllConfigs(itemId: string) {
+  getAllConfigs(itemId: string, pesquisa: string | undefined = undefined) {
     return this.httpClient.get<ApiResponse<Configuracao>>(
-      `/api/itens/${itemId}/config`
+      `/api/itens/${itemId}/config` + (pesquisa ? `?pesquisa=${pesquisa}` : '')
     );
   }
 

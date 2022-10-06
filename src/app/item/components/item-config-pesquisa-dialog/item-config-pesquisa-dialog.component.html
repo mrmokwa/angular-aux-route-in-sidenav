@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Pesquisar Configuração</h1>
+
+<mat-form-field>
+  <mat-label>Pesquisa</mat-label>
+  <input matInput [formControl]="pesquisa" />
+</mat-form-field>
+
+<div mat-dialog-content>
+  <ng-container *ngIf="config$ | async as config; else loading">
+    <mat-nav-list dense>
+      <mat-list-item *ngFor="let c of config" [mat-dialog-close]="c.configId">
+        <p mat-line>{{ c.configId }} - {{ c.mascara }}</p>
+      </mat-list-item>
+    </mat-nav-list>
+  </ng-container>
+
+  <ng-template #loading>
+    <div class="loading-container center-itens">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-button cdkFocusInitial mat-dialog-close>Fechar</button>
+</div>

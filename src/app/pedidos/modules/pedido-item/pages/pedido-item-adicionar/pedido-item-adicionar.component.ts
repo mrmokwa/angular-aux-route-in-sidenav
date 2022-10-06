@@ -17,7 +17,7 @@ import { PedidoItemService } from '../../pedido-item.service';
 })
 export class PedidoItemAdicionarComponent {
   form = this.fb.group({
-    itemId: this.fb.control('', [Validators.required]),
+    itemId: this.fb.control('EXL-516C', [Validators.required]),
     configId: this.fb.control(''),
     quantidade: this.fb.control(0, [
       Validators.required,
