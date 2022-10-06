@@ -15,7 +15,7 @@ import { PedidoItemEditarComponent } from './pages/pedido-item-editar/pedido-ite
 import { PedidoItemAdicionarComponent } from './pages/pedido-item-adicionar/pedido-item-adicionar.component';
 import { PedidoItemStoreComponent } from './pages/pedido-item-store/pedido-item-store.component';
 import { PedidoItemFormControlComponent } from './components/pedido-item-form-control/pedido-item-form-control.component';
-import { ItemPipes } from 'src/app/item/pipes/item.pipe';
+import { ItemPipes } from 'src/app/item/pipes';
 import { ItemModule } from 'src/app/item/item.module';
 
 @NgModule({

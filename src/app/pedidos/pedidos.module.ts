@@ -13,7 +13,7 @@ import { PedidoNotaModule } from './modules/pedido-nota/pedido-nota.module';
 import { PedidoToolbarComponent } from './components/pedido-toolbar/pedido-toolbar.component';
 import { PedidoNotaListaComponent } from './components/pedido-nota-lista/pedido-nota-lista.component';
 import { NotaFiscalSituacaoPipes } from './modules/pedido-nota/pipes/nota-fiscal.pipe';
-import { ItemPipes } from '../item/pipes/item.pipe';
+import { ItemPipes } from '../item/pipes';
 
 @NgModule({
   declarations: [
