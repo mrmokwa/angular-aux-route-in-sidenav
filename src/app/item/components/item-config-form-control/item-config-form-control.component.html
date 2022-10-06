@@ -1,6 +1,6 @@
 <mat-form-field>
   <mat-label>Configuração</mat-label>
-  <input matInput name="configId" [formControl]="configControl" />
+  <input matInput name="configId" type="number" [formControl]="configControl" />
 
   <mat-hint>
     {{ itemControl.value | itemConfig$: configControl.value | async }}
