@@ -18,6 +18,10 @@ import {
   MatProgressSpinnerDefaultOptions,
   MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS,
 } from '@angular/material/progress-spinner';
+import {
+  MatProgressBarDefaultOptions,
+  MAT_PROGRESS_BAR_DEFAULT_OPTIONS,
+} from '@angular/material/progress-bar';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -32,7 +36,7 @@ export const LOCALE_SETTIGNS = [
   },
 ];
 
-export const MAT_SNACKBAR_CUSTOM_SETTINGS = [
+export const CST_SNACK_BAR_DEFAULT_OPTIONS = [
   {
     provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
     useValue: {
@@ -42,17 +46,27 @@ export const MAT_SNACKBAR_CUSTOM_SETTINGS = [
   },
 ];
 
-export const MAT_FORM_FIELD_CUSTOM_SETTIGNS = [
+export const CST_FORM_FIELD_DEFAULT_OPTIONS = [
   {
     provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
     useValue: { appearance: 'fill' } as MatFormFieldDefaultOptions,
   },
 ];
 
-export const MAT_SPINNER_CUSTOM_SETTINGS = [
+export const CST_PROGRESS_SPINNER_DEFAULT_OPTIONS = [
   {
     provide: MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS,
     useValue: { diameter: 84 } as MatProgressSpinnerDefaultOptions,
+  },
+];
+
+export const CST_PROGRESS_BAR_DEFAULT_OPTIONS = [
+  {
+    provide: MAT_PROGRESS_BAR_DEFAULT_OPTIONS,
+    useValue: {
+      color: 'accent',
+      mode: 'indeterminate',
+    } as MatProgressBarDefaultOptions,
   },
 ];
 
@@ -64,9 +78,10 @@ export const MAT_SPINNER_CUSTOM_SETTINGS = [
     AUTH_TOKEN_INTERCEPTOR,
     API_SERVICE_INTERCEPTOR,
     LOCALE_SETTIGNS,
-    MAT_SNACKBAR_CUSTOM_SETTINGS,
-    MAT_FORM_FIELD_CUSTOM_SETTIGNS,
-    MAT_SPINNER_CUSTOM_SETTINGS,
+    CST_SNACK_BAR_DEFAULT_OPTIONS,
+    CST_FORM_FIELD_DEFAULT_OPTIONS,
+    CST_PROGRESS_SPINNER_DEFAULT_OPTIONS,
+    CST_PROGRESS_BAR_DEFAULT_OPTIONS,
   ],
 })
 export class CoreModule {}
