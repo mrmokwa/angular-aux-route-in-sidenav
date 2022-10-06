@@ -86,7 +86,11 @@ export class ItemConfigFormControlComponent implements OnInit {
     };
 
     this.dialog
-      .open(ItemConfigPesquisaDialogComponent, { data })
+      .open(ItemConfigPesquisaDialogComponent, {
+        data,
+        width: '400px',
+        height: '500px',
+      })
       .afterClosed()
       .pipe(filter(Boolean))
       .subscribe((retorno: string) => this.configControl.setValue(retorno));
