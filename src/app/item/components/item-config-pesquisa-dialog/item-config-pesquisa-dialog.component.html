@@ -9,7 +9,7 @@
 
 <div mat-dialog-content>
   <ng-container *ngIf="config$ | async as config">
-    <mat-nav-list *ngIf="!loading" dense>
+    <mat-nav-list *ngIf="!loading" dense mat-dialog-content>
       <mat-list-item *ngFor="let c of config" [mat-dialog-close]="c.configId">
         <p mat-line>{{ c.configId }} - {{ c.mascara | mascara }}</p>
       </mat-list-item>
