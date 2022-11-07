@@ -1,7 +1,7 @@
-<app-main-toolbar></app-main-toolbar>
+<app-main-toolbar (buttonClick)="sidenav.toggle()"></app-main-toolbar>
 
 <mat-sidenav-container class="flex-container">
-  <mat-sidenav [opened]="'true'" [mode]="'side'">
+  <mat-sidenav #sidenav [opened]="'true'" [mode]="'side'" appDrawerAutoMode>
     <app-main-sidenav></app-main-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-main-toolbar',
   templateUrl: './main-toolbar.component.html',
-  styleUrls: ['./main-toolbar.component.scss']
+  styleUrls: ['./main-toolbar.component.scss'],
 })
 export class MainToolbarComponent implements OnInit {
+  @Output() buttonClick = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onClick() {
+    this.buttonClick.emit();
   }
-
 }
