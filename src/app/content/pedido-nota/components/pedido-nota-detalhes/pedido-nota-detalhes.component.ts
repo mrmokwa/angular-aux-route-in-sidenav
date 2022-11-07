@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, map } from 'rxjs';
-import { PedidoStoreService } from 'src/app/pedidos/pages/pedido-store/pedido-store.service';
+import { PedidoStoreService } from 'src/app/content/pedido/pages/pedido-store/pedido-store.service';
 
 @Component({
   selector: 'app-pedido-nota-detalhes',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
-import { finalize } from 'rxjs';
+import { catchError, EMPTY, finalize } from 'rxjs';
 import { GlobalLoaderService } from 'src/app/core/services/global-loader.service';
 import { PedidosService } from '../../pedidos.service';
 
@@ -16,8 +16,9 @@ export class PedidoStoreResolver implements Resolve<PedidoDetalhado> {
   resolve(route: ActivatedRouteSnapshot) {
     this.loadingService.setState(true);
 
-    return this.apiService
-      .getById(+route.params['id'])
-      .pipe(finalize(() => this.loadingService.setState(false)));
+    return this.apiService.getById(+route.params['id']).pipe(
+      finalize(() => this.loadingService.setState(false)),
+      catchError((e) => EMPTY)
+    );
   }
 }

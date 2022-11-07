@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PedidoContainerComponent } from './pages/pedido-container/pedido-container.component';
-import { PedidoItemModule } from './modules/pedido-item/pedido-item.module';
+import { PedidoItemModule } from '../pedido-item/pedido-item.module';
+import { PedidoNotaModule } from '../pedido-nota/pedido-nota.module';
 import { PedidoStoreComponent } from './pages/pedido-store/pedido-store.component';
 import { PedidoStoreResolver } from './pages/pedido-store/pedido-store.resolver';
-import { PedidoNotaModule } from './modules/pedido-nota/pedido-nota.module';
 
 const routes: Routes = [
   {

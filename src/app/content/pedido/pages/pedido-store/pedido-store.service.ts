@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { finalize, ReplaySubject, switchMap, take, tap } from 'rxjs';
+import { PedidoItemService } from 'src/app/content/pedido-item/pedido-item.service';
 import { GlobalLoaderService } from 'src/app/core/services/global-loader.service';
-import { PedidoItemService } from '../../modules/pedido-item/pedido-item.service';
 import { PedidosService } from '../../pedidos.service';
 
 @UntilDestroy()

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { NotificationService } from 'src/app/core/services/notification.service';
-import { PedidosService } from 'src/app/pedidos/pedidos.service';
+import { PedidosService } from 'src/app/content/pedido/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
 
 @Component({

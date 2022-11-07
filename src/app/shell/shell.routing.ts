@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PedidosModule } from '../pedidos/pedidos.module';
+import { PedidosModule } from '../content/pedido/pedidos.module';
 import { ShellContainerComponent } from './shell-container/shell-container.component';
 
 const routes: Routes = [

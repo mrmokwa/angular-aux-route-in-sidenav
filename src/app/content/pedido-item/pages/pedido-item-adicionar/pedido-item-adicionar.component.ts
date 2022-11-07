@@ -5,8 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { finalize, map } from 'rxjs';
 import { applyServerErrors } from 'src/app/core/rxjs/applyServerErrors';
 import { NotificationService } from 'src/app/core/services/notification.service';
-import { PedidoStoreService } from 'src/app/pedidos/pages/pedido-store/pedido-store.service';
-import { PedidosService } from 'src/app/pedidos/pedidos.service';
+import { PedidoStoreService } from 'src/app/content/pedido/pages/pedido-store/pedido-store.service';
+import { PedidosService } from 'src/app/content/pedido/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
 
 @Component({
