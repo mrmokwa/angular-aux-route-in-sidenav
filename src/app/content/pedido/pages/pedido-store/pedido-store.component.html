@@ -1,46 +1,81 @@
-<mat-card *ngIf="pedido$ | async as pedido">
-  <mat-card-header>
-    <mat-card-title>{{ pedido.divisao }}-{{ pedido.pedido }}</mat-card-title>
-    <mat-card-subtitle>Pedido de Venda</mat-card-subtitle>
-  </mat-card-header>
+<ng-container *ngIf="pedido$ | async as pedido">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ pedido.pedido }}</mat-card-title>
+      <mat-card-subtitle>Pedido de Venda</mat-card-subtitle>
+    </mat-card-header>
 
-  <mat-card-content>
-    <app-pedido-item-lista [itens]="pedido.itens"></app-pedido-item-lista>
-    <app-pedido-nota-lista [notas]="pedido.notas"></app-pedido-nota-lista>
-  </mat-card-content>
+    <mat-card-content>
+      <app-pedido-lista [pedido]="pedido"></app-pedido-lista>
+    </mat-card-content>
 
-  <mat-card-actions *ngIf="pedido.estado === 'A'">
-    <button
-      mat-button
-      color="primary"
-      [routerLink]="[{ outlets: { detalhes: ['item', 'novo'] } }]"
-    >
-      ADICIONAR ITEM
-    </button>
-  </mat-card-actions>
-</mat-card>
+    <mat-card-actions>
+      <button mat-button color="primary">MAIS INFORMAÇÔES</button>
+    </mat-card-actions>
+  </mat-card>
 
-<br />
+  <br />
 
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Tipo de Pedido</mat-card-title>
-    <mat-card-subtitle>
-      Navegar entre diferentes tipos de pedidos
-    </mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-actions>
-    <button mat-button color="primary" routerLink="/pedidos/555774">
-      ABERTO
-    </button>
-    <button mat-button color="primary" routerLink="/pedidos/555758">
-      PENDENTE
-    </button>
-    <button mat-button color="primary" routerLink="/pedidos/555042">
-      ATENDIDO
-    </button>
-    <button mat-button color="primary" routerLink="/pedidos/553786">
-      CANCELADO
-    </button>
-  </mat-card-actions>
-</mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Itens do Pedido</mat-card-title>
+      <mat-card-subtitle>
+        {{ pedido.itens.length }} registro(s)
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <app-pedido-item-lista [itens]="pedido.itens"></app-pedido-item-lista>
+    </mat-card-content>
+
+    <mat-card-actions *ngIf="pedido.estado === 'A'">
+      <button
+        mat-button
+        color="primary"
+        [routerLink]="[{ outlets: { detalhes: ['item', 'novo'] } }]"
+      >
+        ADICIONAR
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <br />
+
+  <mat-card *ngIf="pedido.notas.length">
+    <mat-card-header>
+      <mat-card-title>Notas Fiscais</mat-card-title>
+      <mat-card-subtitle>
+        {{ pedido.notas.length }} registro(s)
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <app-pedido-nota-lista [notas]="pedido.notas"></app-pedido-nota-lista>
+    </mat-card-content>
+  </mat-card>
+
+  <br />
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Tipo de Pedido</mat-card-title>
+      <mat-card-subtitle>
+        Navegar entre diferentes tipos de pedidos
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-button color="primary" routerLink="/pedidos/555774">
+        ABERTO
+      </button>
+      <button mat-button color="primary" routerLink="/pedidos/555758">
+        PENDENTE
+      </button>
+      <button mat-button color="primary" routerLink="/pedidos/555042">
+        ATENDIDO
+      </button>
+      <button mat-button color="primary" routerLink="/pedidos/553786">
+        CANCELADO
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>

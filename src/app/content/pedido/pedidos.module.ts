@@ -14,6 +14,8 @@ import { PedItemSituacaoPipes } from '../pedido-item/pipes/pedido-item.pipe';
 import { PedidoNotaModule } from '../pedido-nota/pedido-nota.module';
 import { NotaFiscalSituacaoPipes } from '../pedido-nota/pipes/nota-fiscal.pipe';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { PedidoListaComponent } from './components/pedido-lista/pedido-lista.component';
+import { PedidoSituacaoPipes } from './pipes';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     PedidoDrawerComponent,
     PedidoToolbarComponent,
     PedidoNotaListaComponent,
+    PedidoListaComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +34,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ItemPipes,
     PedItemSituacaoPipes,
     NotaFiscalSituacaoPipes,
+    PedidoSituacaoPipes,
     PedidoItemModule,
     PedidoNotaModule,
   ],

@@ -1,6 +1,4 @@
 <mat-nav-list *ngIf="itens?.length">
-  <h3 mat-subheader>Itens</h3>
-
   <mat-list-item
     [ngClass]="item.situacao | pedItemSituacaoClass"
     *ngFor="let item of itens"
