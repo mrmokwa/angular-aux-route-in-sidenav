@@ -1,23 +1,31 @@
-<mat-nav-list class="grid">
+<mat-nav-list>
   <mat-list-item>
-    <p mat-line>
-      {{ pedido.clienteNome }}
-    </p>
-    <p mat-line>Cliente</p>
     <mat-icon mat-list-icon>face_unlock</mat-icon>
+    <p mat-line>{{ pedido.clienteNome }}</p>
+    <p mat-line>Cliente</p>
   </mat-list-item>
 
   <mat-list-item>
+    <mat-icon mat-list-icon>
+      {{ pedido.situacao | pedidoSituacaoIcon }}
+    </mat-icon>
     <p mat-line [ngClass]="pedido.situacao | pedidoSituacaoClass">
       {{ pedido.situacao | pedidoSituacao }}
     </p>
     <p mat-line>Situação</p>
-    <mat-icon mat-list-icon>radar</mat-icon>
   </mat-list-item>
 
   <mat-list-item>
     <p mat-line>{{ pedido.entrada | date: "shortDate" }}</p>
     <p mat-line>Entrada</p>
     <mat-icon mat-list-icon>calendar_today</mat-icon>
+  </mat-list-item>
+
+  <mat-list-item
+    [routerLink]="[{ outlets: { detalhes: ['totais-do-pedido'] } }]"
+  >
+    <mat-icon mat-list-icon>attach_money</mat-icon>
+    <p mat-line>{{ pedido.totalPedido | currency }}</p>
+    <p mat-line>Total</p>
   </mat-list-item>
 </mat-nav-list>

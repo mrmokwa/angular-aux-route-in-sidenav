@@ -1,0 +1,43 @@
+<h2>Totais do Pedido</h2>
+
+<ng-container *ngIf="pedido$ | async as pedido">
+  <span *ngIf="pedido.estado === 'A'; else valores">
+    Pedido deve estar fechado para exibir o sumarizado dos totais.
+  </span>
+
+  <ng-template #valores>
+    <dl>
+      <dt>Produtos</dt>
+      <dd>{{ pedido.totalProdutos | currency }}</dd>
+
+      <dt>IPI</dt>
+      <dd>{{ pedido.totalIpi | currency }}</dd>
+
+      <dt>ICMS-ST</dt>
+      <dd>{{ pedido.totalIcmsST | currency }}</dd>
+
+      <dt>Frete</dt>
+      <dd>{{ pedido.totalFrete | currency }}</dd>
+
+      <dt>Seguro</dt>
+      <dd>{{ pedido.totalSeguro | currency }}</dd>
+
+      <dt>Acréscimos</dt>
+      <dd>{{ pedido.totalAcrescimos | currency }}</dd>
+    </dl>
+
+    <mat-divider></mat-divider>
+
+    <dl>
+      <dt>Descontos</dt>
+      <dd>{{ pedido.totalDescontos | currency }}</dd>
+    </dl>
+
+    <mat-divider></mat-divider>
+
+    <dl class="negrito">
+      <dt>Total</dt>
+      <dd>{{ pedido.totalPedido | currency }}</dd>
+    </dl>
+  </ng-template>
+</ng-container>

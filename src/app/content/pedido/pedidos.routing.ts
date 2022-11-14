@@ -5,6 +5,8 @@ import { PedidoItemModule } from '../pedido-item/pedido-item.module';
 import { PedidoNotaModule } from '../pedido-nota/pedido-nota.module';
 import { PedidoStoreComponent } from './pages/pedido-store/pedido-store.component';
 import { PedidoStoreResolver } from './pages/pedido-store/pedido-store.resolver';
+import { PedidoDetalhesComponent } from './components/pedido-detalhes/pedido-detalhes.component';
+import { PedidoTotaisComponent } from './components/pedido-totais/pedido-totais.component';
 
 const routes: Routes = [
   {
@@ -17,14 +19,24 @@ const routes: Routes = [
         resolve: { pedido: PedidoStoreResolver },
       },
       {
-        path: 'item',
-        loadChildren: () => PedidoItemModule,
         outlet: 'detalhes',
+        path: 'totais-do-pedido',
+        component: PedidoTotaisComponent,
       },
       {
+        outlet: 'detalhes',
+        path: 'completo',
+        component: PedidoDetalhesComponent,
+      },
+      {
+        outlet: 'detalhes',
+        path: 'item',
+        loadChildren: () => PedidoItemModule,
+      },
+      {
+        outlet: 'detalhes',
         path: 'nota/:div/:ser/:nro',
         loadChildren: () => PedidoNotaModule,
-        outlet: 'detalhes',
       },
     ],
   },

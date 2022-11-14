@@ -40,7 +40,27 @@ export class PedidoSituacaoClassPipe implements PipeTransform {
   }
 }
 
+@Pipe({
+  name: 'pedidoSituacaoIcon',
+  standalone: true,
+})
+export class PedidoSituacaoIconPipe implements PipeTransform {
+  transform(situacao: Situacao): string {
+    switch (situacao) {
+      case 'A':
+        return 'done';
+      case 'C':
+        return 'clear';
+      case 'T':
+        return 'sync_alt';
+      default:
+        return 'cached';
+    }
+  }
+}
+
 export const PedidoSituacaoPipes = [
   PedidoSituacaoPipe,
   PedidoSituacaoClassPipe,
+  PedidoSituacaoIconPipe,
 ];
