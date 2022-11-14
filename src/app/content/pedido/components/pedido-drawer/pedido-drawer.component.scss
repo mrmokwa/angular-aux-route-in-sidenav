@@ -1,3 +1,16 @@
-.flex-container {
+.conteudo {
   overflow: auto;
+  padding: 36px;
+}
+
+.center-itens {
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  margin-top: 32px;
+  &::after {
+    content: "...";
+  }
 }
