@@ -1,0 +1,5 @@
+<h2>Cliente</h2>
+
+<ng-container *ngIf="cliente$ | async as cliente">
+  <app-cliente-detalhes [cliente]="cliente"></app-cliente-detalhes>
+</ng-container>

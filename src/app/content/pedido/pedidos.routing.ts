@@ -7,6 +7,7 @@ import { PedidoStoreComponent } from './pages/pedido-store/pedido-store.componen
 import { PedidoStoreResolver } from './pages/pedido-store/pedido-store.resolver';
 import { PedidoDetalhesComponent } from './components/pedido-detalhes/pedido-detalhes.component';
 import { PedidoTotaisComponent } from './components/pedido-totais/pedido-totais.component';
+import { PedidoClienteComponent } from './components/pedido-cliente/pedido-cliente.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,11 @@ const routes: Routes = [
         path: '',
         component: PedidoStoreComponent,
         resolve: { pedido: PedidoStoreResolver },
+      },
+      {
+        outlet: 'detalhes',
+        path: 'cliente',
+        component: PedidoClienteComponent,
       },
       {
         outlet: 'detalhes',

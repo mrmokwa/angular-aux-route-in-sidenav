@@ -1,5 +1,5 @@
 <mat-nav-list>
-  <mat-list-item>
+  <mat-list-item [routerLink]="[{ outlets: { detalhes: ['cliente'] } }]">
     <mat-icon mat-list-icon>face_unlock</mat-icon>
     <p mat-line>{{ pedido.clienteNome }}</p>
     <p mat-line>Cliente</p>
