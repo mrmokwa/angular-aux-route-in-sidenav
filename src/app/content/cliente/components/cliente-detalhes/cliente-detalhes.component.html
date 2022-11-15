@@ -18,7 +18,9 @@
   <dd>{{ cliente.ie }}</dd>
 
   <dt>Situação</dt>
-  <dd>{{ cliente.situacao }}</dd>
+  <dd [ngClass]="cliente.situacao | clienteSituacaoClass">
+    {{ cliente.situacao | clienteSituacao }}
+  </dd>
 </dl>
 
 <ng-container *ngIf="cliente.observacoes">
