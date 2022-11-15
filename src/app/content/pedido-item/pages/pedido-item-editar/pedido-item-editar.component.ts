@@ -19,7 +19,7 @@ import { PedidoDrawerService } from 'src/app/content/pedido/pages/pedido-drawer/
 })
 export class PedidoItemEditarComponent implements OnInit {
   constructor(
-    private itemStore: PedidoItemStoreService,
+    private store: PedidoItemStoreService,
     private drawerService: PedidoDrawerService,
     private notification: NotificationService,
     private router: Router,
@@ -28,7 +28,7 @@ export class PedidoItemEditarComponent implements OnInit {
     private fb: NonNullableFormBuilder
   ) {}
 
-  item$ = this.itemStore.item$.pipe(filter(Boolean));
+  item$ = this.store.item$.pipe(filter(Boolean));
   form = this.fb.group({ complemento: '' });
 
   ngOnInit(): void {
@@ -61,8 +61,8 @@ export class PedidoItemEditarComponent implements OnInit {
   }
 
   private onSuccess() {
-    this.itemStore.setStore(null);
-    this.itemStore.setReloadPedido(true);
+    this.store.setStore(null);
+    this.store.refreshPedido();
     this.notification.success('Item alterado com sucesso');
     this.router.navigate(['..'], { relativeTo: this.activatedRoute });
   }

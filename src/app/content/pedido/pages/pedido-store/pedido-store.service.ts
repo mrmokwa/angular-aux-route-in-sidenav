@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { finalize, ReplaySubject, switchMap, take, tap } from 'rxjs';
-import { PedidoItemStoreService } from 'src/app/content/pedido-item/pages/pedido-item-store/pedido-item-store.service';
+
+import { UntilDestroy } from '@ngneat/until-destroy';
+import { finalize, ReplaySubject, switchMap, take } from 'rxjs';
+
 import { GlobalLoaderService } from 'src/app/core/services/global-loader.service';
 import { PedidosService } from '../../pedidos.service';
 
@@ -12,23 +13,20 @@ export class PedidoStoreService {
   readonly pedido$ = this.pedidoSource.asObservable();
   setPedido = (data: PedidoDetalhado) => this.pedidoSource.next(data);
 
-  private reload$ = this.itemStore.reloadPedido$.pipe(
-    switchMap(() => this.pedido$.pipe(take(1))),
-    tap(() => this.loadingService.setState(true)),
-    switchMap((pedido) =>
-      this.apiService
-        .getById(pedido.id)
-        .pipe(finalize(() => this.loadingService.setState(false)))
-    )
-  );
-
   constructor(
-    private itemStore: PedidoItemStoreService,
     private apiService: PedidosService,
     private loadingService: GlobalLoaderService
-  ) {
-    this.reload$
-      .pipe(untilDestroyed(this))
+  ) {}
+
+  refresh() {
+    this.loadingService.setState(true);
+
+    this.pedido$
+      .pipe(
+        take(1),
+        switchMap(({ id }) => this.apiService.getById(id)),
+        finalize(() => this.loadingService.setState(false))
+      )
       .subscribe((pedido) => this.setPedido(pedido));
   }
 }

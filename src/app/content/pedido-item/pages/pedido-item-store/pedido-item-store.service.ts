@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 
 import { ReplaySubject, Subject } from 'rxjs';
+import { PedidoStoreService } from 'src/app/content/pedido/pages/pedido-store/pedido-store.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PedidoItemStoreService {
-  constructor() {}
+  constructor(private store: PedidoStoreService) {}
 
   private itemSource = new ReplaySubject<PedidoVendaItem | null>(1);
   readonly item$ = this.itemSource.asObservable();
   setStore = (data: PedidoVendaItem | null) => this.itemSource.next(data);
 
-  private relaodPedidoSource = new Subject<boolean>();
-  readonly reloadPedido$ = this.relaodPedidoSource.asObservable();
-  setReloadPedido = (value: boolean) => this.relaodPedidoSource.next(value);
+  refreshPedido = () => this.store.refresh();
+
+  get pedido$() {
+    return this.store.pedido$;
+  }
 }

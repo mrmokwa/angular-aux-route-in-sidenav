@@ -15,7 +15,7 @@ import { PedidoDrawerService } from 'src/app/content/pedido/pages/pedido-drawer/
 })
 export class PedidoItemExcluirComponent {
   constructor(
-    private itemStore: PedidoItemStoreService,
+    private store: PedidoItemStoreService,
     private router: Router,
     private notification: NotificationService,
     private activatedRoute: ActivatedRoute,
@@ -23,7 +23,7 @@ export class PedidoItemExcluirComponent {
     private drawerService: PedidoDrawerService
   ) {}
 
-  item$ = this.itemStore.item$;
+  item$ = this.store.item$;
 
   excluir() {
     this.drawerService.setLoading(true, 'Removendo item');
@@ -42,7 +42,7 @@ export class PedidoItemExcluirComponent {
 
   private onDeleteSuccess(pedidoId: number) {
     this.router.navigate(['/pedidos', pedidoId, { outlets: { detalhes: [] } }]);
-    this.itemStore.setReloadPedido(true);
+    this.store.refreshPedido();
     this.notification.success('Item removido com sucesso');
   }
 }

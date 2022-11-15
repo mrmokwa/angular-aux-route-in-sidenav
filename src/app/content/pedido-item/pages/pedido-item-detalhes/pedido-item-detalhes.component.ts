@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { PedidoDrawerService } from 'src/app/content/pedido/pages/pedido-drawer/pedido-drawer.service';
-import { PedidoStoreService } from 'src/app/content/pedido/pages/pedido-store/pedido-store.service';
 import { PedidoItemStoreService } from '../pedido-item-store/pedido-item-store.service';
 
 @UntilDestroy()
@@ -12,13 +11,12 @@ import { PedidoItemStoreService } from '../pedido-item-store/pedido-item-store.s
 })
 export class PedidoItemDetalhesComponent implements OnInit {
   constructor(
-    private itemStore: PedidoItemStoreService,
-    private pedidoStore: PedidoStoreService,
+    private store: PedidoItemStoreService,
     private drawerService: PedidoDrawerService
   ) {}
 
-  pedido$ = this.pedidoStore.pedido$;
-  item$ = this.itemStore.item$;
+  pedido$ = this.store.pedido$;
+  item$ = this.store.item$;
 
   ngOnInit() {
     setTimeout(() =>
