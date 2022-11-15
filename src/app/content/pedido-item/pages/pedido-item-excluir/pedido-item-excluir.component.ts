@@ -5,6 +5,7 @@ import { finalize } from 'rxjs';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { PedidosService } from 'src/app/content/pedido/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
+import { PedidoDrawerService } from 'src/app/content/pedido/components/pedido-drawer/pedido-drawer.service';
 
 @Component({
   selector: 'app-pedido-item-excluir',
@@ -18,20 +19,21 @@ export class PedidoItemExcluirComponent {
     private router: Router,
     private notification: NotificationService,
     private activatedRoute: ActivatedRoute,
-    private apiService: PedidosService
+    private apiService: PedidosService,
+    private drawerService: PedidoDrawerService
   ) {}
 
   item$ = this.itemStore.item$;
 
   excluir() {
-    this.itemStore.setLoading(true, 'Removendo item');
+    this.drawerService.setLoading(true, 'Removendo item');
 
     const id = +this.activatedRoute.snapshot.params['id'];
     const seq = +this.activatedRoute.snapshot.params['seq'];
 
     this.apiService
       .deleteItem(id, seq)
-      .pipe(finalize(() => this.itemStore.setLoading(false)))
+      .pipe(finalize(() => this.drawerService.setLoading(false)))
       .subscribe({
         next: () => this.onDeleteSuccess(id),
         error: (resp: HttpErrorResponse) => this.notification.error(resp.error),

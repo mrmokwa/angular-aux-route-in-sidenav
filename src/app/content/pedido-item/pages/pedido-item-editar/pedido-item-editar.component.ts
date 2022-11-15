@@ -8,6 +8,7 @@ import { applyServerErrors } from 'src/app/core/rxjs/applyServerErrors';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { PedidosService } from 'src/app/content/pedido/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
+import { PedidoDrawerService } from 'src/app/content/pedido/components/pedido-drawer/pedido-drawer.service';
 
 @UntilDestroy()
 @Component({
@@ -19,6 +20,7 @@ import { PedidoItemService } from '../../pedido-item.service';
 export class PedidoItemEditarComponent implements OnInit {
   constructor(
     private itemStore: PedidoItemService,
+    private drawerService: PedidoDrawerService,
     private notification: NotificationService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -44,13 +46,13 @@ export class PedidoItemEditarComponent implements OnInit {
     const itemSeq = +this.activatedRoute.snapshot.params['seq'];
     const complemento = this.form.get('complemento')!.value;
 
-    this.itemStore.setLoading(true, 'Atualizando item');
+    this.drawerService.setLoading(true, 'Atualizando item');
 
     this.service
       .complemento(pedidoId, itemSeq, complemento)
       .pipe(
         applyServerErrors(this.form),
-        finalize(() => this.itemStore.setLoading(false))
+        finalize(() => this.drawerService.setLoading(false))
       )
       .subscribe({
         next: () => this.onSuccess(),

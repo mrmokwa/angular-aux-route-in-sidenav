@@ -8,6 +8,7 @@ import { NotificationService } from 'src/app/core/services/notification.service'
 import { PedidoStoreService } from 'src/app/content/pedido/pages/pedido-store/pedido-store.service';
 import { PedidosService } from 'src/app/content/pedido/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
+import { PedidoDrawerService } from 'src/app/content/pedido/components/pedido-drawer/pedido-drawer.service';
 
 @Component({
   selector: 'app-pedido-item-adicionar',
@@ -34,6 +35,7 @@ export class PedidoItemAdicionarComponent {
     private apiService: PedidosService,
     private store: PedidoItemService,
     private pedido: PedidoStoreService,
+    private drawerService: PedidoDrawerService,
     private route: ActivatedRoute,
     private notification: NotificationService,
     private router: Router,
@@ -45,13 +47,13 @@ export class PedidoItemAdicionarComponent {
       return;
     }
 
-    this.store.setLoading(true, 'Incluindo novo item');
+    this.drawerService.setLoading(true, 'Incluindo novo item');
 
     this.apiService
       .adicionarItem(this.id, this.form.getRawValue())
       .pipe(
         applyServerErrors(this.form),
-        finalize(() => this.store.setLoading(false))
+        finalize(() => this.drawerService.setLoading(false))
       )
       .subscribe({
         next: (item: PedidoVendaItem) => this.onSuccess(item),

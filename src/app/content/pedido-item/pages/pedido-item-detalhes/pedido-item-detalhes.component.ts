@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { PedidoDrawerService } from 'src/app/content/pedido/components/pedido-drawer/pedido-drawer.service';
 import { PedidoStoreService } from 'src/app/content/pedido/pages/pedido-store/pedido-store.service';
 import { PedidoItemService } from '../../pedido-item.service';
 
@@ -12,7 +13,8 @@ import { PedidoItemService } from '../../pedido-item.service';
 export class PedidoItemDetalhesComponent implements OnInit {
   constructor(
     private itemStore: PedidoItemService,
-    private pedidoStore: PedidoStoreService
+    private pedidoStore: PedidoStoreService,
+    private drawerService: PedidoDrawerService
   ) {}
 
   pedido$ = this.pedidoStore.pedido$;
@@ -22,7 +24,7 @@ export class PedidoItemDetalhesComponent implements OnInit {
     setTimeout(() =>
       this.item$
         .pipe(untilDestroyed(this))
-        .subscribe((item) => this.itemStore.setLoading(!item, 'Carregando'))
+        .subscribe((item) => this.drawerService.setLoading(!item, 'Carregando'))
     );
   }
 }
