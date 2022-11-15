@@ -5,6 +5,7 @@ import { FormControlPipe } from './pipes/form-control.pipe';
 import { DismissNotifOnSubmitDirective } from './directives/dismiss-notif-on-submit.directive';
 import { MoveTopOnNavigationDirective } from './directives/move-top-on-navigation.directive';
 import { CpfCnpjPipe } from './pipes/cpf-cnpj.pipe';
+import { TipoFretePipe } from './pipes/tipo-frete.pipe';
 
 const OBJETOS = [
   DrawerAutoModeDirective,
@@ -12,6 +13,7 @@ const OBJETOS = [
   DismissNotifOnSubmitDirective,
   MoveTopOnNavigationDirective,
   CpfCnpjPipe,
+  TipoFretePipe,
 ];
 
 @NgModule({
