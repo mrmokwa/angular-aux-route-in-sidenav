@@ -16,7 +16,6 @@ import { PedidoStoreComponent } from './pages/pedido-store/pedido-store.componen
 import { PedidoContainerComponent } from './pages/pedido-container/pedido-container.component';
 import { PedidoDrawerComponent } from './pages/pedido-drawer/pedido-drawer.component';
 
-import { PedidoItemListaComponent } from './components/pedido-item-lista/pedido-item-lista.component';
 import { PedidoToolbarComponent } from './components/pedido-toolbar/pedido-toolbar.component';
 import { PedidoNotaListaComponent } from './components/pedido-nota-lista/pedido-nota-lista.component';
 import { PedidoListaComponent } from './components/pedido-lista/pedido-lista.component';
@@ -28,7 +27,6 @@ import { PedidoClienteComponent } from './components/pedido-cliente/pedido-clien
   declarations: [
     PedidoContainerComponent,
     PedidoStoreComponent,
-    PedidoItemListaComponent,
     PedidoDrawerComponent,
     PedidoToolbarComponent,
     PedidoNotaListaComponent,
