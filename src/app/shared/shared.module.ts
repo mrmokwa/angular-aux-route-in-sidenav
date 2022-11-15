@@ -4,12 +4,14 @@ import { DrawerAutoModeDirective } from './directives/drawer-auto-mode.directive
 import { FormControlPipe } from './pipes/form-control.pipe';
 import { DismissNotifOnSubmitDirective } from './directives/dismiss-notif-on-submit.directive';
 import { MoveTopOnNavigationDirective } from './directives/move-top-on-navigation.directive';
+import { CpfCnpjPipe } from './pipes/cpf-cnpj.pipe';
 
 const OBJETOS = [
   DrawerAutoModeDirective,
   FormControlPipe,
   DismissNotifOnSubmitDirective,
   MoveTopOnNavigationDirective,
+  CpfCnpjPipe,
 ];
 
 @NgModule({

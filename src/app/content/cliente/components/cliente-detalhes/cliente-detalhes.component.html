@@ -11,8 +11,10 @@
   <dt>Natureza</dt>
   <dd>{{ cliente.natureza | clienteNatureza }}</dd>
 
-  <dt>CGC</dt>
-  <dd>{{ cliente.cgc }}</dd>
+  <ng-container *ngIf="cliente.natureza !== 'E'">
+    <dt>{{ cliente.natureza === "F" ? "CPF" : "CNPJ" }}</dt>
+    <dd>{{ cliente.cgc | cpfCnpj: cliente.natureza }}</dd>
+  </ng-container>
 
   <dt>IE</dt>
   <dd>{{ cliente.ie }}</dd>
