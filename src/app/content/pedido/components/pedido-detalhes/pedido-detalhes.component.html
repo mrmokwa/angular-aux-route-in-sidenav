@@ -1,3 +1,92 @@
 <ng-container *ngIf="pedido$ | async as pedido">
-  {{ pedido | json }}
+  <h2>Mais Informações</h2>
+
+  <dl>
+    <dt>Divisão</dt>
+    <dd>{{ pedido.divisao }}</dd>
+
+    <dt>Nro. Pedido</dt>
+    <dd>{{ pedido.pedido }}</dd>
+
+    <dt>Tipo NF</dt>
+    <dd>{{ pedido.tipoNFDesc }}</dd>
+  </dl>
+
+  <mat-divider></mat-divider>
+
+  <dl>
+    <dt>Entrada</dt>
+    <dd>{{ pedido.entrada | date: "shortDate" }}</dd>
+
+    <dt>Entrega Prevista</dt>
+    <dd>{{ pedido.entregaPrev | date: "shortDate" }}</dd>
+
+    <dt>Entrega Solicitada</dt>
+    <dd>{{ pedido.entregaSolic | date: "shortDate" }}</dd>
+  </dl>
+
+  <mat-divider></mat-divider>
+
+  <dl>
+    <dt>Cliente</dt>
+    <dd>{{ pedido.clienteNome }}</dd>
+
+    <dt>Pedido Cliente</dt>
+    <dd>{{ pedido.clientePedido }}</dd>
+  </dl>
+
+  <ng-container *ngIf="pedido.observacoes">
+    <mat-divider></mat-divider>
+    <br />
+    <p class="accent">{{ pedido.observacoes }}</p>
+  </ng-container>
+
+  <mat-divider></mat-divider>
+
+  <dl>
+    <dt>Representante</dt>
+    <dd>{{ pedido.represNome }}</dd>
+
+    <dt>Pedido Representante</dt>
+    <dd>{{ pedido.pedido }}</dd>
+  </dl>
+
+  <mat-divider></mat-divider>
+
+  <dl>
+    <dt>Transportadora</dt>
+    <dd>{{ pedido.transpNome }}</dd>
+
+    <dt>Tipo Frete</dt>
+    <dd>{{ pedido.tipoFrete | tipoFrete }}</dd>
+  </dl>
+
+  <mat-divider></mat-divider>
+
+  <dl>
+    <dt>Tabela Preco</dt>
+    <dd>{{ pedido.tabPrecoId }}</dd>
+
+    <dt>Condição Pagamento</dt>
+    <dd>{{ pedido.condPgtoParc }}</dd>
+  </dl>
+
+  <ng-container *ngIf="pedido.compradorNome">
+    <mat-divider></mat-divider>
+
+    <dl>
+      <dt>Comprador</dt>
+      <dd>{{ pedido.compradorNome }}</dd>
+    </dl>
+
+    <dl>
+      <dt>Email</dt>
+      <dd>{{ pedido.compradorEmail }}</dd>
+    </dl>
+
+    <dl>
+      <dt>Telefone</dt>
+      <dd>{{ pedido.compradorFone }}</dd>
+    </dl>
+  </ng-container>
 </ng-container>
