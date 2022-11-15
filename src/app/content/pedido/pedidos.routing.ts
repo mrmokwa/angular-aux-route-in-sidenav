@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PedidoContainerComponent } from './pages/pedido-container/pedido-container.component';
+
 import { PedidoItemModule } from '../pedido-item/pedido-item.module';
 import { PedidoNotaModule } from '../pedido-nota/pedido-nota.module';
+
 import { PedidoStoreComponent } from './pages/pedido-store/pedido-store.component';
 import { PedidoStoreResolver } from './pages/pedido-store/pedido-store.resolver';
+import { PedidoContainerComponent } from './pages/pedido-container/pedido-container.component';
+
 import { PedidoDetalhesComponent } from './components/pedido-detalhes/pedido-detalhes.component';
 import { PedidoTotaisComponent } from './components/pedido-totais/pedido-totais.component';
 import { PedidoClienteComponent } from './components/pedido-cliente/pedido-cliente.component';
+import { PedidoSituacaoComponent } from './components/pedido-situacao/pedido-situacao.component';
 
 const routes: Routes = [
   {
@@ -23,6 +27,11 @@ const routes: Routes = [
         outlet: 'detalhes',
         path: 'cliente',
         component: PedidoClienteComponent,
+      },
+      {
+        outlet: 'detalhes',
+        path: 'situacao',
+        component: PedidoSituacaoComponent,
       },
       {
         outlet: 'detalhes',

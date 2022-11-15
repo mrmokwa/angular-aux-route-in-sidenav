@@ -1,66 +1,25 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-type Situacao = Pedido['situacao'];
+type Estado = Pedido['estado'];
 
 @Pipe({
+  name: 'pedidoEstado',
   standalone: true,
-  name: 'pedidoSituacao',
 })
-export class PedidoSituacaoPipe implements PipeTransform {
-  transform(situacao: Situacao): string {
-    switch (situacao) {
-      case 'A':
-        return 'Atendido';
-      case 'C':
-        return 'Cancelado';
-      case 'T':
-        return 'Transferido';
-      default:
-        return 'Pendente';
-    }
+export class PedidoEstadoPipe implements PipeTransform {
+  transform(value: Estado): string {
+    return value === 'A' ? 'Aberto' : 'Fechado';
   }
 }
 
 @Pipe({
-  name: 'pedidoSituacaoClass',
+  name: 'pedidoEstadoClass',
   standalone: true,
 })
-export class PedidoSituacaoClassPipe implements PipeTransform {
-  transform(situacao: Situacao): string {
-    switch (situacao) {
-      case 'A':
-        return 'sucesso';
-      case 'C':
-        return 'erro';
-      case 'T':
-        return 'sucesso';
-      default:
-        return 'aviso';
-    }
+export class PedidoEstadoClassPipe implements PipeTransform {
+  transform(value: Estado): string {
+    return value === 'A' ? 'warn' : '';
   }
 }
 
-@Pipe({
-  name: 'pedidoSituacaoIcon',
-  standalone: true,
-})
-export class PedidoSituacaoIconPipe implements PipeTransform {
-  transform(situacao: Situacao): string {
-    switch (situacao) {
-      case 'A':
-        return 'done';
-      case 'C':
-        return 'clear';
-      case 'T':
-        return 'sync_alt';
-      default:
-        return 'cached';
-    }
-  }
-}
-
-export const PedidoSituacaoPipes = [
-  PedidoSituacaoPipe,
-  PedidoSituacaoClassPipe,
-  PedidoSituacaoIconPipe,
-];
+export const PedidoEstadoPipes = [PedidoEstadoPipe, PedidoEstadoClassPipe];

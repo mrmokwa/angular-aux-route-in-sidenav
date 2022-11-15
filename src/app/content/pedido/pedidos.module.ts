@@ -8,7 +8,7 @@ import { PedidoNotaModule } from '../pedido-nota/pedido-nota.module';
 import { ClienteDetalhesComponent } from '../cliente/components/cliente-detalhes/cliente-detalhes.component';
 
 import { ItemPipes } from '../item/pipes';
-import { PedidoSituacaoPipes } from './pipes';
+import { PedidoPipes } from './pipes';
 import { PedItemSituacaoPipes } from '../pedido-item/pipes/pedido-item.pipe';
 import { NotaFiscalSituacaoPipes } from '../pedido-nota/pipes/nota-fiscal.pipe';
 
@@ -21,6 +21,7 @@ import { PedidoListaComponent } from './components/pedido-lista/pedido-lista.com
 import { PedidoDetalhesComponent } from './components/pedido-detalhes/pedido-detalhes.component';
 import { PedidoTotaisComponent } from './components/pedido-totais/pedido-totais.component';
 import { PedidoClienteComponent } from './components/pedido-cliente/pedido-cliente.component';
+import { PedidoSituacaoComponent } from './components/pedido-situacao/pedido-situacao.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { PedidoClienteComponent } from './components/pedido-cliente/pedido-clien
     PedidoDetalhesComponent,
     PedidoTotaisComponent,
     PedidoClienteComponent,
+    PedidoSituacaoComponent,
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,7 @@ import { PedidoClienteComponent } from './components/pedido-cliente/pedido-clien
     ItemPipes,
     PedItemSituacaoPipes,
     NotaFiscalSituacaoPipes,
-    PedidoSituacaoPipes,
+    PedidoPipes,
     PedidoItemModule,
     PedidoNotaModule,
     ClienteDetalhesComponent,
