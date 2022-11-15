@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
-import { catchError, EMPTY, finalize } from 'rxjs';
+import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
+import { catchError, EMPTY, finalize, of } from 'rxjs';
 import { GlobalLoaderService } from 'src/app/core/services/global-loader.service';
 import { PedidosService } from '../../pedidos.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PedidoStoreResolver implements Resolve<PedidoDetalhado> {
+export class PedidoStoreResolver implements Resolve<PedidoDetalhado | null> {
   constructor(
     private apiService: PedidosService,
-    private loadingService: GlobalLoaderService
+    private loadingService: GlobalLoaderService,
+    private router: Router
   ) {}
 
   resolve(route: ActivatedRouteSnapshot) {
@@ -18,7 +19,7 @@ export class PedidoStoreResolver implements Resolve<PedidoDetalhado> {
 
     return this.apiService.getById(+route.params['id']).pipe(
       finalize(() => this.loadingService.setState(false)),
-      catchError((e) => EMPTY)
+      catchError(() => of(null))
     );
   }
 }

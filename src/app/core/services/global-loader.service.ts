@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class GlobalLoaderService {
   constructor() {}
 
-  private loadingSource = new BehaviorSubject<boolean>(true);
+  private loadingSource = new BehaviorSubject<boolean>(false);
   readonly loading$ = this.loadingSource.asObservable();
   setState = (value: boolean) => this.loadingSource.next(value);
 }

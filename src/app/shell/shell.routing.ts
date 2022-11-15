@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardModule } from '../content/dashboard/dashboard.module';
 import { PedidosModule } from '../content/pedido/pedidos.module';
 import { ShellContainerComponent } from './shell-container/shell-container.component';
 
@@ -9,12 +10,16 @@ const routes: Routes = [
     component: ShellContainerComponent,
     children: [
       {
+        path: 'dashboard',
+        loadChildren: () => DashboardModule,
+      },
+      {
         path: 'pedidos',
         loadChildren: () => PedidosModule,
       },
       {
         path: '**',
-        redirectTo: 'pedidos',
+        redirectTo: 'dashboard',
       },
     ],
   },
