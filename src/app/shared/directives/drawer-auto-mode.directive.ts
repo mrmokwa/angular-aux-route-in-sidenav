@@ -15,7 +15,7 @@ import { distinctUntilChanged, map } from 'rxjs/operators';
   selector: '[appDrawerAutoMode]',
 })
 export class DrawerAutoModeDirective implements AfterViewInit {
-  @Input() minContainerSize = 1024;
+  @Input() minContainerSize = 1152;
 
   drawer: MatSidenav | MatDrawer;
 
