@@ -7,7 +7,7 @@ import { filter, finalize } from 'rxjs';
 import { applyServerErrors } from 'src/app/core/rxjs/applyServerErrors';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { PedidosService } from 'src/app/content/pedido/pedidos.service';
-import { PedidoItemService } from '../../pedido-item.service';
+import { PedidoItemStoreService } from '../pedido-item-store/pedido-item-store.service';
 import { PedidoDrawerService } from 'src/app/content/pedido/pages/pedido-drawer/pedido-drawer.service';
 
 @UntilDestroy()
@@ -19,7 +19,7 @@ import { PedidoDrawerService } from 'src/app/content/pedido/pages/pedido-drawer/
 })
 export class PedidoItemEditarComponent implements OnInit {
   constructor(
-    private itemStore: PedidoItemService,
+    private itemStore: PedidoItemStoreService,
     private drawerService: PedidoDrawerService,
     private notification: NotificationService,
     private router: Router,

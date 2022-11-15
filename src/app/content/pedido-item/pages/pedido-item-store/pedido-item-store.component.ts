@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { map, combineLatest, filter } from 'rxjs';
 import { PedidoStoreService } from 'src/app/content/pedido/pages/pedido-store/pedido-store.service';
-import { PedidoItemService } from '../../pedido-item.service';
+import { PedidoItemStoreService } from './pedido-item-store.service';
 
 @UntilDestroy()
 @Component({
@@ -15,7 +15,7 @@ import { PedidoItemService } from '../../pedido-item.service';
 export class PedidoItemStoreComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
-    private itemStore: PedidoItemService,
+    private itemStore: PedidoItemStoreService,
     private pedidoStore: PedidoStoreService
   ) {}
 

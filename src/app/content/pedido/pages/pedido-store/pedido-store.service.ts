@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { finalize, ReplaySubject, switchMap, take, tap } from 'rxjs';
-import { PedidoItemService } from 'src/app/content/pedido-item/pedido-item.service';
+import { PedidoItemStoreService } from 'src/app/content/pedido-item/pages/pedido-item-store/pedido-item-store.service';
 import { GlobalLoaderService } from 'src/app/core/services/global-loader.service';
 import { PedidosService } from '../../pedidos.service';
 
@@ -23,7 +23,7 @@ export class PedidoStoreService {
   );
 
   constructor(
-    private itemStore: PedidoItemService,
+    private itemStore: PedidoItemStoreService,
     private apiService: PedidosService,
     private loadingService: GlobalLoaderService
   ) {

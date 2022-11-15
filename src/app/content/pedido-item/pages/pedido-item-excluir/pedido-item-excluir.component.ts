@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { PedidosService } from 'src/app/content/pedido/pedidos.service';
-import { PedidoItemService } from '../../pedido-item.service';
+import { PedidoItemStoreService } from '../pedido-item-store/pedido-item-store.service';
 import { PedidoDrawerService } from 'src/app/content/pedido/pages/pedido-drawer/pedido-drawer.service';
 
 @Component({
@@ -15,7 +15,7 @@ import { PedidoDrawerService } from 'src/app/content/pedido/pages/pedido-drawer/
 })
 export class PedidoItemExcluirComponent {
   constructor(
-    private itemStore: PedidoItemService,
+    private itemStore: PedidoItemStoreService,
     private router: Router,
     private notification: NotificationService,
     private activatedRoute: ActivatedRoute,

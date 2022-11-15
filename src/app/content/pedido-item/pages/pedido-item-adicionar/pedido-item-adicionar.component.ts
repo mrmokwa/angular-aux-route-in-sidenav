@@ -7,7 +7,7 @@ import { applyServerErrors } from 'src/app/core/rxjs/applyServerErrors';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { PedidoStoreService } from 'src/app/content/pedido/pages/pedido-store/pedido-store.service';
 import { PedidosService } from 'src/app/content/pedido/pedidos.service';
-import { PedidoItemService } from '../../pedido-item.service';
+import { PedidoItemStoreService } from '../pedido-item-store/pedido-item-store.service';
 import { PedidoDrawerService } from 'src/app/content/pedido/pages/pedido-drawer/pedido-drawer.service';
 
 @Component({
@@ -33,8 +33,8 @@ export class PedidoItemAdicionarComponent {
 
   constructor(
     private apiService: PedidosService,
-    private store: PedidoItemService,
-    private pedido: PedidoStoreService,
+    private itemStore: PedidoItemStoreService,
+    private pedidoStore: PedidoStoreService,
     private drawerService: PedidoDrawerService,
     private route: ActivatedRoute,
     private notification: NotificationService,
@@ -62,7 +62,7 @@ export class PedidoItemAdicionarComponent {
   }
 
   private onSuccess({ sequencia }: PedidoVendaItem) {
-    this.store.setReloadPedido(true);
+    this.itemStore.setReloadPedido(true);
     this.notification.success('Item adicionado com sucesso');
     this.router.navigate(['..', sequencia], { relativeTo: this.route });
   }
@@ -73,5 +73,5 @@ export class PedidoItemAdicionarComponent {
 
   id$ = this.route.params.pipe(map((params) => +params['id']));
 
-  pedido$ = this.pedido.pedido$;
+  pedido$ = this.pedidoStore.pedido$;
 }

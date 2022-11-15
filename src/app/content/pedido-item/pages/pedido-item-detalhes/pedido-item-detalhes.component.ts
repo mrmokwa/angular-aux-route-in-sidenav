@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { PedidoDrawerService } from 'src/app/content/pedido/pages/pedido-drawer/pedido-drawer.service';
 import { PedidoStoreService } from 'src/app/content/pedido/pages/pedido-store/pedido-store.service';
-import { PedidoItemService } from '../../pedido-item.service';
+import { PedidoItemStoreService } from '../pedido-item-store/pedido-item-store.service';
 
 @UntilDestroy()
 @Component({
@@ -12,7 +12,7 @@ import { PedidoItemService } from '../../pedido-item.service';
 })
 export class PedidoItemDetalhesComponent implements OnInit {
   constructor(
-    private itemStore: PedidoItemService,
+    private itemStore: PedidoItemStoreService,
     private pedidoStore: PedidoStoreService,
     private drawerService: PedidoDrawerService
   ) {}
