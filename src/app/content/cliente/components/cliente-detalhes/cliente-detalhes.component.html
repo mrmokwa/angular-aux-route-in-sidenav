@@ -1,12 +1,13 @@
+<h3>{{ cliente.nome }}</h3>
+
+<mat-divider></mat-divider>
+
 <dl>
   <dt>Código</dt>
   <dd>{{ cliente.id }}</dd>
 
   <dt>Abreviado</dt>
   <dd>{{ cliente.abreviado }}</dd>
-
-  <dt>Nome</dt>
-  <dd>{{ cliente.nome }}</dd>
 
   <dt>Natureza</dt>
   <dd>{{ cliente.natureza | clienteNatureza }}</dd>
