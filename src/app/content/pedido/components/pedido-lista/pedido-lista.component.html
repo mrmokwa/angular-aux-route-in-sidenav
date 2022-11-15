@@ -1,8 +1,16 @@
-<mat-nav-list>
-  <mat-list-item [routerLink]="[{ outlets: { detalhes: ['cliente'] } }]">
+<mat-list>
+  <mat-list-item>
     <mat-icon mat-list-icon>face_unlock</mat-icon>
     <p mat-line>{{ pedido.clienteNome }}</p>
     <p mat-line>Cliente</p>
+
+    <button
+      mat-button
+      mat-icon-button
+      [routerLink]="[{ outlets: { detalhes: ['cliente'] } }]"
+    >
+      <mat-icon>chevron_right</mat-icon>
+    </button>
   </mat-list-item>
 
   <mat-list-item>
@@ -21,11 +29,17 @@
     <mat-icon mat-list-icon>calendar_today</mat-icon>
   </mat-list-item>
 
-  <mat-list-item
-    [routerLink]="[{ outlets: { detalhes: ['totais-do-pedido'] } }]"
-  >
+  <mat-list-item>
     <mat-icon mat-list-icon>attach_money</mat-icon>
     <p mat-line>{{ pedido.totalPedido | currency }}</p>
     <p mat-line>Total</p>
+
+    <button
+      mat-button
+      mat-icon-button
+      [routerLink]="[{ outlets: { detalhes: ['totais-do-pedido'] } }]"
+    >
+      <mat-icon>chevron_right</mat-icon>
+    </button>
   </mat-list-item>
-</mat-nav-list>
+</mat-list>
