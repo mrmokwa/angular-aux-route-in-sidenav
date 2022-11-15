@@ -10,13 +10,16 @@
 
   .accent {
     color: mat.get-color-from-palette($accent-palette);
+    font-weight: 500 !important;
   }
 
   .primary {
     color: mat.get-color-from-palette($primary-palette);
+    font-weight: 500 !important;
   }
 
   .warn {
     color: mat.get-color-from-palette($warn-palette);
+    font-weight: 500 !important;
   }
 }
