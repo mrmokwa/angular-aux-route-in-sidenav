@@ -13,23 +13,38 @@
     </button>
   </mat-list-item>
 
-  <mat-list-item>
-    <mat-icon mat-list-icon>
-      {{ pedido.situacao | pedidoSituacaoIcon }}
-    </mat-icon>
-    <p mat-line [ngClass]="pedido.situacao | pedidoSituacaoClass">
-      {{ pedido.situacao | pedidoSituacao }}
-    </p>
-    <p mat-line>Situação</p>
+  <ng-container *ngIf="pedido.estado === 'A'; else pedidoFechado">
+    <mat-list-item>
+      <mat-icon mat-list-icon>pending_actions</mat-icon>
+      <p mat-line [ngClass]="pedido.estado | pedidoEstadoClass">
+        {{ pedido.estado | pedidoEstado }}
+      </p>
+      <p mat-line>Estado</p>
+      <button mat-button mat-icon-button disabled>
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </mat-list-item>
+  </ng-container>
 
-    <button
-      mat-button
-      mat-icon-button
-      [routerLink]="[{ outlets: { detalhes: ['situacao'] } }]"
-    >
-      <mat-icon>chevron_right</mat-icon>
-    </button>
-  </mat-list-item>
+  <ng-template #pedidoFechado>
+    <mat-list-item>
+      <mat-icon mat-list-icon>
+        {{ pedido.situacao | pedidoSituacaoIcon }}
+      </mat-icon>
+      <p mat-line [ngClass]="pedido.situacao | pedidoSituacaoClass">
+        {{ pedido.situacao | pedidoSituacao }}
+      </p>
+      <p mat-line>Situação</p>
+
+      <button
+        mat-button
+        mat-icon-button
+        [routerLink]="[{ outlets: { detalhes: ['situacao'] } }]"
+      >
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </mat-list-item>
+  </ng-template>
 
   <mat-list-item>
     <p mat-line>{{ pedido.entrada | date: "shortDate" }}</p>
@@ -45,6 +60,7 @@
     <button
       mat-button
       mat-icon-button
+      [disabled]="pedido.estado === 'A'"
       [routerLink]="[{ outlets: { detalhes: ['totais-do-pedido'] } }]"
     >
       <mat-icon>chevron_right</mat-icon>

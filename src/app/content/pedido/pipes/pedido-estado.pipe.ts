@@ -18,7 +18,7 @@ export class PedidoEstadoPipe implements PipeTransform {
 })
 export class PedidoEstadoClassPipe implements PipeTransform {
   transform(value: Estado): string {
-    return value === 'A' ? 'warn' : '';
+    return value === 'A' ? 'accent' : '';
   }
 }
 
