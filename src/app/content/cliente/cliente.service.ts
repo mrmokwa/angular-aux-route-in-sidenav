@@ -8,6 +8,6 @@ export class ClienteService {
   constructor(private httpClient: HttpClient) {}
 
   get(codigo: number) {
-    return this.httpClient.get<Item>(`/api/clientes/${codigo}`);
+    return this.httpClient.get<Cliente>(`/api/clientes/${codigo}`);
   }
 }

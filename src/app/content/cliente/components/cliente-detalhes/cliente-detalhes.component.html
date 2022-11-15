@@ -1,1 +1,91 @@
-{{ cliente | json }}
+<dl>
+  <dt>Código</dt>
+  <dd>{{ cliente.id }}</dd>
+
+  <dt>Abreviado</dt>
+  <dd>{{ cliente.abreviado }}</dd>
+
+  <dt>Nome</dt>
+  <dd>{{ cliente.nome }}</dd>
+
+  <dt>Natureza</dt>
+  <dd>{{ cliente.natureza }}</dd>
+
+  <dt>CGC</dt>
+  <dd>{{ cliente.cgc }}</dd>
+
+  <dt>IE</dt>
+  <dd>{{ cliente.ie }}</dd>
+
+  <dt>Situação</dt>
+  <dd>{{ cliente.situacao }}</dd>
+</dl>
+
+<ng-container *ngIf="cliente.observacoes">
+  <mat-divider></mat-divider>
+  <br />
+  <p>{{ cliente.observacoes }}</p>
+</ng-container>
+
+<mat-divider></mat-divider>
+
+<dl>
+  <dt>Representante</dt>
+  <dd>{{ cliente.represNome }}</dd>
+
+  <dt>Contato</dt>
+  <dd>{{ cliente.contato }}</dd>
+
+  <dt>Email</dt>
+  <dd>{{ cliente.email }}</dd>
+
+  <dt>Telefone</dt>
+  <dd>{{ cliente.telefone }}</dd>
+
+  <dt>Celuluar</dt>
+  <dd>{{ cliente.celular }}</dd>
+</dl>
+
+<mat-divider></mat-divider>
+
+<ng-container *ngIf="cliente.transpNome">
+  <dl>
+    <dt>Transportadora</dt>
+    <dd>{{ cliente.transpNome }}</dd>
+  </dl>
+
+  <mat-divider></mat-divider>
+</ng-container>
+
+<dl>
+  <dt>Pais</dt>
+  <dd>{{ cliente.pais }}</dd>
+
+  <dt>Estado</dt>
+  <dd>{{ cliente.estado }}</dd>
+
+  <dt>Cidade</dt>
+  <dd>{{ cliente.cidade }}</dd>
+
+  <dt>Endereco</dt>
+  <dd>{{ cliente.endereco }}</dd>
+
+  <dt>Complemento</dt>
+  <dd>{{ cliente.complemento }}</dd>
+
+  <dt>Bairro</dt>
+  <dd>{{ cliente.bairro }}</dd>
+
+  <dt>CEP</dt>
+  <dd>{{ cliente.cep }}</dd>
+</dl>
+
+<mat-divider></mat-divider>
+
+<dl>
+  <dt>Cadastro</dt>
+  <dd>{{ cliente.cadastro | date: "shortDate" }}</dd>
+
+  <dt>Última alteração</dt>
+  <dd>{{ cliente.alteracao | date: "shortDate" }}</dd>
+</dl>
