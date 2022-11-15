@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { PedidoDrawerService } from 'src/app/content/pedido/components/pedido-drawer/pedido-drawer.service';
+import { PedidoDrawerService } from 'src/app/content/pedido/pages/pedido-drawer/pedido-drawer.service';
 import { PedidoStoreService } from 'src/app/content/pedido/pages/pedido-store/pedido-store.service';
 import { PedidoItemService } from '../../pedido-item.service';
 

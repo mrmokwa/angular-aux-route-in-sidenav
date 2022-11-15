@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { finalize, switchMap, take } from 'rxjs';
 import { ClienteService } from 'src/app/content/cliente/cliente.service';
 import { PedidoStoreService } from '../../pages/pedido-store/pedido-store.service';
-import { PedidoDrawerService } from '../pedido-drawer/pedido-drawer.service';
+import { PedidoDrawerService } from '../../pages/pedido-drawer/pedido-drawer.service';
 
 @Component({
   selector: 'app-pedido-cliente',

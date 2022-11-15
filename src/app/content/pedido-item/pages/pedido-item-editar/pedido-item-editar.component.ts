@@ -8,7 +8,7 @@ import { applyServerErrors } from 'src/app/core/rxjs/applyServerErrors';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { PedidosService } from 'src/app/content/pedido/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
-import { PedidoDrawerService } from 'src/app/content/pedido/components/pedido-drawer/pedido-drawer.service';
+import { PedidoDrawerService } from 'src/app/content/pedido/pages/pedido-drawer/pedido-drawer.service';
 
 @UntilDestroy()
 @Component({

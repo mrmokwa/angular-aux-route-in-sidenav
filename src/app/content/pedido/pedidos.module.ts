@@ -10,14 +10,15 @@ import { ClienteDetalhesComponent } from '../cliente/components/cliente-detalhes
 import { ItemPipes } from '../item/pipes';
 import { PedidoSituacaoPipes } from './pipes';
 import { PedItemSituacaoPipes } from '../pedido-item/pipes/pedido-item.pipe';
+import { NotaFiscalSituacaoPipes } from '../pedido-nota/pipes/nota-fiscal.pipe';
 
-import { PedidoContainerComponent } from './pages/pedido-container/pedido-container.component';
 import { PedidoStoreComponent } from './pages/pedido-store/pedido-store.component';
+import { PedidoContainerComponent } from './pages/pedido-container/pedido-container.component';
+import { PedidoDrawerComponent } from './pages/pedido-drawer/pedido-drawer.component';
+
 import { PedidoItemListaComponent } from './components/pedido-item-lista/pedido-item-lista.component';
-import { PedidoDrawerComponent } from './components/pedido-drawer/pedido-drawer.component';
 import { PedidoToolbarComponent } from './components/pedido-toolbar/pedido-toolbar.component';
 import { PedidoNotaListaComponent } from './components/pedido-nota-lista/pedido-nota-lista.component';
-import { NotaFiscalSituacaoPipes } from '../pedido-nota/pipes/nota-fiscal.pipe';
 import { PedidoListaComponent } from './components/pedido-lista/pedido-lista.component';
 import { PedidoDetalhesComponent } from './components/pedido-detalhes/pedido-detalhes.component';
 import { PedidoTotaisComponent } from './components/pedido-totais/pedido-totais.component';

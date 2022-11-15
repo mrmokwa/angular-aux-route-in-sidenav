@@ -8,7 +8,7 @@ import { NotificationService } from 'src/app/core/services/notification.service'
 import { PedidoStoreService } from 'src/app/content/pedido/pages/pedido-store/pedido-store.service';
 import { PedidosService } from 'src/app/content/pedido/pedidos.service';
 import { PedidoItemService } from '../../pedido-item.service';
-import { PedidoDrawerService } from 'src/app/content/pedido/components/pedido-drawer/pedido-drawer.service';
+import { PedidoDrawerService } from 'src/app/content/pedido/pages/pedido-drawer/pedido-drawer.service';
 
 @Component({
   selector: 'app-pedido-item-adicionar',
