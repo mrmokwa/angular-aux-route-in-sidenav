@@ -54,7 +54,7 @@ export class PedidoSituacaoIconPipe implements PipeTransform {
       case 'T':
         return 'sync_alt';
       default:
-        return 'play_circle_outline';
+        return 'mediation';
     }
   }
 }
