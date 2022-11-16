@@ -18,15 +18,16 @@ export class PedidoStoreService {
     private loadingService: GlobalLoaderService
   ) {}
 
+  refresh$ = this.pedido$.pipe(
+    take(1),
+    switchMap(({ id }) => this.apiService.getById(id))
+  );
+
   refresh() {
     this.loadingService.setState(true);
 
-    this.pedido$
-      .pipe(
-        take(1),
-        switchMap(({ id }) => this.apiService.getById(id)),
-        finalize(() => this.loadingService.setState(false))
-      )
+    this.refresh$
+      .pipe(finalize(() => this.loadingService.setState(false)))
       .subscribe((pedido) => this.setPedido(pedido));
   }
 }
