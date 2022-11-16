@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { finalize, ReplaySubject, switchMap, take } from 'rxjs';
-
 import { GlobalLoaderService } from 'src/app/core/services/global-loader.service';
+
 import { PedidosService } from '../../pedidos.service';
 
 @UntilDestroy()
@@ -18,16 +18,15 @@ export class PedidoStoreService {
     private loadingService: GlobalLoaderService
   ) {}
 
-  refresh$ = this.pedido$.pipe(
-    take(1),
-    switchMap(({ id }) => this.apiService.getById(id))
-  );
-
   refresh() {
     this.loadingService.setState(true);
 
-    this.refresh$
-      .pipe(finalize(() => this.loadingService.setState(false)))
+    this.pedido$
+      .pipe(
+        take(1),
+        switchMap(({ id }) => this.apiService.getById(id)),
+        finalize(() => this.loadingService.setState(false))
+      )
       .subscribe((pedido) => this.setPedido(pedido));
   }
 }
