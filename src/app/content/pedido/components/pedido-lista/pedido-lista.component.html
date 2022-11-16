@@ -20,8 +20,8 @@
   </mat-list-item>
 
   <mat-list-item>
-    <p mat-line>{{ pedido.entrada | date: "shortDate" }}</p>
-    <p mat-line>Entrada</p>
+    <p mat-line>{{ pedido.entregaPrev | date: "shortDate" }}</p>
+    <p mat-line>Faturamento Previsto</p>
     <mat-icon mat-list-icon>calendar_today</mat-icon>
   </mat-list-item>
 
@@ -37,14 +37,6 @@
     >
       <mat-icon>chevron_right</mat-icon>
     </button>
-  </mat-list-item>
-
-  <mat-list-item>
-    <mat-icon mat-list-icon>pending_actions</mat-icon>
-    <p mat-line [ngClass]="pedido.estado | pedidoEstadoClass">
-      {{ pedido.estado | pedidoEstado }}
-    </p>
-    <p mat-line>Digitação</p>
   </mat-list-item>
 
   <mat-list-item>

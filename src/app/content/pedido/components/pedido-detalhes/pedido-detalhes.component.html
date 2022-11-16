@@ -40,11 +40,6 @@
   <mat-divider></mat-divider>
 
   <dl>
-    <dt>Digitação</dt>
-    <dd [ngClass]="pedido.estado | pedidoEstadoClass">
-      {{ pedido.estado | pedidoEstado }}
-    </dd>
-
     <dt>Análise Comercial</dt>
     <dd>{{ pedido.comercial | pedidoAnalise }}</dd>
 
