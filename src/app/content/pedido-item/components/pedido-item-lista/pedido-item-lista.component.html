@@ -5,9 +5,8 @@
     [routerLink]="[{ outlets: { detalhes: ['item', item.sequencia] } }]"
   >
     <span mat-line>{{ item.sequencia }} - {{ item | itemConfigId }}</span>
-    <span mat-line class="descricao">
-      {{ item.descricao }}
-    </span>
+    <span mat-line> {{ item.descricao }} </span>
+
     <span [ngClass]="item.situacao | pedItemSituacaoClass">
       {{ item.situacao | pedItemSituacao }}
     </span>
@@ -18,9 +17,7 @@
   <mat-list>
     <mat-list-item>
       <span mat-line>Nenhum item cadastrado</span>
-      <span mat-line class="descricao">
-        Clique em adicionar para incluir um item ao pedido
-      </span>
+      <span mat-line> Clique em adicionar para incluir um item ao pedido </span>
     </mat-list-item>
   </mat-list>
 </ng-template>
