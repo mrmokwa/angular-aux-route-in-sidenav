@@ -14,7 +14,7 @@ export class PedidoAnalisePipe implements PipeTransform {
       case 'R':
         return 'Rejeitado';
       case 'B':
-        return 'Bloqueado';
+        return 'Em Análise';
     }
   }
 }
