@@ -6,10 +6,10 @@
     ]"
   >
     <span mat-line> {{ n.documento }} </span>
-    <span mat-line> {{ n.chave }} </span>
+    <span mat-line> {{ n.emissao | date: "shortDate" }} </span>
 
-    <span [ngClass]="n.situacao | notaFiscalSituacaoClass">
-      {{ n.situacao | notaFiscalSituacao }}
+    <span>
+      {{ n.totalNota | currency }}
     </span>
   </mat-list-item>
 </mat-nav-list>
