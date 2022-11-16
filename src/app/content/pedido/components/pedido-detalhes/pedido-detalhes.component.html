@@ -25,6 +25,11 @@
   <mat-divider></mat-divider>
 
   <dl>
+    <dt>Estado</dt>
+    <dd [ngClass]="pedido.estado | pedidoEstadoClass">
+      {{ pedido.estado | pedidoEstado }}
+    </dd>
+
     <dt>Situacao</dt>
     <dd [ngClass]="pedido.situacao | pedidoSituacaoClass">
       {{ pedido.situacao | pedidoSituacao }}
