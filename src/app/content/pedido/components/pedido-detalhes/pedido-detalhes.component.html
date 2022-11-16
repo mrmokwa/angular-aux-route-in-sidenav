@@ -22,6 +22,21 @@
     <dd>{{ pedido.clientePedido }}</dd>
   </dl>
 
+  <ng-container *ngIf="pedido.compradorNome">
+    <mat-divider></mat-divider>
+
+    <dl>
+      <dt>Comprador</dt>
+      <dd>{{ pedido.compradorNome }}</dd>
+
+      <dt>Email</dt>
+      <dd>{{ pedido.compradorEmail }}</dd>
+
+      <dt>Telefone</dt>
+      <dd>{{ pedido.compradorFone }}</dd>
+    </dl>
+  </ng-container>
+
   <mat-divider></mat-divider>
 
   <dl>
@@ -90,19 +105,4 @@
     <dt>Condição Pagamento</dt>
     <dd>{{ pedido.condPgtoParc }}</dd>
   </dl>
-
-  <ng-container *ngIf="pedido.compradorNome">
-    <mat-divider></mat-divider>
-
-    <dl>
-      <dt>Comprador</dt>
-      <dd>{{ pedido.compradorNome }}</dd>
-
-      <dt>Email</dt>
-      <dd>{{ pedido.compradorEmail }}</dd>
-
-      <dt>Telefone</dt>
-      <dd>{{ pedido.compradorFone }}</dd>
-    </dl>
-  </ng-container>
 </ng-container>
