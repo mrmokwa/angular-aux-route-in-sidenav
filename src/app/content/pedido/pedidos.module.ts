@@ -21,7 +21,6 @@ import { PedidoListaComponent } from './components/pedido-lista/pedido-lista.com
 import { PedidoDetalhesComponent } from './components/pedido-detalhes/pedido-detalhes.component';
 import { PedidoTotaisComponent } from './components/pedido-totais/pedido-totais.component';
 import { PedidoClienteComponent } from './components/pedido-cliente/pedido-cliente.component';
-import { PedidoSituacaoComponent } from './components/pedido-situacao/pedido-situacao.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,6 @@ import { PedidoSituacaoComponent } from './components/pedido-situacao/pedido-sit
     PedidoDetalhesComponent,
     PedidoTotaisComponent,
     PedidoClienteComponent,
-    PedidoSituacaoComponent,
   ],
   imports: [
     CommonModule,

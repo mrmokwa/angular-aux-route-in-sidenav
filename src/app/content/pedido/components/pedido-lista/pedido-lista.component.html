@@ -20,9 +20,6 @@
         {{ pedido.estado | pedidoEstado }}
       </p>
       <p mat-line>Estado</p>
-      <button mat-button mat-icon-button disabled>
-        <mat-icon>chevron_right</mat-icon>
-      </button>
     </mat-list-item>
   </ng-container>
 
@@ -35,14 +32,6 @@
         {{ pedido.situacao | pedidoSituacao }}
       </p>
       <p mat-line>Situação</p>
-
-      <button
-        mat-button
-        mat-icon-button
-        [routerLink]="[{ outlets: { detalhes: ['situacao'] } }]"
-      >
-        <mat-icon>chevron_right</mat-icon>
-      </button>
     </mat-list-item>
   </ng-template>
 
@@ -60,7 +49,6 @@
     <button
       mat-button
       mat-icon-button
-      [disabled]="pedido.estado === 'A'"
       [routerLink]="[{ outlets: { detalhes: ['totais-do-pedido'] } }]"
     >
       <mat-icon>chevron_right</mat-icon>

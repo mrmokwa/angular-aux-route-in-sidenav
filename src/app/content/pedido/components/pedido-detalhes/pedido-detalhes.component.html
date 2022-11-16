@@ -15,6 +15,31 @@
   <mat-divider></mat-divider>
 
   <dl>
+    <dt>Cliente</dt>
+    <dd>{{ pedido.clienteNome }}</dd>
+
+    <dt>Pedido Cliente</dt>
+    <dd>{{ pedido.clientePedido }}</dd>
+  </dl>
+
+  <mat-divider></mat-divider>
+
+  <dl>
+    <dt>Situacao</dt>
+    <dd [ngClass]="pedido.situacao | pedidoSituacaoClass">
+      {{ pedido.situacao | pedidoSituacao }}
+    </dd>
+
+    <dt>Analise Financeira</dt>
+    <dd>{{ pedido.financeiro | pedidoAnalise }}</dd>
+
+    <dt>Analise Comercial</dt>
+    <dd>{{ pedido.comercial | pedidoAnalise }}</dd>
+  </dl>
+
+  <mat-divider></mat-divider>
+
+  <dl>
     <dt>Entrada</dt>
     <dd>{{ pedido.entrada | date: "shortDate" }}</dd>
 
@@ -23,16 +48,6 @@
 
     <dt>Entrega Solicitada</dt>
     <dd>{{ pedido.entregaSolic | date: "shortDate" }}</dd>
-  </dl>
-
-  <mat-divider></mat-divider>
-
-  <dl>
-    <dt>Cliente</dt>
-    <dd>{{ pedido.clienteNome }}</dd>
-
-    <dt>Pedido Cliente</dt>
-    <dd>{{ pedido.clientePedido }}</dd>
   </dl>
 
   <ng-container *ngIf="pedido.observacoes">
@@ -77,14 +92,10 @@
     <dl>
       <dt>Comprador</dt>
       <dd>{{ pedido.compradorNome }}</dd>
-    </dl>
 
-    <dl>
       <dt>Email</dt>
       <dd>{{ pedido.compradorEmail }}</dd>
-    </dl>
 
-    <dl>
       <dt>Telefone</dt>
       <dd>{{ pedido.compradorFone }}</dd>
     </dl>
