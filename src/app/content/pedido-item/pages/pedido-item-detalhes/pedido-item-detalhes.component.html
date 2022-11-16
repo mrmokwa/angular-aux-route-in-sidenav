@@ -8,26 +8,25 @@
   <app-pedido-item-info-id [item]="item"></app-pedido-item-info-id>
 
   <mat-divider></mat-divider>
-  <br />
-
-  <p>{{ item.descricao }}</p>
-
-  <mat-divider></mat-divider>
 
   <ng-container *ngIf="item.complemento">
     <br />
-
     <p class="accent">{{ item.complemento }}</p>
-
     <mat-divider></mat-divider>
   </ng-container>
 
   <dl>
+    <dt>Situação</dt>
+    <dd [ngClass]="item.situacao | pedItemSituacaoClass">
+      {{ item.situacao | pedItemSituacao }}
+    </dd>
+  </dl>
+
+  <mat-divider></mat-divider>
+
+  <dl>
     <dt>Quantidade</dt>
     <dd>{{ item.quantidade }} {{ item.um }}</dd>
-
-    <dt>Líquida</dt>
-    <dd>{{ item.qtdLiquida }} {{ item.um }}</dd>
 
     <dt>Pendente</dt>
     <dd>{{ item.pendente }} {{ item.um }}</dd>

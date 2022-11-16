@@ -6,9 +6,9 @@
     <dt>Refêrencia</dt>
     <dd>{{ item.referencia }}</dd>
   </ng-container>
-
-  <dt>Situação</dt>
-  <dd [ngClass]="item.situacao | pedItemSituacaoClass">
-    {{ item.situacao | pedItemSituacao }}
-  </dd>
 </dl>
+
+<mat-divider></mat-divider>
+<br />
+
+<p>{{ item.descricao }}</p>
