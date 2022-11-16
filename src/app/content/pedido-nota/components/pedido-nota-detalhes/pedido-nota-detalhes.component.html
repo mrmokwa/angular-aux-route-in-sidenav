@@ -15,11 +15,6 @@
   <mat-divider></mat-divider>
 
   <dl>
-    <dt>Situação</dt>
-    <dd [ngClass]="nota.situacao | notaFiscalSituacaoClass">
-      {{ nota.situacao | notaFiscalSituacao }}
-    </dd>
-
     <dt>Emissão</dt>
     <dd>{{ nota.emissao | date: "shortDate" }}</dd>
   </dl>
