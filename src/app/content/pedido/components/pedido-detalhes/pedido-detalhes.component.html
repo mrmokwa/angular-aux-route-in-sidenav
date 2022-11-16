@@ -45,16 +45,16 @@
       {{ pedido.estado | pedidoEstado }}
     </dd>
 
-    <dt>Situacao</dt>
-    <dd [ngClass]="pedido.situacao | pedidoSituacaoClass">
-      {{ pedido.situacao | pedidoSituacao }}
-    </dd>
-
     <dt>Analise Financeira</dt>
     <dd>{{ pedido.financeiro | pedidoAnalise }}</dd>
 
     <dt>Analise Comercial</dt>
     <dd>{{ pedido.comercial | pedidoAnalise }}</dd>
+
+    <dt>Situacao</dt>
+    <dd [ngClass]="pedido.situacao | pedidoSituacaoClass">
+      {{ pedido.situacao | pedidoSituacao }}
+    </dd>
   </dl>
 
   <mat-divider></mat-divider>
