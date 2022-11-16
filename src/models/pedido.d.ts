@@ -42,16 +42,6 @@ interface PedidoDetalhado extends Pedido {
   tipoNF: string;
   tipoNFDesc: string;
   tabPrecoId: string;
-  analiseFinanceira: Analise;
-  analiseComercial: Analise;
-}
-
-interface Analise {
-  data: Date;
-  hora: string;
-  usuario: string;
-  motivoAprovacao: string;
-  motivoRejeicao: string;
 }
 
 interface PedidoVendaItem {
