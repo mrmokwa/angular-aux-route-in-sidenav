@@ -6,7 +6,9 @@
     ]"
   >
     <span mat-line> {{ n.documento }} </span>
-    <span mat-line> {{ n.emissao | date: "shortDate" }} </span>
+    <span mat-line>
+      <small>Emissão em {{ n.emissao | date: "shortDate" }}</small>
+    </span>
 
     <span>
       {{ n.totalNota | currency }}
